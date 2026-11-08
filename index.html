@@ -93,7 +93,7 @@
         </aside>
 
         <!-- MAIN CONTENT CONTAINER -->
-        <div class="main-content lg:flex-1 bg-slate-900/70 backdrop-blur-2xl border border-slate-700/50 shadow-2xl rounded-3xl p-6 md:p-10 relative">
+        <div class="main-content lg:flex-1 bg-slate-900/70 backdrop-blur-2xl border border-slate-700/50 shadow-2xl rounded-3xl p-6 md:p-10 relative pt-20 lg:pt-12">
             
             <!-- NAVBAR -->
             <nav class="navbar fixed bottom-0 left-0 w-full bg-slate-900/90 backdrop-blur-lg border-t border-slate-700/50 lg:absolute lg:top-0 lg:right-0 lg:bottom-auto lg:w-auto lg:border lg:rounded-bl-3xl lg:rounded-tr-3xl lg:p-1 z-50 shadow-lg">
@@ -107,7 +107,7 @@
             </nav>
 
             <!-- ABOUT SECTION -->
-            <article class="about active space-y-8 pt-4 lg:pt-0" data-page="about">
+            <article class="about active space-y-8" data-page="about">
                 <header>
                     <h2 class="h2 text-2xl md:text-3xl font-bold text-white relative pb-3 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-12 after:h-1 after:bg-gradient-to-r after:from-cyan-400 after:to-blue-500 after:rounded-full">About me</h2>
                 </header>
@@ -162,28 +162,10 @@
                         </li>
                     </ul>
                 </section>
-
-                <!-- Modal de Testimonios -->
-                <div class="modal-container fixed inset-0 bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-4 z-50 transition-all duration-300" data-modal-container>
-                    <div class="overlay absolute inset-0" data-overlay></div>
-                    <section class="testimonials-modal bg-slate-900 border border-slate-700 p-6 md:p-8 rounded-3xl shadow-2xl relative max-w-lg w-full z-10 flex flex-col md:flex-row gap-6 items-center">
-                        <button class="modal-close-btn absolute top-4 right-4 bg-slate-800 text-slate-300 hover:text-white p-2 rounded-xl border border-slate-700" data-modal-close-btn><ion-icon name="close-outline"></ion-icon></button>
-                        <div class="modal-img-wrapper flex flex-col items-center">
-                            <figure class="modal-avatar-box rounded-2xl overflow-hidden border border-slate-700">
-                                <img src="" alt="" width="80" data-modal-img>
-                            </figure>
-                        </div>
-                        <div class="modal-content space-y-2">
-                            <h4 class="h3 text-lg font-bold text-white" data-modal-title></h4>
-                            <time datetime="2023-06-14" class="text-xs text-cyan-400 font-medium block">14 June, 2023</time>
-                            <div class="modal-text text-slate-300 text-sm font-light" data-modal-text></div>
-                        </div>
-                    </section>
-                </div>
             </article>
 
             <!-- RESUME SECTION -->
-            <article class="resume space-y-8 pt-4 lg:pt-0" data-page="resume">
+            <article class="resume space-y-8" data-page="resume">
                 <header>
                     <h2 class="h2 text-2xl md:text-3xl font-bold text-white relative pb-3 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-12 after:h-1 after:bg-gradient-to-r after:from-cyan-400 after:to-blue-500 after:rounded-full">Resume</h2>
                 </header>
@@ -289,7 +271,7 @@
                                     </div>
                                     <h3 class="h3 text-base font-semibold text-white group-hover:text-cyan-400 transition-colors">Industrial IoT Trends in 2026</h3>
                                     <p class="blog-text text-slate-300 text-xs font-light">Explorando el impacto de los sistemas embebidos y la automatización inteligente...</p>
-                                </div>
+                                </article>
                             </a>
                         </li>
                     </ul>
