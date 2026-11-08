@@ -3,309 +3,227 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sebastian Valero | Mechatronic Engineer Portfolio</title>
+    <title>Sebastián Valero | RF Supervisor & Mechatronic Engineer</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Estilos personalizados -->
     <link rel="stylesheet" href="./style.css">
     <link rel="shortcut icon" href="https://i.postimg.cc/9fqYVvxh/logo.png" type="image/x-icon">
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 </head>
 <body class="bg-slate-950 text-slate-100 font-['Poppins'] min-h-screen relative overflow-x-hidden selection:bg-cyan-500 selection:text-slate-950">
 
-    <!-- Orbes de luz ambiental de fondo estilo Glassmorphism -->
-    <div class="fixed top-[-10%] left-[-10%] w-[500px] h-[500px] bg-cyan-500/20 rounded-full blur-[140px] pointer-events-none"></div>
-    <div class="fixed bottom-[-10%] right-[-10%] w-[500px] h-[500px] bg-blue-600/20 rounded-full blur-[140px] pointer-events-none"></div>
+    <!-- Luces ambientales de fondo (Glassmorphism) -->
+    <div class="fixed top-[-10%] left-[-10%] w-[500px] h-[500px] bg-cyan-500/15 rounded-full blur-[140px] pointer-events-none z-0"></div>
+    <div class="fixed bottom-[-10%] right-[-10%] w-[500px] h-[500px] bg-blue-600/15 rounded-full blur-[140px] pointer-events-none z-0"></div>
 
-    <main class="max-w-7xl mx-auto px-4 py-8 mb-20 lg:flex lg:gap-8 lg:items-start lg:justify-center">
+    <main class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 py-6 md:py-10 mb-24 lg:mb-12 lg:flex lg:gap-8 lg:items-start">
         
-        <!-- ASIDE / SIDEBAR -->
-        <aside class="sidebar bg-slate-900/70 backdrop-blur-2xl border border-slate-700/50 shadow-2xl rounded-3xl p-6 lg:sticky lg:top-8 lg:w-80 transition-all duration-500 mb-6 lg:mb-0" data-sidebar>
-            <div class="sidebar-info relative flex lg:flex-col items-center gap-5">
-                <figure class="avatar-box bg-gradient-to-br from-cyan-500/20 to-blue-600/20 p-2 rounded-2xl border border-slate-700/50 shadow-inner">
-                    <img src="https://i.postimg.cc/Ss8CBwXz/02623477ccafb861cbf47e2364e2889a-removebg-preview.png" alt="avatar" width="90" class="rounded-xl">
+        <!-- ==========================================
+             ASIDE / SIDEBAR (100% Responsivo)
+        =========================================== -->
+        <aside class="sidebar bg-slate-900/75 backdrop-blur-2xl border border-slate-800/80 shadow-2xl rounded-3xl p-5 sm:p-6 lg:sticky lg:top-8 lg:w-80 xl:w-88 shrink-0 transition-all duration-500 mb-6 lg:mb-0" data-sidebar>
+            
+            <div class="sidebar-info relative flex lg:flex-col items-center gap-4 sm:gap-5">
+                <figure class="avatar-box relative bg-gradient-to-br from-cyan-500/20 to-blue-600/20 p-2 rounded-2xl border border-slate-700/60 shadow-inner shrink-0">
+                    <img src="https://i.postimg.cc/Ss8CBwXz/02623477ccafb861cbf47e2364e2889a-removebg-preview.png" alt="Sebastián Valero" class="w-16 h-16 sm:w-20 sm:h-20 lg:w-28 lg:h-28 object-cover rounded-xl">
+                    <span class="absolute -bottom-1 -right-1 w-4 h-4 bg-emerald-400 border-2 border-slate-900 rounded-full" title="Disponible para proyectos"></span>
                 </figure>
 
-                <div class="info-content lg:text-center">
-                    <h1 class="name text-xl font-semibold text-white tracking-tight mb-2">Sebastian Valero</h1>
-                    <p class="title text-xs font-light text-cyan-400 bg-cyan-950/60 border border-cyan-800/50 px-3 py-1 rounded-full inline-block">Mechatronic Engineer</p>
+                <div class="info-content lg:text-center pr-10 lg:pr-0">
+                    <h1 class="name text-lg sm:text-xl font-bold text-white tracking-tight mb-1.5">Sebastián Valero</h1>
+                    <div class="flex flex-wrap lg:justify-center gap-1.5">
+                        <span class="text-[11px] font-medium text-cyan-400 bg-cyan-950/70 border border-cyan-800/60 px-2.5 py-0.5 rounded-full">Mechatronic Eng.</span>
+                        <span class="text-[11px] font-medium text-blue-400 bg-blue-950/70 border border-blue-800/60 px-2.5 py-0.5 rounded-full">RF Supervisor</span>
+                    </div>
                 </div>
 
-                <button class="info-more-btn lg:hidden absolute -top-4 -right-4 rounded-xl text-cyan-400 bg-slate-800/80 border border-slate-700 p-2.5 shadow-lg backdrop-blur-md transition-all hover:bg-cyan-500 hover:text-slate-950" data-sidebar-btn>
-                    <span>Show Contacts</span>
-                    <ion-icon name="chevron-down"></ion-icon>
+                <!-- Botón desplegable en móvil y tablet -->
+                <button class="info-more-btn lg:hidden absolute top-0 right-0 rounded-xl text-cyan-400 bg-slate-800/90 border border-slate-700 px-3 py-2 shadow-lg backdrop-blur-md transition-all hover:bg-cyan-500 hover:text-slate-950 flex items-center gap-1.5 text-xs font-medium" data-sidebar-btn>
+                    <span class="hidden sm:inline" data-sidebar-btn-text>Contactos</span>
+                    <ion-icon name="chevron-down" class="text-base transition-transform duration-300" data-sidebar-icon></ion-icon>
                 </button>
             </div>
 
-            <div class="sidebar-info-more transition-all duration-500">
-                <div class="separator w-full h-[1px] bg-slate-700/50 my-6"></div>
+            <!-- Información adicional desplegable en móvil / fija en desktop -->
+            <div class="sidebar-info-more">
+                <div class="w-full h-[1px] bg-slate-800 my-5"></div>
 
-                <ul class="contacts-list grid grid-cols-1 gap-5">
-                    <li class="contact-item flex items-center gap-4">
-                        <div class="icon-box relative bg-slate-800/80 border border-slate-700 w-10 h-10 rounded-xl flex items-center justify-center text-cyan-400 shadow-md">
+                <!-- Mini KPIs rápidos -->
+                <div class="grid grid-cols-3 gap-2 mb-5 text-center">
+                    <div class="bg-slate-800/50 border border-slate-700/50 rounded-xl p-2">
+                        <p class="text-sm font-bold text-cyan-400">6+ Años</p>
+                        <p class="text-[10px] text-slate-400">Experiencia</p>
+                    </div>
+                    <div class="bg-slate-800/50 border border-slate-700/50 rounded-xl p-2">
+                        <p class="text-sm font-bold text-cyan-400">78 Torres</p>
+                        <p class="text-[10px] text-slate-400">Red RF Perú</p>
+                    </div>
+                    <div class="bg-slate-800/50 border border-slate-700/50 rounded-xl p-2">
+                        <p class="text-sm font-bold text-cyan-400">IoT / RF</p>
+                        <p class="text-[10px] text-slate-400">Especialidad</p>
+                    </div>
+                </div>
+
+                <ul class="contacts-list grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-4">
+                    <li class="contact-item flex items-center gap-3.5">
+                        <div class="icon-box bg-slate-800/90 border border-slate-700/80 w-10 h-10 rounded-xl flex items-center justify-center text-cyan-400 shadow-md shrink-0">
                             <ion-icon name="mail-outline"></ion-icon>
                         </div>
                         <div class="contact-info overflow-hidden">
-                            <p class="contact-title text-[11px] uppercase tracking-wider text-slate-400 font-medium">Email</p>
-                            <a href="mailto:sebastianvalerogomez@hotmail.com" class="contact-link text-sm text-slate-200 hover:text-cyan-400 transition-colors truncate">sebastianvalerogomez@hotmail.com</a>
+                            <p class="text-[10px] uppercase tracking-wider text-slate-400 font-semibold">Email</p>
+                            <a href="mailto:sebastianvalerogomez@hotmail.com" class="text-xs sm:text-sm text-slate-200 hover:text-cyan-400 transition-colors block truncate">sebastianvalerogomez@hotmail.com</a>
                         </div>
                     </li>
 
-                    <li class="contact-item flex items-center gap-4">
-                        <div class="icon-box relative bg-slate-800/80 border border-slate-700 w-10 h-10 rounded-xl flex items-center justify-center text-cyan-400 shadow-md">
+                    <li class="contact-item flex items-center gap-3.5">
+                        <div class="icon-box bg-slate-800/90 border border-slate-700/80 w-10 h-10 rounded-xl flex items-center justify-center text-cyan-400 shadow-md shrink-0">
                             <ion-icon name="phone-portrait-outline"></ion-icon>
                         </div>
                         <div class="contact-info">
-                            <p class="contact-title text-[11px] uppercase tracking-wider text-slate-400 font-medium">Phone</p>
-                            <a href="tel:+51985855171" class="contact-link text-sm text-slate-200 hover:text-cyan-400 transition-colors">+51 985855171</a>
+                            <p class="text-[10px] uppercase tracking-wider text-slate-400 font-semibold">Teléfono</p>
+                            <a href="tel:+51985855171" class="text-xs sm:text-sm text-slate-200 hover:text-cyan-400 transition-colors">+51 985 855 171</a>
                         </div>
                     </li>
 
-                    <li class="contact-item flex items-center gap-4">
-                        <div class="icon-box relative bg-slate-800/80 border border-slate-700 w-10 h-10 rounded-xl flex items-center justify-center text-cyan-400 shadow-md">
-                            <ion-icon name="calendar-outline"></ion-icon>
+                    <li class="contact-item flex items-center gap-3.5">
+                        <div class="icon-box bg-slate-800/90 border border-slate-700/80 w-10 h-10 rounded-xl flex items-center justify-center text-cyan-400 shadow-md shrink-0">
+                            <ion-icon name="radio-outline"></ion-icon>
                         </div>
                         <div class="contact-info">
-                            <p class="contact-title text-[11px] uppercase tracking-wider text-slate-400 font-medium">Birthday</p>
-                            <time datetime="1998-11-04" class="text-sm text-slate-200">Noviembre 04, 1998</time>
+                            <p class="text-[10px] uppercase tracking-wider text-slate-400 font-semibold">Rol Actual</p>
+                            <p class="text-xs sm:text-sm text-slate-200">Supervisor RF @ Hunter Perú</p>
                         </div>
                     </li>
 
-                    <li class="contact-item flex items-center gap-4">
-                        <div class="icon-box relative bg-slate-800/80 border border-slate-700 w-10 h-10 rounded-xl flex items-center justify-center text-cyan-400 shadow-md">
+                    <li class="contact-item flex items-center gap-3.5">
+                        <div class="icon-box bg-slate-800/90 border border-slate-700/80 w-10 h-10 rounded-xl flex items-center justify-center text-cyan-400 shadow-md shrink-0">
                             <ion-icon name="location-outline"></ion-icon>
                         </div>
                         <div class="contact-info">
-                            <p class="contact-title text-[11px] uppercase tracking-wider text-slate-400 font-medium">Location</p>
-                            <address class="text-sm text-slate-200 not-italic">Lima, PERU</address>
+                            <p class="text-[10px] uppercase tracking-wider text-slate-400 font-semibold">Ubicación</p>
+                            <address class="text-xs sm:text-sm text-slate-200 not-italic">Lima, Perú (Cobertura Nacional)</address>
                         </div>
                     </li>
                 </ul>
 
-                <div class="separator w-full h-[1px] bg-slate-700/50 my-6"></div>
+                <div class="w-full h-[1px] bg-slate-800 my-5"></div>
 
-                <ul class="social-list flex justify-center gap-4">
-                    <li class="social-item"><a href="#" class="social-link text-slate-400 hover:text-cyan-400 text-lg transition-colors p-2 bg-slate-800/50 rounded-xl border border-slate-700/50"><ion-icon name="logo-facebook"></ion-icon></a></li>
-                    <li class="social-item"><a href="#" class="social-link text-slate-400 hover:text-cyan-400 text-lg transition-colors p-2 bg-slate-800/50 rounded-xl border border-slate-700/50"><ion-icon name="logo-twitter"></ion-icon></a></li>
-                    <li class="social-item"><a href="#" class="social-link text-slate-400 hover:text-cyan-400 text-lg transition-colors p-2 bg-slate-800/50 rounded-xl border border-slate-700/50"><ion-icon name="logo-instagram"></ion-icon></a></li>
+                <ul class="social-list flex justify-center gap-3">
+                    <li><a href="#" class="text-slate-400 hover:text-cyan-400 hover:border-cyan-500/50 text-lg transition-all p-2.5 bg-slate-800/60 rounded-xl border border-slate-700/60 flex items-center justify-center"><ion-icon name="logo-linkedin"></ion-icon></a></li>
+                    <li><a href="#" class="text-slate-400 hover:text-cyan-400 hover:border-cyan-500/50 text-lg transition-all p-2.5 bg-slate-800/60 rounded-xl border border-slate-700/60 flex items-center justify-center"><ion-icon name="logo-github"></ion-icon></a></li>
+                    <li><a href="https://wa.me/51985855171" target="_blank" class="text-slate-400 hover:text-cyan-400 hover:border-cyan-500/50 text-lg transition-all p-2.5 bg-slate-800/60 rounded-xl border border-slate-700/60 flex items-center justify-center"><ion-icon name="logo-whatsapp"></ion-icon></a></li>
                 </ul>
             </div>
         </aside>
 
-        <!-- MAIN CONTENT CONTAINER -->
-        <div class="main-content lg:flex-1 bg-slate-900/70 backdrop-blur-2xl border border-slate-700/50 shadow-2xl rounded-3xl p-6 md:p-10 relative pt-20 lg:pt-12">
+        <!-- ==========================================
+             MAIN CONTENT CONTAINER
+        =========================================== -->
+        <div class="main-content flex-1 min-w-0 bg-slate-900/75 backdrop-blur-2xl border border-slate-800/80 shadow-2xl rounded-3xl p-5 sm:p-8 md:p-10 relative lg:pt-14">
             
-            <!-- NAVBAR -->
-            <nav class="navbar fixed bottom-0 left-0 w-full bg-slate-900/90 backdrop-blur-lg border-t border-slate-700/50 lg:absolute lg:top-0 lg:right-0 lg:bottom-auto lg:w-auto lg:border lg:rounded-bl-3xl lg:rounded-tr-3xl lg:p-1 z-50 shadow-lg">
-                <ul class="navbar-list flex justify-around lg:gap-3 py-3 px-4">
-                    <li class="navbar-item"><button class="navbar-link text-sm font-medium text-slate-400 hover:text-cyan-400 transition-colors active text-cyan-400" data-nav-link>About</button></li>
-                    <li class="navbar-item"><button class="navbar-link text-sm font-medium text-slate-400 hover:text-cyan-400 transition-colors" data-nav-link>Resume</button></li>
-                    <li class="navbar-item"><button class="navbar-link text-sm font-medium text-slate-400 hover:text-cyan-400 transition-colors" data-nav-link>Portfolio</button></li>
-                    <li class="navbar-item"><button class="navbar-link text-sm font-medium text-slate-400 hover:text-cyan-400 transition-colors" data-nav-link>Blog</button></li>
-                    <li class="navbar-item"><button class="navbar-link text-sm font-medium text-slate-400 hover:text-cyan-400 transition-colors" data-nav-link>Contact</button></li>
+            <!-- NAVBAR (Dock inferior en móvil / Pestaña superior en Desktop) -->
+            <nav class="navbar fixed bottom-0 left-0 w-full bg-slate-900/95 backdrop-blur-xl border-t border-slate-800 lg:absolute lg:top-0 lg:right-0 lg:left-auto lg:bottom-auto lg:w-auto lg:border-t-0 lg:border-b lg:border-l lg:rounded-bl-3xl lg:rounded-tr-3xl lg:px-6 lg:py-2 z-50 shadow-2xl">
+                <ul class="navbar-list flex justify-around items-center lg:gap-6 py-2.5 px-2">
+                    <li><button class="navbar-link text-xs sm:text-sm font-medium text-slate-400 hover:text-cyan-400 transition-colors px-2 py-1 active" data-nav-link="about">Sobre mí</button></li>
+                    <li><button class="navbar-link text-xs sm:text-sm font-medium text-slate-400 hover:text-cyan-400 transition-colors px-2 py-1" data-nav-link="resume">Trayectoria</button></li>
+                    <li><button class="navbar-link text-xs sm:text-sm font-medium text-slate-400 hover:text-cyan-400 transition-colors px-2 py-1" data-nav-link="portfolio">Proyectos</button></li>
+                    <li><button class="navbar-link text-xs sm:text-sm font-medium text-slate-400 hover:text-cyan-400 transition-colors px-2 py-1" data-nav-link="blog">Artículos</button></li>
+                    <li><button class="navbar-link text-xs sm:text-sm font-medium text-slate-400 hover:text-cyan-400 transition-colors px-2 py-1" data-nav-link="contact">Contacto</button></li>
                 </ul>
             </nav>
 
-            <!-- ABOUT SECTION -->
+            <!-- ==========================================
+                 1. SECCIÓN: SOBRE MÍ (ABOUT)
+            =========================================== -->
             <article class="about active space-y-8" data-page="about">
                 <header>
-                    <h2 class="h2 text-2xl md:text-3xl font-bold text-white relative pb-3 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-12 after:h-1 after:bg-gradient-to-r after:from-cyan-400 after:to-blue-500 after:rounded-full">About me</h2>
+                    <h2 class="text-2xl sm:text-3xl font-bold text-white relative pb-3 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-14 after:h-1 after:bg-gradient-to-r after:from-cyan-400 after:to-blue-500 after:rounded-full">Sobre mí</h2>
                 </header>
 
-                <section class="about-text text-slate-300 font-light leading-relaxed space-y-4 text-sm md:text-base">
-                    <p>Ingeniero Mecatrónico con 6 años de experiencia profesional a nivel nacional e internacional, especializado en la gestión de proyectos tecnológicos y el desarrollo de soluciones innovadoras en Internet de las Cosas (IoT), automatización industrial, instrumentación avanzada y sistemas embebidos. Mi enfoque integra hardware y software para optimizar la eficiencia y seguridad operativa en sectores complejos como minería, automotriz y telecomunicaciones.</p>
-                    <p>Apasionado por la programación de alto rendimiento en Python, C++ y JavaScript para sistemas de control a medida. Entre mis proyectos más destacados resalta el diseño de un sistema inteligente de control de velocidad en socavones con telemetría en tiempo real, alertas automatizadas y cámaras de monitoreo, elevando los estándares de seguridad industrial.</p>
+                <section class="text-slate-300 font-light leading-relaxed space-y-4 text-sm sm:text-base">
+                    <p>
+                        Soy <strong class="text-white font-medium">Ingeniero Mecatrónico</strong> con más de 6 años de experiencia integrando hardware, telecomunicaciones y software de alto rendimiento. Actualmente me desempeño como <strong class="text-cyan-400 font-medium">Supervisor del Área de Radiofrecuencia en Hunter Perú</strong>, liderando la infraestructura nacional de <strong class="text-white font-medium">78 estaciones fijas de RF</strong> (Lima, Tumbes, Moquegua, Juliaca, Tacna, Imperio, entre otras), operaciones de rastreo y recuperación vehicular con tecnologías <span class="font-mono text-xs bg-slate-800 px-1.5 py-0.5 rounded text-cyan-300">LOJACK</span>, <span class="font-mono text-xs bg-slate-800 px-1.5 py-0.5 rounded text-cyan-300">DETEKTOR</span>, <span class="font-mono text-xs bg-slate-800 px-1.5 py-0.5 rounded text-cyan-300">RTK</span>, <span class="font-mono text-xs bg-slate-800 px-1.5 py-0.5 rounded text-cyan-300">VLU</span> y <span class="font-mono text-xs bg-slate-800 px-1.5 py-0.5 rounded text-cyan-300">SLD</span>.
+                    </p>
+                    <p>
+                        Combino la gestión técnica y regulatoria (homologaciones ante el <strong class="text-white font-medium">MTC / VUCE</strong> para equipos RF, radares y terminales satelitales como ORBCOMM ST6100) con el desarrollo de software propio y diseño electrónico. He creado plataformas web interactivas como <strong class="text-cyan-400 font-medium">MDZ SKYNET</strong> y herramientas en Python como el <strong class="text-cyan-400 font-medium">Analizador de MiltonPro</strong> para auditar RSSI, alertas de jammers, tasas de ping y métricas MTBF/MTTR, además de sistemas embebidos para control de velocidad en socavones mineros y diseño de PCBs con ESP32 en KiCad.
+                    </p>
                 </section>
 
-                <section class="service space-y-4">
-                    <h3 class="h3 text-xl font-semibold text-white">What I'm doing</h3>
+                <!-- Especialidades -->
+                <section class="space-y-4">
+                    <h3 class="text-lg sm:text-xl font-semibold text-white">Áreas de Especialización</h3>
 
-                    <ul class="service-list grid grid-cols-1 md:grid-cols-2 gap-5">
-                        <li class="service-item bg-slate-800/40 border border-slate-700/50 p-6 rounded-2xl flex gap-4 items-start shadow-lg hover:border-cyan-500/50 transition-all duration-300">
-                            <div class="service-icon-box bg-slate-800/80 p-3 rounded-xl border border-slate-700">
-                                <img src="https://i.postimg.cc/4389jZkP/icon-design.png" alt="icon" width="35">
+                    <ul class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5">
+                        <li class="bg-slate-800/40 border border-slate-700/60 p-5 rounded-2xl flex gap-4 items-start shadow-lg hover:border-cyan-500/50 transition-all duration-300">
+                            <div class="bg-cyan-500/10 text-cyan-400 p-3 rounded-xl border border-cyan-500/20 text-2xl shrink-0">
+                                <ion-icon name="radio-outline"></ion-icon>
                             </div>
-                            <div class="service-content-box space-y-1">
-                                <h4 class="h4 text-base font-medium text-white">IoT & Automation</h4>
-                                <p class="service-item-text text-slate-400 text-xs md:text-sm font-light">Desarrollo de arquitecturas IoT industriales y control de sensores avanzados.</p>
+                            <div class="space-y-1">
+                                <h4 class="text-base font-semibold text-white">Infraestructura RF & Telemetría</h4>
+                                <p class="text-slate-400 text-xs sm:text-sm font-light leading-relaxed">Gestión de 78 torres RF a nivel nacional, calibración de antenas VHF (Motorola DEM300), telemetría satelital/celda y homologación MTC/VUCE.</p>
                             </div>
                         </li>
 
-                        <li class="service-item bg-slate-800/40 border border-slate-700/50 p-6 rounded-2xl flex gap-4 items-start shadow-lg hover:border-cyan-500/50 transition-all duration-300">
-                            <div class="service-icon-box bg-slate-800/80 p-3 rounded-xl border border-slate-700">
-                                <img src="https://i.postimg.cc/ZqgqrqzG/icon-dev.png" alt="icon" width="35">
+                        <li class="bg-slate-800/40 border border-slate-700/60 p-5 rounded-2xl flex gap-4 items-start shadow-lg hover:border-cyan-500/50 transition-all duration-300">
+                            <div class="bg-cyan-500/10 text-cyan-400 p-3 rounded-xl border border-cyan-500/20 text-2xl shrink-0">
+                                <ion-icon name="hardware-chip-outline"></ion-icon>
                             </div>
-                            <div class="service-content-box space-y-1">
-                                <h4 class="h4 text-base font-medium text-white">Embedded Systems</h4>
-                                <p class="service-item-text text-slate-400 text-xs md:text-sm font-light">Programación en C++ y firmware robusto para microcontroladores y seguridad.</p>
-                            </div>
-                        </li>
-
-                        <li class="service-item bg-slate-800/40 border border-slate-700/50 p-6 rounded-2xl flex gap-4 items-start shadow-lg hover:border-cyan-500/50 transition-all duration-300">
-                            <div class="service-icon-box bg-slate-800/80 p-3 rounded-xl border border-slate-700">
-                                <img src="https://i.postimg.cc/xjLdzYxZ/icon-app.png" alt="icon" width="35">
-                            </div>
-                            <div class="service-content-box space-y-1">
-                                <h4 class="h4 text-base font-medium text-white">Software Apps</h4>
-                                <p class="service-item-text text-slate-400 text-xs md:text-sm font-light">Creación de aplicaciones web y de escritorio a medida con Python y JS.</p>
+                            <div class="space-y-1">
+                                <h4 class="text-base font-semibold text-white">Sistemas Embebidos & IoT Industrial</h4>
+                                <p class="text-slate-400 text-xs sm:text-sm font-light leading-relaxed">Diseño de esquemáticos y PCBs en KiCad, firmware en C++/ESP32 con gestión de energía Li-Ion USB-C de ultra bajo consumo y control en minería.</p>
                             </div>
                         </li>
 
-                        <li class="service-item bg-slate-800/40 border border-slate-700/50 p-6 rounded-2xl flex gap-4 items-start shadow-lg hover:border-cyan-500/50 transition-all duration-300">
-                            <div class="service-icon-box bg-slate-800/80 p-3 rounded-xl border border-slate-700">
-                                <img src="https://i.postimg.cc/ZqgqrqzG/icon-dev.png" alt="icon" width="35">
+                        <li class="bg-slate-800/40 border border-slate-700/60 p-5 rounded-2xl flex gap-4 items-start shadow-lg hover:border-cyan-500/50 transition-all duration-300">
+                            <div class="bg-cyan-500/10 text-cyan-400 p-3 rounded-xl border border-cyan-500/20 text-2xl shrink-0">
+                                <ion-icon name="code-slash-outline"></ion-icon>
                             </div>
-                            <div class="service-content-box space-y-1">
-                                <h4 class="h4 text-base font-medium text-white">Project Management</h4>
-                                <p class="service-item-text text-slate-400 text-xs md:text-sm font-light">Liderazgo técnico en la implementación de soluciones tecnológicas.</p>
+                            <div class="space-y-1">
+                                <h4 class="text-base font-semibold text-white">Dashboards GIS & Analítica en Python</h4>
+                                <p class="text-slate-400 text-xs sm:text-sm font-light leading-relaxed">Desarrollo de aplicaciones web Dark-Mode con HTML/JS, mapas interactivos Leaflet/OpenStreetMap y procesamiento automatizado de logs en Excel.</p>
+                            </div>
+                        </li>
+
+                        <li class="bg-slate-800/40 border border-slate-700/60 p-5 rounded-2xl flex gap-4 items-start shadow-lg hover:border-cyan-500/50 transition-all duration-300">
+                            <div class="bg-cyan-500/10 text-cyan-400 p-3 rounded-xl border border-cyan-500/20 text-2xl shrink-0">
+                                <ion-icon name="flash-outline"></ion-icon>
+                            </div>
+                            <div class="space-y-1">
+                                <h4 class="text-base font-semibold text-white">Respaldo Crítico & Gestión de Equipos</h4>
+                                <p class="text-slate-400 text-xs sm:text-sm font-light leading-relaxed">Diseño de arquitecturas eléctricas redundantes Dual-UPS 30 kVA + PDU con protección SPD T2, estandarización de checklists y evaluación de KPIs.</p>
                             </div>
                         </li>
                     </ul>
                 </section>
             </article>
 
-            <!-- RESUME SECTION -->
+            <!-- ==========================================
+                 2. SECCIÓN: TRAYECTORIA (RESUME)
+            =========================================== -->
             <article class="resume space-y-8" data-page="resume">
                 <header>
-                    <h2 class="h2 text-2xl md:text-3xl font-bold text-white relative pb-3 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-12 after:h-1 after:bg-gradient-to-r after:from-cyan-400 after:to-blue-500 after:rounded-full">Resume</h2>
+                    <h2 class="text-2xl sm:text-3xl font-bold text-white relative pb-3 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-14 after:h-1 after:bg-gradient-to-r after:from-cyan-400 after:to-blue-500 after:rounded-full">Trayectoria Profesional</h2>
                 </header>
 
-                <section class="timeline space-y-6">
-                    <div class="title-wrapper flex items-center gap-3">
-                        <div class="icon-box bg-slate-800/80 border border-slate-700 w-10 h-10 rounded-xl flex items-center justify-center text-cyan-400"><ion-icon name="book-outline"></ion-icon></div>
-                        <h3 class="h3 text-xl font-semibold text-white">Experience & Education</h3>
+                <!-- Experiencia -->
+                <section class="space-y-6">
+                    <div class="flex items-center gap-3">
+                        <div class="bg-slate-800 border border-slate-700 w-10 h-10 rounded-xl flex items-center justify-center text-cyan-400 text-lg">
+                            <ion-icon name="briefcase-outline"></ion-icon>
+                        </div>
+                        <h3 class="text-xl font-semibold text-white">Experiencia Relevante</h3>
                     </div>
 
-                    <ol class="timeline-list border-l-2 border-slate-700/60 ml-4 pl-6 space-y-6">
-                        <li class="timeline-item relative">
-                            <span class="absolute -left-[31px] top-1.5 w-3 h-3 bg-cyan-400 rounded-full border-4 border-slate-900"></span>
-                            <h4 class="h4 text-base font-medium text-white">Ingeniero Mecatrónico Senior / Especialista IoT</h4>
-                            <span class="text-xs text-cyan-400 font-medium">2018 - Presente</span>
-                            <p class="timeline-text text-slate-300 text-sm font-light mt-1">Liderazgo en proyectos de automatización industrial, diseño de sistemas embebidos de seguridad en socavones mineros y optimización de software de control.</p>
-                        </li>
-                    </ol>
-                </section>
-
-                <section class="skill space-y-4">
-                    <h3 class="h3 text-xl font-semibold text-white">Technical Skills</h3>
-                    <ul class="skills-list bg-slate-800/40 border border-slate-700/50 p-6 rounded-2xl space-y-4">
-                        <li class="skills-item space-y-2">
-                            <div class="title-wrapper flex justify-between text-sm">
-                                <h5 class="h5 font-medium text-white">Python / C++ (Firmware & Software)</h5>
-                                <data value="90" class="text-cyan-400">90%</data>
+                    <ol class="border-l-2 border-slate-800 ml-5 pl-6 space-y-8">
+                        <li class="relative">
+                            <span class="absolute -left-[31px] top-1.5 w-3.5 h-3.5 bg-cyan-400 rounded-full border-4 border-slate-900 shadow-[0_0_10px_#22d3ee]"></span>
+                            <div class="flex flex-wrap items-center justify-between gap-2 mb-1">
+                                <h4 class="text-base font-semibold text-white">Supervisor del Área de Radiofrecuencia</h4>
+                                <span class="text-xs text-cyan-400 bg-cyan-950/60 border border-cyan-800/50 px-2.5 py-0.5 rounded-full font-medium">Hunter Perú · Actualidad</span>
                             </div>
-                            <div class="skills-progress-bg bg-slate-800 h-2.5 rounded-full overflow-hidden border border-slate-700/50">
-                                <div class="skills-progress-fill bg-gradient-to-r from-cyan-400 to-blue-500 h-full rounded-full" style="width: 90%;"></div>
-                            </div>
+                            <p class="text-slate-300 text-xs sm:text-sm font-light leading-relaxed mt-2">
+                                Supervisión integral de la red nacional de 78 torres de radiofrecuencia, coordinación de mantenimientos preventivos/correctivos, liderazgo de equipos técnicos de campo y operadores de consola para recuperación vehicular (LOJACK, DETEKTOR, RTK, VLU, SLD). Gestión de expedientes técnicos de homologación ante el MTC y VUCE.
+                            </p>
                         </li>
-                        <li class="skills-item space-y-2">
-                            <div class="title-wrapper flex justify-between text-sm">
-                                <h5 class="h5 font-medium text-white">IoT & Industrial Automation</h5>
-                                <data value="95" class="text-cyan-400">95%</data>
-                            </div>
-                            <div class="skills-progress-bg bg-slate-800 h-2.5 rounded-full overflow-hidden border border-slate-700/50">
-                                <div class="skills-progress-fill bg-gradient-to-r from-cyan-400 to-blue-500 h-full rounded-full" style="width: 95%;"></div>
-                            </div>
-                        </li>
-                        <li class="skills-item space-y-2">
-                            <div class="title-wrapper flex justify-between text-sm">
-                                <h5 class="h5 font-medium text-white">Web Development & Dashboards</h5>
-                                <data value="80" class="text-cyan-400">80%</data>
-                            </div>
-                            <div class="skills-progress-bg bg-slate-800 h-2.5 rounded-full overflow-hidden border border-slate-700/50">
-                                <div class="skills-progress-fill bg-gradient-to-r from-cyan-400 to-blue-500 h-full rounded-full" style="width: 80%;"></div>
-                            </div>
-                        </li>
-                    </ul>
-                </section>
-            </article>
-
-            <!-- PORTFOLIO SECTION -->
-            <article class="portfolio space-y-6" data-page="portfolio">
-                <header>
-                    <h2 class="h2 text-2xl md:text-3xl font-bold text-white relative pb-3 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-12 after:h-1 after:bg-gradient-to-r after:from-cyan-400 after:to-blue-500 after:rounded-full">Portfolio</h2>
-                </header>
-
-                <section class="projects space-y-6">
-                    <ul class="filter-list hidden md:flex gap-4 mb-6">
-                        <li class="filter-item"><button class="active text-cyan-400 font-medium transition-colors" data-filter-btn>All</button></li>
-                        <li class="filter-item"><button class="text-slate-400 hover:text-white transition-colors" data-filter-btn>Web Design</button></li>
-                        <li class="filter-item"><button class="text-slate-400 hover:text-white transition-colors" data-filter-btn>Applications</button></li>
-                        <li class="filter-item"><button class="text-slate-400 hover:text-white transition-colors" data-filter-btn>Web Development</button></li>
-                    </ul>
-
-                    <ul class="project-list grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <li class="project-item active bg-slate-800/40 border border-slate-700/50 p-4 rounded-2xl overflow-hidden shadow-lg group" data-filter-item data-category="web development">
-                            <a href="#" class="block">
-                                <figure class="project-img relative rounded-xl overflow-hidden mb-4 h-48">
-                                    <img src="https://i.postimg.cc/qRHpHMyd/project-1.jpg" alt="IoT System" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
-                                    <div class="absolute inset-0 bg-slate-950/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                                        <div class="bg-cyan-500 text-slate-950 p-3 rounded-xl"><ion-icon name="eye-outline" class="text-xl"></ion-icon></div>
-                                    </div>
-                                </figure>
-                                <h3 class="project-title text-base font-semibold text-white">IoT Mining Telemetry</h3>
-                                <p class="project-category text-xs text-cyan-400 mt-1">Web Development</p>
-                            </a>
-                        </li>
-                    </ul>
-                </section>
-            </article>
-
-            <!-- BLOG SECTION -->
-            <article class="blog space-y-6" data-page="blog">
-                <header>
-                    <h2 class="h2 text-2xl md:text-3xl font-bold text-white relative pb-3 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-12 after:h-1 after:bg-gradient-to-r after:from-cyan-400 after:to-blue-500 after:rounded-full">Blog</h2>
-                </header>
-                <section class="blog-posts">
-                    <ul class="blog-posts-list grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <li class="blog-post-item bg-slate-800/40 border border-slate-700/50 rounded-2xl overflow-hidden shadow-lg group">
-                            <a href="#" class="block">
-                                <figure class="blog-banner-box h-48 overflow-hidden">
-                                    <img src="https://i.postimg.cc/DysCZrWs/blog-1.jpg" alt="Automation Trends" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
-                                </figure>
-                                <div class="blog-content p-5 space-y-2">
-                                    <div class="blog-meta flex items-center gap-2 text-xs text-cyan-400 font-medium">
-                                        <p class="blog-category">IoT</p>
-                                        <span class="w-1 h-1 bg-slate-400 rounded-full"></span>
-                                        <time datetime="2026-03-01">Mar 01, 2026</time>
-                                    </div>
-                                    <h3 class="h3 text-base font-semibold text-white group-hover:text-cyan-400 transition-colors">Industrial IoT Trends in 2026</h3>
-                                    <p class="blog-text text-slate-300 text-xs font-light">Explorando el impacto de los sistemas embebidos y la automatización inteligente...</p>
-                                </div>
-                            </a>
-                        </li>
-                    </ul>
-                </section>
-            </article>
-
-            <!-- CONTACT SECTION -->
-            <article class="contact space-y-6" data-page="contact">
-                <header>
-                    <h2 class="h2 text-2xl md:text-3xl font-bold text-white relative pb-3 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-12 after:h-1 after:bg-gradient-to-r after:from-cyan-400 after:to-blue-500 after:rounded-full">Contact</h2>
-                </header>
-
-                <section class="contact-form bg-slate-800/40 border border-slate-700/50 p-6 rounded-2xl shadow-xl">
-                    <h3 class="h3 text-lg font-semibold text-white mb-4">Get in Touch</h3>
-                    <form action="#" class="form space-y-4" data-form>
-                        <div class="input-wrapper grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <input type="text" name="fullname" class="form-input bg-slate-900/60 border border-slate-700/80 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-cyan-400 transition-colors" placeholder="Full name" required data-form-input>
-                            <input type="email" name="email" class="form-input bg-slate-900/60 border border-slate-700/80 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-cyan-400 transition-colors" placeholder="Email Address" required data-form-input>
-                        </div>
-                        <textarea name="message" class="form-input bg-slate-900/60 border border-slate-700/80 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-cyan-400 transition-colors w-full h-32 resize-none" placeholder="Your Message" required data-form-input></textarea>
-                        <button class="form-btn bg-gradient-to-r from-cyan-500 to-blue-600 text-slate-950 font-semibold px-6 py-3 rounded-xl flex items-center justify-center gap-2 shadow-lg hover:opacity-90 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed ml-auto" type="submit" disabled data-form-btn>
-                            <ion-icon name="paper-plane"></ion-icon>
-                            <span>Send Message</span>
-                        </button>
-                    </form>
-                </section>
-            </article>
-
-        </div>
-    </main>
-
-    <!-- Scripts originales del repositorio -->
-    <script src="main.js"></script>
-    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-</body>
-</html>
