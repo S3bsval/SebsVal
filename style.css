@@ -162,3 +162,32 @@ body {
         transition-duration: 0.01ms !important;
     }
 }
+
+
+/* ==========================================
+   AVATAR (memoji original) — mejoras
+   Ajusta si hace falta:
+   --avatar-drop   : más negativo = la figura baja más (pegada al borde inferior)
+   --avatar-height : tamaño de la figura respecto al marco
+========================================== */
+.avatar-box {
+    --avatar-drop: -33%;
+    --avatar-height: 140%;
+}
+
+.avatar-aura {
+    background:
+        radial-gradient(ellipse 70% 55% at 50% 100%, rgba(16, 185, 129, 0.35), transparent 70%),
+        radial-gradient(ellipse 50% 40% at 50% 45%, rgba(139, 92, 246, 0.18), transparent 70%);
+}
+
+.avatar-img {
+    transform-origin: 50% 100%;
+    filter: drop-shadow(0 0 10px rgba(16, 185, 129, 0.45)) drop-shadow(0 10px 14px rgba(0, 0, 0, 0.55));
+    animation: avatarFloat 4s ease-in-out infinite;
+}
+
+@keyframes avatarFloat {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50%      { transform: translateX(-50%) translateY(-3px); }
+}
