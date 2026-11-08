@@ -12,22 +12,21 @@
     <style id="avatar-fx">
 /* ==========================================
    AVATAR: imagen saliendo desde abajo + ojo robótico rojo
-   Todo se mide con unidades del marco (cqh), así escala igual en móvil y escritorio.
 
    AJUSTES RÁPIDOS (en .avatar-box):
+   --photo-size : tamaño de la imagen (120cqh = 120% de la altura del marco)
    --photo-drop : más negativo = la imagen sale desde más abajo
-   --photo-size : tamaño de la figura respecto al marco
-   --eye-x      : ojo a la derecha (+) o izquierda (−) del centro
-   --eye-y      : altura del ojo desde arriba del marco
-   --eye-size   : diámetro del ojo
+   El ojo está medido sobre la propia imagen (en "em" = 1% de su altura),
+   así que sigue en su sitio aunque cambies tamaño o posición.
+   --eye-x : mueve el ojo (+ derecha / − izquierda)   --eye-y : altura   --eye-size : diámetro
 ========================================== */
 .avatar-box {
     container-type: size;
-    --photo-drop: -42%;
-    --photo-size: 140%;
-    --eye-x: 8.3cqh;
-    --eye-y: 70.5cqh;
-    --eye-size: 5.6cqh;
+    --photo-size: 120cqh;
+    --photo-drop: -36%;
+    --eye-x: 5.7em;
+    --eye-y: 48.9%;
+    --eye-size: 4.3em;
 }
 
 .avatar-aura {
@@ -41,6 +40,7 @@
     left: 50%;
     bottom: var(--photo-drop);
     height: var(--photo-size);
+    font-size: calc(var(--photo-size) / 100); /* 1em = 1% de la altura de la imagen */
     transform: translateX(-50%);
 }
 
@@ -52,7 +52,7 @@
     filter: drop-shadow(0 0 10px rgba(16, 185, 129, 0.45)) drop-shadow(0 10px 14px rgba(0, 0, 0, 0.55));
 }
 
-/* Ojo de robot: lente roja con anillo y brillo */
+/* Iris robótico: reemplaza el iris oscuro, conserva el brillo del ojo y apenas ilumina la piel */
 .avatar-red-eye {
     position: absolute;
     left: calc(50% + var(--eye-x));
@@ -62,32 +62,35 @@
     transform: translate(-50%, -50%);
     border-radius: 50%;
     pointer-events: none;
-    background: radial-gradient(circle, #fff 0%, #ff9a9a 18%, #ff1414 52%, #7a0000 100%);
-    box-shadow:
-        0 0 0 1px rgba(60, 0, 0, 0.8),
-        0 0 8px 3px rgba(255, 20, 20, 0.95),
-        0 0 20px 8px rgba(255, 0, 0, 0.5);
+    background:
+        radial-gradient(circle at 32% 28%, rgba(255, 255, 255, 0.95) 0 7%, transparent 14%),
+        radial-gradient(circle, #1a0000 0 16%, #ff3b2e 34%, #d40000 56%, #8f0000 72%, rgba(120, 0, 0, 0) 100%);
+    box-shadow: 0 0 0.9em 0.15em rgba(255, 40, 30, 0.55);
     opacity: 0;
-    animation: robotEye 3.2s steps(1, end) infinite;
+    animation: robotEye 4s ease-in-out infinite;
 }
 
-/* Secuencia mecánica: se enciende con parpadeos, queda fijo y se apaga de golpe */
+/* Luz roja suave que se derrama sobre la piel cercana */
+.avatar-red-eye::after {
+    content: "";
+    position: absolute;
+    inset: -90%;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 30, 20, 0.28), transparent 65%);
+}
+
+/* Se enciende con un parpadeo eléctrico, se mantiene y se apaga suavemente */
 @keyframes robotEye {
     0%   { opacity: 0; }
-    10%  { opacity: 1; }
-    13%  { opacity: 0; }
-    16%  { opacity: 1; }
-    19%  { opacity: 0.25; }
-    22%  { opacity: 1; }
-    62%  { opacity: 0; }
+    8%   { opacity: 0.95; }
+    11%  { opacity: 0.15; }
+    14%  { opacity: 1; }
+    58%  { opacity: 1; }
+    72%  { opacity: 0; }
     100% { opacity: 0; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after {
-        animation-duration: 0.01ms !important;
-        transition-duration: 0.01ms !important;
-    }
     .avatar-red-eye { animation: none; opacity: 1; }
 }
     </style>
@@ -133,8 +136,9 @@
                     <div class="avatar-aura absolute inset-0 z-10 pointer-events-none"></div>
                     <div class="avatar-photo z-20">
                         <img src="https://i.postimg.cc/Ss8CBwXz/02623477ccafb861cbf47e2364e2889a-removebg-preview.png" alt="Sebastián Kevin Valero Gómez">
+                        <!-- Ojo robótico: sigue a la imagen aunque cambie de tamaño -->
+                        <span class="avatar-red-eye" aria-hidden="true"></span>
                     </div>
-                    <span class="avatar-red-eye z-30" aria-hidden="true"></span>
                     <div class="laser-scanner absolute inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-emerald-400 to-transparent shadow-[0_0_12px_#10b981] z-30 pointer-events-none"></div>
                     <span class="absolute top-2 right-2 z-30 flex h-3.5 w-3.5" title="Colegiado y Habilitado - Telemetría Online">
                         <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
