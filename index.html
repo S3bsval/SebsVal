@@ -11,23 +11,27 @@
     <!-- Avatar + ojo robótico (incluido aquí para que funcione aunque style.css esté en caché) -->
     <style id="avatar-fx">
 /* ==========================================
-   AVATAR: imagen saliendo desde abajo + ojo robótico rojo
+   AVATAR: imagen saliendo desde abajo + efectos en la laptop
 
-   AJUSTES RÁPIDOS (en .avatar-box):
-   --photo-size : tamaño de la imagen (120cqh = 120% de la altura del marco)
-   --photo-drop : más negativo = la imagen sale desde más abajo
-   El ojo está medido sobre la propia imagen (en "em" = 1% de su altura),
-   así que sigue en su sitio aunque cambies tamaño o posición.
-   --eye-x : mueve el ojo (+ derecha / − izquierda)   --eye-y : altura   --eye-size : diámetro
+   EFECTOS: en la etiqueta <figure ... data-fx="apple snake"> del HTML
+     "apple snake" = manzana roja + serpiente   |   "apple" = solo manzana   |   "snake" = solo serpiente
+
+   AJUSTES (en .avatar-box):
+   --photo-size / --photo-drop : tamaño y posición de la imagen
+   --apple-x / --apple-y / --apple-size : posición y tamaño de la manzana roja
+   (todo se mide sobre la propia imagen: 1em = 1% de su altura)
 ========================================== */
 .avatar-box {
     container-type: size;
     --photo-size: 120cqh;
     --photo-drop: -36%;
-    --eye-x: 5.7em;
-    --eye-y: 48.9%;
-    --eye-size: 4.3em;
+    --apple-x: 0em;
+    --apple-y: 63.8%;
+    --apple-size: 4.1em;
 }
+
+.avatar-box:not([data-fx~="apple"]) .avatar-apple,
+.avatar-box:not([data-fx~="snake"]) .avatar-snake { display: none; }
 
 .avatar-aura {
     background:
@@ -52,46 +56,47 @@
     filter: drop-shadow(0 0 10px rgba(16, 185, 129, 0.45)) drop-shadow(0 10px 14px rgba(0, 0, 0, 0.55));
 }
 
-/* Iris robótico: reemplaza el iris oscuro, conserva el brillo del ojo y apenas ilumina la piel */
-.avatar-red-eye {
+/* ---------- Manzana de la laptop que se enciende en rojo ---------- */
+.avatar-apple {
     position: absolute;
-    left: calc(50% + var(--eye-x));
-    top: var(--eye-y);
-    width: var(--eye-size);
-    aspect-ratio: 1;
+    left: calc(50% + var(--apple-x));
+    top: var(--apple-y);
+    width: var(--apple-size);
+    aspect-ratio: 19 / 24;
     transform: translate(-50%, -50%);
-    border-radius: 50%;
     pointer-events: none;
-    background:
-        radial-gradient(circle at 32% 28%, rgba(255, 255, 255, 0.95) 0 7%, transparent 14%),
-        radial-gradient(circle, #1a0000 0 16%, #ff3b2e 34%, #d40000 56%, #8f0000 72%, rgba(120, 0, 0, 0) 100%);
-    box-shadow: 0 0 0.9em 0.15em rgba(255, 40, 30, 0.55);
     opacity: 0;
-    animation: robotEye 4s ease-in-out infinite;
+    animation: appleRed 4s ease-in-out infinite;
+    filter: drop-shadow(0 0 0.5em rgba(255, 30, 30, 0.95)) drop-shadow(0 0 1.6em rgba(255, 0, 0, 0.55));
 }
 
-/* Luz roja suave que se derrama sobre la piel cercana */
-.avatar-red-eye::after {
-    content: "";
-    position: absolute;
-    inset: -90%;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(255, 30, 20, 0.28), transparent 65%);
-}
+.avatar-apple svg { display: block; width: 100%; height: 100%; fill: #ff2b2b; }
 
-/* Se enciende con un parpadeo eléctrico, se mantiene y se apaga suavemente */
-@keyframes robotEye {
+@keyframes appleRed {
     0%   { opacity: 0; }
     8%   { opacity: 0.95; }
-    11%  { opacity: 0.15; }
+    11%  { opacity: 0.2; }
     14%  { opacity: 1; }
     58%  { opacity: 1; }
     72%  { opacity: 0; }
     100% { opacity: 0; }
 }
 
+/* ---------- Serpiente roja que recorre la tapa de la laptop ---------- */
+.avatar-snake {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 100em;   /* = altura de la imagen: 1 unidad del dibujo = 1% de la altura */
+    height: 100%;
+    transform: translateX(-50%);
+    overflow: visible;
+    pointer-events: none;
+    filter: drop-shadow(0 0 0.35em rgba(255, 40, 40, 0.85));
+}
+
 @media (prefers-reduced-motion: reduce) {
-    .avatar-red-eye { animation: none; opacity: 1; }
+    .avatar-apple { animation: none; opacity: 1; }
 }
     </style>
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='m' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23f1f5f9'/%3E%3Cstop offset='.55' stop-color='%2394a3b8'/%3E%3Cstop offset='1' stop-color='%23475569'/%3E%3C/linearGradient%3E%3CradialGradient id='e' cx='.5' cy='.5' r='.5'%3E%3Cstop offset='0' stop-color='%23fff'/%3E%3Cstop offset='.35' stop-color='%23ff4040'/%3E%3Cstop offset='1' stop-color='%23d90000'/%3E%3C/radialGradient%3E%3CradialGradient id='g' cx='.5' cy='.5' r='.5'%3E%3Cstop offset='0' stop-color='%23ff1a1a' stop-opacity='.85'/%3E%3Cstop offset='1' stop-color='%23ff1a1a' stop-opacity='0'/%3E%3C/radialGradient%3E%3C/defs%3E%3Crect x='2' y='2' width='60' height='60' rx='15' fill='%23070b14' stroke='%2310b981' stroke-width='2'/%3E%3Cpath d='M32 9C20.5 9 13.5 17.5 13.5 28c0 6 2.6 10 6.5 12.4V48h24v-7.6c3.9-2.4 6.5-6.4 6.5-12.4C50.5 17.5 43.5 9 32 9Z' fill='url(%23m)'/%3E%3Cpath d='M15.5 22.5 29 27M48.5 22.5 35 27' stroke='%231e293b' stroke-width='2.6' stroke-linecap='round'/%3E%3Cellipse cx='23.5' cy='31' rx='6' ry='5.2' fill='%230b1220'/%3E%3Cellipse cx='40.5' cy='31' rx='6' ry='5.2' fill='%230b1220'/%3E%3Ccircle cx='40.5' cy='31' r='11' fill='url(%23g)'/%3E%3Ccircle cx='40.5' cy='31' r='4' fill='url(%23e)'/%3E%3Cpath d='M32 35.5 29 41.5h6Z' fill='%230b1220'/%3E%3Crect x='21' y='43' width='22' height='6.5' rx='1.5' fill='%23cbd5e1'/%3E%3Cpath d='M26.5 43v6.5M32 43v6.5M37.5 43v6.5' stroke='%23475569' stroke-width='1.2'/%3E%3C/svg%3E">
@@ -131,15 +136,33 @@
             <div class="sidebar-info relative flex lg:flex-col items-center gap-4 sm:gap-5">
                 
                 <!-- AVATAR: la imagen sale desde el borde inferior; ojo robótico rojo que se prende y se apaga -->
-                <figure class="avatar-box group relative w-24 h-24 sm:w-28 sm:h-28 lg:w-44 lg:h-48 rounded-2xl border border-emerald-500/40 shadow-[0_0_25px_rgba(16,185,129,0.25)] overflow-hidden shrink-0 bg-[#060b16]">
+                <figure data-fx="apple snake" class="avatar-box group relative w-24 h-24 sm:w-28 sm:h-28 lg:w-44 lg:h-48 rounded-2xl border border-emerald-500/40 shadow-[0_0_25px_rgba(16,185,129,0.25)] overflow-hidden shrink-0 bg-[#060b16]">
                     <canvas id="avatar-byte-canvas" class="absolute inset-0 w-full h-full opacity-85 pointer-events-none z-0"></canvas>
                     <div class="avatar-radar-ring absolute inset-1 rounded-xl border border-dashed border-emerald-400/30 pointer-events-none z-10"></div>
                     <div class="avatar-aura absolute inset-0 z-10 pointer-events-none"></div>
                     <div class="avatar-photo z-20">
                         <img src="https://i.postimg.cc/Ss8CBwXz/02623477ccafb861cbf47e2364e2889a-removebg-preview.png" alt="Sebastián Kevin Valero Gómez">
-                        <!-- Ojo robótico: sigue a la imagen aunque cambie de tamaño -->
-                        <span class="avatar-red-eye" aria-hidden="true"></span>
-                    </div>
+                        <!-- Manzana de la laptop que se enciende en rojo -->
+                        <span class="avatar-apple" aria-hidden="true">
+                            <svg viewBox="2.6 0 19 24" xmlns="http://www.w3.org/2000/svg"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg>
+                        </span>
+                        <!-- Serpiente roja que se arrastra SOLO por la tapa gris de la laptop (1 unidad = 1% de la altura de la imagen) -->
+                        <svg class="avatar-snake" viewBox="-50 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                            <defs>
+                                <clipPath id="lidClip"><rect x="-15" y="54.6" width="30" height="15.6" rx="1.4"/></clipPath>
+                            </defs>
+                            <g clip-path="url(#lidClip)">
+                                <path class="snk-outline" d="" fill="none" stroke="#4a0000" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path class="snk-body" d="" fill="none" stroke="#ff2b2b" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path class="snk-scales" d="" fill="none" stroke="#7a0000" stroke-opacity=".65" stroke-width="1.5" stroke-dasharray=".45 .95"/>
+                                <g class="snk-head">
+                                    <path class="snk-tongue" d="M1.9 0H3.3M3.3 0L4.1-.55M3.3 0L4.1 .55" stroke="#fff" stroke-width=".28" stroke-linecap="round" fill="none"/>
+                                    <ellipse cx=".4" cy="0" rx="1.7" ry="1.25" fill="#ff4d4d" stroke="#4a0000" stroke-width=".35"/>
+                                    <circle cx=".9" cy="-.6" r=".26" fill="#ffe9a8"/><circle cx=".9" cy=".6" r=".26" fill="#ffe9a8"/>
+                                </g>
+                            </g>
+                        </svg>
+</div>
                     <div class="laser-scanner absolute inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-emerald-400 to-transparent shadow-[0_0_12px_#10b981] z-30 pointer-events-none"></div>
                     <span class="absolute top-2 right-2 z-30 flex h-3.5 w-3.5" title="Colegiado y Habilitado - Telemetría Online">
                         <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
@@ -772,5 +795,59 @@
     <script src="./script.js?v=3"></script>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script>
+    /* Serpiente roja: se arrastra por la tapa de la laptop (ida y vuelta) */
+    (function () {
+        var svg = document.querySelector(".avatar-snake");
+        if (!svg || getComputedStyle(svg).display === "none") return;
+
+        var q = function (c) { return svg.querySelector(c); };
+        var outline = q(".snk-outline"), body = q(".snk-body"), scales = q(".snk-scales"),
+            head = q(".snk-head"), tongue = q(".snk-tongue");
+
+        /* AJUSTES: largo, ondulación, altura sobre la tapa, velocidad */
+        var LEN = 11,        /* largo de la serpiente */
+            AMP = 1.5,       /* altura de las ondas */
+            WAVE = 9,        /* distancia entre ondas */
+            Y0 = 58.6,       /* altura (en % de la imagen) por donde camina */
+            SPEED = 10,      /* velocidad */
+            HALF = 15,       /* medio ancho de la tapa */
+            REST = 1.4;      /* segundos de pausa entre pasadas */
+
+        var N = 26, K = 2 * Math.PI / WAVE;
+        var DIST = 2 * HALF + LEN + 4, MOVE = DIST / SPEED, CYCLE = MOVE + REST;
+        var y = function (x) { return Y0 + AMP * Math.sin(K * x); };
+
+        function draw(xh, dir, t) {
+            var d = "";
+            for (var i = 0; i <= N; i++) {
+                var x = xh - dir * LEN * i / N;
+                d += (i ? "L" : "M") + x.toFixed(2) + " " + y(x).toFixed(2);
+            }
+            outline.setAttribute("d", d); body.setAttribute("d", d); scales.setAttribute("d", d);
+            var ang = Math.atan2(dir * AMP * K * Math.cos(K * xh), dir) * 180 / Math.PI;
+            head.setAttribute("transform", "translate(" + xh.toFixed(2) + " " + y(xh).toFixed(2) + ") rotate(" + ang.toFixed(1) + ")");
+            tongue.style.opacity = Math.sin(t * 14) > 0.2 ? 1 : 0;
+        }
+
+        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) { draw(0, 1, 0); return; }
+
+        var t0 = performance.now(), raf;
+        function frame(now) {
+            var t = (now - t0) / 1000, c = Math.floor(t / CYCLE), local = t - c * CYCLE;
+            var dir = c % 2 === 0 ? 1 : -1;
+            if (local > MOVE) { outline.setAttribute("d", ""); body.setAttribute("d", ""); scales.setAttribute("d", ""); head.setAttribute("transform", "translate(999 999)"); }
+            else {
+                var p = -HALF - 2 + local * SPEED;            /* posición recorrida de izquierda a derecha */
+                draw(dir === 1 ? p : -p, dir, t);
+            }
+            raf = requestAnimationFrame(frame);
+        }
+        raf = requestAnimationFrame(frame);
+        document.addEventListener("visibilitychange", function () {
+            if (document.hidden) cancelAnimationFrame(raf); else { t0 = performance.now() - (t0 ? 0 : 0); raf = requestAnimationFrame(frame); }
+        });
+    })();
+    </script>
 </body>
 </html>
