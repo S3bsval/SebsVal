@@ -43,17 +43,18 @@
             
             <div class="sidebar-info relative flex lg:flex-col items-center gap-4 sm:gap-5">
                 
-                <!-- AVATAR: la imagen nace desde el borde inferior del marco -->
-                <figure class="avatar-box group relative w-24 h-24 sm:w-28 sm:h-28 lg:w-44 lg:h-48 rounded-2xl border border-emerald-500/40 shadow-[0_0_25px_rgba(16,185,129,0.25)] overflow-hidden shrink-0 bg-[#060b16]">
+                <!-- AVATAR CON BYTES Y PEGADO ABAJO -->
+                <figure class="avatar-box relative w-24 h-24 sm:w-28 sm:h-28 lg:w-40 lg:h-44 rounded-2xl border border-emerald-500/40 shadow-[0_0_25px_rgba(16,185,129,0.25)] overflow-hidden shrink-0 bg-[#060b16] flex items-end justify-center group">
                     <canvas id="avatar-byte-canvas" class="absolute inset-0 w-full h-full opacity-85 pointer-events-none z-0"></canvas>
                     <div class="avatar-radar-ring absolute inset-1 rounded-xl border border-dashed border-emerald-400/30 pointer-events-none z-10"></div>
-                    <div class="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-emerald-500/20 to-transparent z-10 pointer-events-none"></div>
-                    <!-- Resplandor de fondo detrás del memoji (da efecto de volumen 3D) -->
-                    <div class="avatar-aura absolute inset-0 z-10 pointer-events-none"></div>
-                    <!-- Memoji original, anclado al borde inferior -->
-                    <img src="https://i.postimg.cc/Ss8CBwXz/02623477ccafb861cbf47e2364e2889a-removebg-preview.png" alt="Sebastián Kevin Valero Gómez" class="avatar-img z-20" style="position:absolute;left:50%;bottom:var(--avatar-drop,-33%);height:var(--avatar-height,140%);width:auto;max-width:none;transform:translateX(-50%)">
+                    <!-- Imagen de perfil anclada al borde inferior -->
+                    <div class="avatar-photo relative z-20 h-[112%] aspect-[160/197] shrink-0 origin-bottom transition-transform duration-500 group-hover:scale-105">
+                        <img src="https://i.postimg.cc/Ss8CBwXz/02623477ccafb861cbf47e2364e2889a-removebg-preview.png" alt="Sebastián Kevin Valero Gómez" class="w-full h-full object-cover object-bottom">
+                        <!-- Ojo rojo que se prende y se apaga (ajusta left/top en style.css si hace falta) -->
+                        <span class="avatar-red-eye" aria-hidden="true"></span>
+                    </div>
                     <div class="laser-scanner absolute inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-emerald-400 to-transparent shadow-[0_0_12px_#10b981] z-30 pointer-events-none"></div>
-                    <span class="absolute top-2 right-2 z-30 flex h-3.5 w-3.5" title="Colegiado y Habilitado - Telemetría Online">
+                    <span class="absolute bottom-2 right-2 z-30 flex h-3.5 w-3.5" title="Colegiado y Habilitado - Telemetría Online">
                         <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                         <span class="relative inline-flex rounded-full h-3.5 w-3.5 bg-emerald-500 border-2 border-slate-950"></span>
                     </span>

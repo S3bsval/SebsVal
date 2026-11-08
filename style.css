@@ -154,40 +154,40 @@ body {
     background: rgba(16, 185, 129, 0.65);
 }
 
-/* Respeto a "reducir movimiento" */
+/* ==========================================
+   OJO ROJO QUE SE PRENDE Y SE APAGA
+   Posición en % de la imagen: --eye-x (horizontal), --eye-y (vertical), --eye-size (diámetro)
+========================================== */
+.avatar-photo {
+    --eye-x: 57%;
+    --eye-y: 50.9%;
+    --eye-size: 4.8%;
+}
+
+.avatar-red-eye {
+    position: absolute;
+    left: var(--eye-x);
+    top: var(--eye-y);
+    width: var(--eye-size);
+    aspect-ratio: 1;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    pointer-events: none;
+    background: radial-gradient(circle, #fff 0%, #ff8a8a 22%, #ff1a1a 55%, #8a0000 100%);
+    box-shadow: 0 0 6px 2px rgba(255, 30, 30, 0.95), 0 0 14px 5px rgba(255, 0, 0, 0.55);
+    animation: redEyeBlink 2.2s ease-in-out infinite;
+}
+
+@keyframes redEyeBlink {
+    0%, 40%   { opacity: 1; }
+    50%, 90%  { opacity: 0; }
+    100%      { opacity: 1; }
+}
+
 @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
         animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
     }
-}
-
-
-/* ==========================================
-   AVATAR (memoji original) — mejoras
-   Ajusta si hace falta:
-   --avatar-drop   : más negativo = la figura baja más (pegada al borde inferior)
-   --avatar-height : tamaño de la figura respecto al marco
-========================================== */
-.avatar-box {
-    --avatar-drop: -33%;
-    --avatar-height: 140%;
-}
-
-.avatar-aura {
-    background:
-        radial-gradient(ellipse 70% 55% at 50% 100%, rgba(16, 185, 129, 0.35), transparent 70%),
-        radial-gradient(ellipse 50% 40% at 50% 45%, rgba(139, 92, 246, 0.18), transparent 70%);
-}
-
-.avatar-img {
-    transform-origin: 50% 100%;
-    filter: drop-shadow(0 0 10px rgba(16, 185, 129, 0.45)) drop-shadow(0 10px 14px rgba(0, 0, 0, 0.55));
-    animation: avatarFloat 4s ease-in-out infinite;
-}
-
-@keyframes avatarFloat {
-    0%, 100% { transform: translateX(-50%) translateY(0); }
-    50%      { transform: translateX(-50%) translateY(-3px); }
+    .avatar-red-eye { animation: none; opacity: 1; }
 }
