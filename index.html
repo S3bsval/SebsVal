@@ -82,7 +82,7 @@
     100% { opacity: 0; }
 }
 
-/* ---------- Serpiente que sale de la laptop ---------- */
+/* ---------- Serpiente roja que recorre la tapa de la laptop ---------- */
 .avatar-snake {
     position: absolute;
     top: 0;
@@ -92,35 +92,11 @@
     transform: translateX(-50%);
     overflow: visible;
     pointer-events: none;
-}
-
-.snake-body {
-    transform-origin: 13px 57px;
-    animation: snakeShow 7s ease-in-out infinite;
-}
-
-.snake-tongue {
-    transform-origin: 3.4px 0;
-    animation: tongue 0.9s steps(1, end) infinite;
-}
-
-@keyframes snakeShow {
-    0%        { opacity: 0; transform: scale(0.15) rotate(10deg); }
-    14%       { opacity: 1; transform: scale(1) rotate(0deg); }
-    30%       { transform: scale(1) rotate(-3deg); }
-    46%       { transform: scale(1) rotate(3deg); }
-    62%       { transform: scale(1) rotate(-2deg); opacity: 1; }
-    78%, 100% { opacity: 0; transform: scale(0.15) rotate(8deg); }
-}
-
-@keyframes tongue {
-    0%, 55%  { transform: scaleX(0); }
-    56%, 100% { transform: scaleX(1); }
+    filter: drop-shadow(0 0 0.35em rgba(255, 40, 40, 0.85));
 }
 
 @media (prefers-reduced-motion: reduce) {
     .avatar-apple { animation: none; opacity: 1; }
-    .snake-body, .snake-tongue { animation: none; }
 }
     </style>
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='m' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23f1f5f9'/%3E%3Cstop offset='.55' stop-color='%2394a3b8'/%3E%3Cstop offset='1' stop-color='%23475569'/%3E%3C/linearGradient%3E%3CradialGradient id='e' cx='.5' cy='.5' r='.5'%3E%3Cstop offset='0' stop-color='%23fff'/%3E%3Cstop offset='.35' stop-color='%23ff4040'/%3E%3Cstop offset='1' stop-color='%23d90000'/%3E%3C/radialGradient%3E%3CradialGradient id='g' cx='.5' cy='.5' r='.5'%3E%3Cstop offset='0' stop-color='%23ff1a1a' stop-opacity='.85'/%3E%3Cstop offset='1' stop-color='%23ff1a1a' stop-opacity='0'/%3E%3C/radialGradient%3E%3C/defs%3E%3Crect x='2' y='2' width='60' height='60' rx='15' fill='%23070b14' stroke='%2310b981' stroke-width='2'/%3E%3Cpath d='M32 9C20.5 9 13.5 17.5 13.5 28c0 6 2.6 10 6.5 12.4V48h24v-7.6c3.9-2.4 6.5-6.4 6.5-12.4C50.5 17.5 43.5 9 32 9Z' fill='url(%23m)'/%3E%3Cpath d='M15.5 22.5 29 27M48.5 22.5 35 27' stroke='%231e293b' stroke-width='2.6' stroke-linecap='round'/%3E%3Cellipse cx='23.5' cy='31' rx='6' ry='5.2' fill='%230b1220'/%3E%3Cellipse cx='40.5' cy='31' rx='6' ry='5.2' fill='%230b1220'/%3E%3Ccircle cx='40.5' cy='31' r='11' fill='url(%23g)'/%3E%3Ccircle cx='40.5' cy='31' r='4' fill='url(%23e)'/%3E%3Cpath d='M32 35.5 29 41.5h6Z' fill='%230b1220'/%3E%3Crect x='21' y='43' width='22' height='6.5' rx='1.5' fill='%23cbd5e1'/%3E%3Cpath d='M26.5 43v6.5M32 43v6.5M37.5 43v6.5' stroke='%23475569' stroke-width='1.2'/%3E%3C/svg%3E">
@@ -170,19 +146,19 @@
                         <span class="avatar-apple" aria-hidden="true">
                             <svg viewBox="2.6 0 19 24" xmlns="http://www.w3.org/2000/svg"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg>
                         </span>
-                        <!-- Serpiente que sale de la laptop (coordenadas: 1 unidad = 1% de la altura de la imagen) -->
+                        <!-- Serpiente roja que se arrastra SOLO por la tapa gris de la laptop (1 unidad = 1% de la altura de la imagen) -->
                         <svg class="avatar-snake" viewBox="-50 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                             <defs>
-                                <linearGradient id="snkBody" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#047857"/><stop offset=".6" stop-color="#10b981"/><stop offset="1" stop-color="#6ee7b7"/></linearGradient>
+                                <clipPath id="lidClip"><rect x="-15" y="54.6" width="30" height="15.6" rx="1.4"/></clipPath>
                             </defs>
-                            <g class="snake-body">
-                                <path d="M13 57 C22 56 31 50 26 43 C21 36 19 32 25 28 C28 26 30 24 31 22" fill="none" stroke="#022c22" stroke-width="4.2" stroke-linecap="round"/>
-                                <path d="M13 57 C22 56 31 50 26 43 C21 36 19 32 25 28 C28 26 30 24 31 22" fill="none" stroke="url(#snkBody)" stroke-width="3.2" stroke-linecap="round"/>
-                                <path d="M13 57 C22 56 31 50 26 43 C21 36 19 32 25 28 C28 26 30 24 31 22" fill="none" stroke="#052e16" stroke-opacity=".55" stroke-width="3.2" stroke-linecap="butt" stroke-dasharray="1.1 2.3"/>
-                                <g transform="translate(31 22) rotate(-50)">
-                                    <g class="snake-tongue"><path d="M3.4 0 H7 M7 0 L8.6 -1.1 M7 0 L8.6 1.1" stroke="#ff2a2a" stroke-width=".55" stroke-linecap="round" fill="none"/></g>
-                                    <ellipse cx="0.6" cy="0" rx="3.7" ry="2.5" fill="url(#snkBody)" stroke="#022c22" stroke-width=".7"/>
-                                    <circle cx="1.4" cy="-1.1" r=".75" fill="#ff2a2a"/><circle cx="1.4" cy="1.1" r=".75" fill="#ff2a2a"/>
+                            <g clip-path="url(#lidClip)">
+                                <path class="snk-outline" d="" fill="none" stroke="#4a0000" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path class="snk-body" d="" fill="none" stroke="#ff2b2b" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path class="snk-scales" d="" fill="none" stroke="#7a0000" stroke-opacity=".65" stroke-width="1.5" stroke-dasharray=".45 .95"/>
+                                <g class="snk-head">
+                                    <path class="snk-tongue" d="M1.9 0H3.3M3.3 0L4.1-.55M3.3 0L4.1 .55" stroke="#fff" stroke-width=".28" stroke-linecap="round" fill="none"/>
+                                    <ellipse cx=".4" cy="0" rx="1.7" ry="1.25" fill="#ff4d4d" stroke="#4a0000" stroke-width=".35"/>
+                                    <circle cx=".9" cy="-.6" r=".26" fill="#ffe9a8"/><circle cx=".9" cy=".6" r=".26" fill="#ffe9a8"/>
                                 </g>
                             </g>
                         </svg>
@@ -819,5 +795,59 @@
     <script src="./script.js?v=3"></script>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script>
+    /* Serpiente roja: se arrastra por la tapa de la laptop (ida y vuelta) */
+    (function () {
+        var svg = document.querySelector(".avatar-snake");
+        if (!svg || getComputedStyle(svg).display === "none") return;
+
+        var q = function (c) { return svg.querySelector(c); };
+        var outline = q(".snk-outline"), body = q(".snk-body"), scales = q(".snk-scales"),
+            head = q(".snk-head"), tongue = q(".snk-tongue");
+
+        /* AJUSTES: largo, ondulación, altura sobre la tapa, velocidad */
+        var LEN = 11,        /* largo de la serpiente */
+            AMP = 1.5,       /* altura de las ondas */
+            WAVE = 9,        /* distancia entre ondas */
+            Y0 = 58.6,       /* altura (en % de la imagen) por donde camina */
+            SPEED = 10,      /* velocidad */
+            HALF = 15,       /* medio ancho de la tapa */
+            REST = 1.4;      /* segundos de pausa entre pasadas */
+
+        var N = 26, K = 2 * Math.PI / WAVE;
+        var DIST = 2 * HALF + LEN + 4, MOVE = DIST / SPEED, CYCLE = MOVE + REST;
+        var y = function (x) { return Y0 + AMP * Math.sin(K * x); };
+
+        function draw(xh, dir, t) {
+            var d = "";
+            for (var i = 0; i <= N; i++) {
+                var x = xh - dir * LEN * i / N;
+                d += (i ? "L" : "M") + x.toFixed(2) + " " + y(x).toFixed(2);
+            }
+            outline.setAttribute("d", d); body.setAttribute("d", d); scales.setAttribute("d", d);
+            var ang = Math.atan2(dir * AMP * K * Math.cos(K * xh), dir) * 180 / Math.PI;
+            head.setAttribute("transform", "translate(" + xh.toFixed(2) + " " + y(xh).toFixed(2) + ") rotate(" + ang.toFixed(1) + ")");
+            tongue.style.opacity = Math.sin(t * 14) > 0.2 ? 1 : 0;
+        }
+
+        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) { draw(0, 1, 0); return; }
+
+        var t0 = performance.now(), raf;
+        function frame(now) {
+            var t = (now - t0) / 1000, c = Math.floor(t / CYCLE), local = t - c * CYCLE;
+            var dir = c % 2 === 0 ? 1 : -1;
+            if (local > MOVE) { outline.setAttribute("d", ""); body.setAttribute("d", ""); scales.setAttribute("d", ""); head.setAttribute("transform", "translate(999 999)"); }
+            else {
+                var p = -HALF - 2 + local * SPEED;            /* posición recorrida de izquierda a derecha */
+                draw(dir === 1 ? p : -p, dir, t);
+            }
+            raf = requestAnimationFrame(frame);
+        }
+        raf = requestAnimationFrame(frame);
+        document.addEventListener("visibilitychange", function () {
+            if (document.hidden) cancelAnimationFrame(raf); else { t0 = performance.now() - (t0 ? 0 : 0); raf = requestAnimationFrame(frame); }
+        });
+    })();
+    </script>
 </body>
 </html>
