@@ -78,10 +78,87 @@ body {
     animation: fadeIn 0.35s ease forwards;
 }
 
+/* ==========================================
+   NAVBAR (barra superior + barra móvil)
+========================================== */
+.navbar-link {
+    position: relative;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: #cbd5e1; /* slate-300 */
+    padding: 0.55rem 0.95rem;
+    border-radius: 0.75rem;
+    transition: color 0.2s ease, background 0.2s ease;
+    white-space: nowrap;
+}
+
+.navbar-link:hover {
+    color: #34d399;
+    background: rgba(16, 185, 129, 0.08);
+}
+
+.navbar-link:focus-visible,
+.filter-btn:focus-visible {
+    outline: 2px solid #34d399;
+    outline-offset: 2px;
+}
+
 .navbar-link.active {
-    color: #34d399 !important; /* emerald-400 */
+    color: #34d399;
     background: rgba(16, 185, 129, 0.12);
-    border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+/* Línea indicadora degradada bajo la pestaña activa */
+.navbar-link.active::after {
+    content: "";
+    position: absolute;
+    left: 0.95rem;
+    right: 0.95rem;
+    bottom: 0.2rem;
+    height: 2px;
+    border-radius: 2px;
+    background: linear-gradient(to right, #34d399, #8b5cf6);
+}
+
+/* Barra móvil: botones más compactos */
+nav.fixed .navbar-link {
+    padding: 0.5rem 0.6rem;
+    font-size: 0.72rem;
+}
+
+nav.fixed .navbar-link.active::after {
+    left: 0.6rem;
+    right: 0.6rem;
+    bottom: 0.1rem;
+}
+
+/* ==========================================
+   AVATAR: la imagen nace desde el borde inferior del marco
+   Ajusta --avatar-drop si ves aire o recorte abajo:
+   más negativo = sube el recorte (la figura baja más)
+========================================== */
+.avatar-box {
+    --avatar-drop: -16%;   /* cuánto se "hunde" la imagen bajo el marco */
+    --avatar-height: 128%; /* tamaño de la figura respecto al marco */
+}
+
+.avatar-img {
+    position: absolute;
+    left: 50%;
+    bottom: var(--avatar-drop);
+    height: var(--avatar-height);
+    width: auto;
+    max-width: none;
+    transform: translateX(-50%);
+    transform-origin: 50% 100%;
+    object-fit: contain;
+    object-position: bottom;
+    transition: transform 0.5s ease;
+    filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.45));
+}
+
+.avatar-box:hover .avatar-img {
+    transform: translateX(-50%) scale(1.05);
 }
 
 /* ==========================================
@@ -152,4 +229,14 @@ body {
 
 ::-webkit-scrollbar-thumb:hover {
     background: rgba(16, 185, 129, 0.65);
+}
+
+/* Respeto a "reducir movimiento" */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
 }

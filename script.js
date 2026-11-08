@@ -40,7 +40,13 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         };
 
-        setInterval(drawBytes, 70);
+        const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        let timer = null;
+        const start = () => { if (!timer && !reduceMotion) timer = setInterval(drawBytes, 70); };
+        const stop = () => { clearInterval(timer); timer = null; };
+
+        if (reduceMotion) drawBytes(); else start();
+        document.addEventListener("visibilitychange", () => (document.hidden ? stop() : start()));
     }
 
     // =========================================================
@@ -79,8 +85,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
             });
 
-            navButtons.forEach((b) => b.classList.remove("active"));
-            this.classList.add("active");
+            document.querySelectorAll(".navbar-link").forEach((b) => {
+                b.classList.toggle("active", b.getAttribute("data-target") === targetPage);
+            });
 
             window.scrollTo({ top: 0, behavior: "smooth" });
         });
