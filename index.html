@@ -62,7 +62,83 @@
                     <canvas id="avatar-byte-canvas" class="absolute inset-0 w-full h-full opacity-85 pointer-events-none z-0"></canvas>
                     <div class="avatar-radar-ring absolute inset-1 rounded-xl border border-dashed border-emerald-400/30 pointer-events-none z-10"></div>
                     <div class="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-emerald-500/20 to-transparent z-10 pointer-events-none"></div>
-                    <img src="https://i.postimg.cc/Ss8CBwXz/02623477ccafb861cbf47e2364e2889a-removebg-preview.png" alt="Sebastián Kevin Valero Gómez" class="avatar-img z-20">
+                    <!-- PERSONAJE 3D ESTILIZADO (SVG animado): saluda, Apple Watch y ojo cyborg rojo -->
+                    <svg class="avatar-svg z-20" viewBox="0 0 200 220" preserveAspectRatio="xMidYMax meet" role="img" aria-label="Avatar de Sebastián saludando, con Apple Watch y ojo cyborg rojo">
+                        <defs>
+                            <radialGradient id="gSkin" cx=".35" cy=".3" r=".85"><stop offset="0" stop-color="#ffe2c4"/><stop offset=".55" stop-color="#f1b88e"/><stop offset="1" stop-color="#c58760"/></radialGradient>
+                            <linearGradient id="gHair" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5a3f2e"/><stop offset="1" stop-color="#1c120c"/></linearGradient>
+                            <linearGradient id="gHood" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#273449"/><stop offset="1" stop-color="#0b1220"/></linearGradient>
+                            <radialGradient id="gEye" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#fff"/><stop offset=".22" stop-color="#ff8a8a"/><stop offset=".55" stop-color="#ff1f1f"/><stop offset="1" stop-color="#6b0000"/></radialGradient>
+                            <linearGradient id="gMetal" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#94a3b8"/><stop offset=".5" stop-color="#334155"/><stop offset="1" stop-color="#0f172a"/></linearGradient>
+                            <filter id="fGlow" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="3.2"/></filter>
+                        </defs>
+
+                        <g class="av-float">
+                            <!-- Cuerpo / hoodie -->
+                            <path d="M22 220 C22 178 56 160 100 160 C144 160 178 178 178 220 Z" fill="url(#gHood)"/>
+                            <path d="M70 162 Q100 186 130 162" fill="none" stroke="#10b981" stroke-width="2.5" stroke-linecap="round" opacity=".85"/>
+                            <circle cx="100" cy="190" r="6" fill="none" stroke="#34d399" stroke-width="1.5" opacity=".7"/>
+                            <path d="M97 190h6M100 187v6" stroke="#34d399" stroke-width="1.2" opacity=".7"/>
+
+                            <!-- Cuello -->
+                            <path d="M86 134 h28 v28 q-14 12 -28 0 z" fill="#d9976d"/>
+
+                            <!-- Orejas -->
+                            <ellipse cx="57" cy="103" rx="7" ry="10" fill="#e3a47a"/>
+                            <ellipse cx="143" cy="103" rx="7" ry="10" fill="#d9976d"/>
+
+                            <!-- Cabeza -->
+                            <ellipse cx="100" cy="98" rx="43" ry="49" fill="url(#gSkin)"/>
+                            <ellipse cx="86" cy="76" rx="18" ry="10" fill="#fff" opacity=".12"/>
+
+                            <!-- Pelo -->
+                            <path d="M55 96 C48 52 78 36 104 38 C132 38 154 56 145 96 C140 76 128 66 102 66 C80 66 64 74 55 96 Z" fill="url(#gHair)"/>
+                            <path d="M70 52 C86 42 110 42 128 54" fill="none" stroke="#fff" stroke-opacity=".18" stroke-width="3" stroke-linecap="round"/>
+
+                            <!-- Cejas -->
+                            <path d="M73 86 Q84 80 94 85" fill="none" stroke="#2b1a10" stroke-width="3.4" stroke-linecap="round"/>
+                            <path d="M106 85 Q118 78 128 84" fill="none" stroke="#2b1a10" stroke-width="3.4" stroke-linecap="round"/>
+
+                            <!-- Ojo normal -->
+                            <ellipse cx="84" cy="100" rx="8" ry="6" fill="#fff"/>
+                            <g class="av-blink"><circle cx="85" cy="100" r="3.8" fill="#2b1a10"/><circle cx="86.3" cy="98.6" r="1.2" fill="#fff"/></g>
+
+                            <!-- OJO CYBORG ROJO (Terminator) -->
+                            <circle cx="117" cy="100" r="15" fill="#ff1f1f" filter="url(#fGlow)" class="av-eyeglow"/>
+                            <circle cx="117" cy="100" r="10" fill="url(#gMetal)" stroke="#0f172a" stroke-width="1.5"/>
+                            <circle cx="117" cy="100" r="7" fill="#1a0000"/>
+                            <circle cx="117" cy="100" r="5.6" fill="url(#gEye)" class="av-eye"/>
+                            <circle cx="117" cy="100" r="9" fill="none" stroke="#ff4d4d" stroke-width=".8" stroke-dasharray="2 3" class="av-eyering"/>
+                            <rect x="108" y="99.3" width="18" height="1.4" fill="#ff5a5a" opacity=".85" class="av-scan"/>
+                            <!-- Placa HUD en la sien -->
+                            <path d="M128 92 L136 96 L136 108 L131 112" fill="none" stroke="#ff4d4d" stroke-width="1.2" stroke-linecap="round" opacity=".8"/>
+                            <circle cx="136" cy="96" r="1.3" fill="#ff4d4d" class="av-eyeglow"/>
+
+                            <!-- Nariz y boca -->
+                            <path d="M99 104 Q95 116 101 118" fill="none" stroke="#b97752" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M84 125 Q100 142 118 124 Q100 130 84 125 Z" fill="#fff" stroke="#8a4b3a" stroke-width="1.6" stroke-linejoin="round"/>
+
+                            <!-- BRAZO SALUDANDO + APPLE WATCH -->
+                            <g class="av-arm">
+                                <rect x="146" y="122" width="26" height="64" rx="13" fill="url(#gHood)"/>
+                                <rect x="150" y="104" width="18" height="24" rx="7" fill="#d9976d"/>
+                                <!-- Apple Watch -->
+                                <rect x="146" y="110" width="26" height="14" rx="4" fill="#0b1220"/>
+                                <rect x="149.5" y="111" width="19" height="12" rx="3.5" fill="#021a12" stroke="#34d399" stroke-width="1"/>
+                                <rect x="152" y="114" width="9" height="1.8" rx=".9" fill="#34d399"/>
+                                <rect x="152" y="118" width="13" height="1.8" rx=".9" fill="#a78bfa" class="av-watch"/>
+                                <!-- Mano -->
+                                <g class="av-hand">
+                                    <ellipse cx="159" cy="92" rx="13" ry="14" fill="url(#gSkin)"/>
+                                    <rect x="147" y="68" width="6" height="22" rx="3" fill="#f1b88e" transform="rotate(-14 150 90)"/>
+                                    <rect x="154" y="63" width="6" height="26" rx="3" fill="#f1b88e"/>
+                                    <rect x="161" y="64" width="6" height="26" rx="3" fill="#f1b88e"/>
+                                    <rect x="168" y="69" width="6" height="21" rx="3" fill="#e9a97f" transform="rotate(14 171 90)"/>
+                                    <ellipse cx="145" cy="96" rx="4" ry="8" fill="#f1b88e" transform="rotate(-38 145 96)"/>
+                                </g>
+                            </g>
+                        </g>
+                    </svg>
                     <div class="laser-scanner absolute inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-emerald-400 to-transparent shadow-[0_0_12px_#10b981] z-30 pointer-events-none"></div>
                     <span class="absolute top-2 right-2 z-30 flex h-3.5 w-3.5" title="Colegiado y Habilitado - Telemetría Online">
                         <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
