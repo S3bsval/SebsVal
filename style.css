@@ -1,11 +1,25 @@
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+.font-mono {
+    font-family: 'JetBrains Mono', monospace;
+}
+
 /* ==========================================
-   CONTROL DE PESTAÑAS (BLINDADO CONTRA TAILWIND)
+   CONTROL DE PESTAÑAS (BLINDADO CON !important)
 ========================================== */
-article[data-page] {
+.page-section {
     display: none !important;
 }
 
-article[data-page].active {
+.page-section.active {
     display: block !important;
     animation: fadeIn 0.35s ease forwards;
 }
@@ -19,15 +33,15 @@ article[data-page].active {
     content: '';
     position: absolute;
     bottom: -4px;
-    left: 20%;
-    width: 60%;
+    left: 15%;
+    width: 70%;
     height: 2px;
     background: #22d3ee;
     border-radius: 99px;
 }
 
 /* ==========================================
-   FILTRO DE PROYECTOS (BLINDADO)
+   FILTRO DE PROYECTOS (BLINDADO CON !important)
 ========================================== */
 .project-item {
     display: none !important;
@@ -39,7 +53,7 @@ article[data-page].active {
 }
 
 /* ==========================================
-   SIDEBAR RESPONSIVO (Móvil vs Desktop)
+   SIDEBAR RESPONSIVO (Móvil/Tablet vs Desktop)
 ========================================== */
 @media (max-width: 1023px) {
     .sidebar-info-more {
@@ -50,7 +64,7 @@ article[data-page].active {
     }
 
     .sidebar.active .sidebar-info-more {
-        max-height: 750px;
+        max-height: 850px;
         opacity: 1;
     }
 
@@ -76,4 +90,22 @@ article[data-page].active {
         opacity: 1;
         transform: translateY(0);
     }
+}
+
+/* Scrollbar personalizado */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(15, 23, 42, 0.7);
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(34, 211, 238, 0.3);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(34, 211, 238, 0.55);
 }
