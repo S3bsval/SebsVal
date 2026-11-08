@@ -11,23 +11,27 @@
     <!-- Avatar + ojo robótico (incluido aquí para que funcione aunque style.css esté en caché) -->
     <style id="avatar-fx">
 /* ==========================================
-   AVATAR: imagen saliendo desde abajo + ojo robótico rojo
+   AVATAR: imagen saliendo desde abajo + efectos en la laptop
 
-   AJUSTES RÁPIDOS (en .avatar-box):
-   --photo-size : tamaño de la imagen (120cqh = 120% de la altura del marco)
-   --photo-drop : más negativo = la imagen sale desde más abajo
-   El ojo está medido sobre la propia imagen (en "em" = 1% de su altura),
-   así que sigue en su sitio aunque cambies tamaño o posición.
-   --eye-x : mueve el ojo (+ derecha / − izquierda)   --eye-y : altura   --eye-size : diámetro
+   EFECTOS: en la etiqueta <figure ... data-fx="apple snake"> del HTML
+     "apple snake" = manzana roja + serpiente   |   "apple" = solo manzana   |   "snake" = solo serpiente
+
+   AJUSTES (en .avatar-box):
+   --photo-size / --photo-drop : tamaño y posición de la imagen
+   --apple-x / --apple-y / --apple-size : posición y tamaño de la manzana roja
+   (todo se mide sobre la propia imagen: 1em = 1% de su altura)
 ========================================== */
 .avatar-box {
     container-type: size;
     --photo-size: 120cqh;
     --photo-drop: -36%;
-    --eye-x: 5.7em;
-    --eye-y: 48.9%;
-    --eye-size: 4.3em;
+    --apple-x: 0em;
+    --apple-y: 63.8%;
+    --apple-size: 4.1em;
 }
+
+.avatar-box:not([data-fx~="apple"]) .avatar-apple,
+.avatar-box:not([data-fx~="snake"]) .avatar-snake { display: none; }
 
 .avatar-aura {
     background:
@@ -52,46 +56,71 @@
     filter: drop-shadow(0 0 10px rgba(16, 185, 129, 0.45)) drop-shadow(0 10px 14px rgba(0, 0, 0, 0.55));
 }
 
-/* Iris robótico: reemplaza el iris oscuro, conserva el brillo del ojo y apenas ilumina la piel */
-.avatar-red-eye {
+/* ---------- Manzana de la laptop que se enciende en rojo ---------- */
+.avatar-apple {
     position: absolute;
-    left: calc(50% + var(--eye-x));
-    top: var(--eye-y);
-    width: var(--eye-size);
-    aspect-ratio: 1;
+    left: calc(50% + var(--apple-x));
+    top: var(--apple-y);
+    width: var(--apple-size);
+    aspect-ratio: 19 / 24;
     transform: translate(-50%, -50%);
-    border-radius: 50%;
     pointer-events: none;
-    background:
-        radial-gradient(circle at 32% 28%, rgba(255, 255, 255, 0.95) 0 7%, transparent 14%),
-        radial-gradient(circle, #1a0000 0 16%, #ff3b2e 34%, #d40000 56%, #8f0000 72%, rgba(120, 0, 0, 0) 100%);
-    box-shadow: 0 0 0.9em 0.15em rgba(255, 40, 30, 0.55);
     opacity: 0;
-    animation: robotEye 4s ease-in-out infinite;
+    animation: appleRed 4s ease-in-out infinite;
+    filter: drop-shadow(0 0 0.5em rgba(255, 30, 30, 0.95)) drop-shadow(0 0 1.6em rgba(255, 0, 0, 0.55));
 }
 
-/* Luz roja suave que se derrama sobre la piel cercana */
-.avatar-red-eye::after {
-    content: "";
-    position: absolute;
-    inset: -90%;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(255, 30, 20, 0.28), transparent 65%);
-}
+.avatar-apple svg { display: block; width: 100%; height: 100%; fill: #ff2b2b; }
 
-/* Se enciende con un parpadeo eléctrico, se mantiene y se apaga suavemente */
-@keyframes robotEye {
+@keyframes appleRed {
     0%   { opacity: 0; }
     8%   { opacity: 0.95; }
-    11%  { opacity: 0.15; }
+    11%  { opacity: 0.2; }
     14%  { opacity: 1; }
     58%  { opacity: 1; }
     72%  { opacity: 0; }
     100% { opacity: 0; }
 }
 
+/* ---------- Serpiente que sale de la laptop ---------- */
+.avatar-snake {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 100em;   /* = altura de la imagen: 1 unidad del dibujo = 1% de la altura */
+    height: 100%;
+    transform: translateX(-50%);
+    overflow: visible;
+    pointer-events: none;
+}
+
+.snake-body {
+    transform-origin: 13px 57px;
+    animation: snakeShow 7s ease-in-out infinite;
+}
+
+.snake-tongue {
+    transform-origin: 3.4px 0;
+    animation: tongue 0.9s steps(1, end) infinite;
+}
+
+@keyframes snakeShow {
+    0%        { opacity: 0; transform: scale(0.15) rotate(10deg); }
+    14%       { opacity: 1; transform: scale(1) rotate(0deg); }
+    30%       { transform: scale(1) rotate(-3deg); }
+    46%       { transform: scale(1) rotate(3deg); }
+    62%       { transform: scale(1) rotate(-2deg); opacity: 1; }
+    78%, 100% { opacity: 0; transform: scale(0.15) rotate(8deg); }
+}
+
+@keyframes tongue {
+    0%, 55%  { transform: scaleX(0); }
+    56%, 100% { transform: scaleX(1); }
+}
+
 @media (prefers-reduced-motion: reduce) {
-    .avatar-red-eye { animation: none; opacity: 1; }
+    .avatar-apple { animation: none; opacity: 1; }
+    .snake-body, .snake-tongue { animation: none; }
 }
     </style>
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='m' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23f1f5f9'/%3E%3Cstop offset='.55' stop-color='%2394a3b8'/%3E%3Cstop offset='1' stop-color='%23475569'/%3E%3C/linearGradient%3E%3CradialGradient id='e' cx='.5' cy='.5' r='.5'%3E%3Cstop offset='0' stop-color='%23fff'/%3E%3Cstop offset='.35' stop-color='%23ff4040'/%3E%3Cstop offset='1' stop-color='%23d90000'/%3E%3C/radialGradient%3E%3CradialGradient id='g' cx='.5' cy='.5' r='.5'%3E%3Cstop offset='0' stop-color='%23ff1a1a' stop-opacity='.85'/%3E%3Cstop offset='1' stop-color='%23ff1a1a' stop-opacity='0'/%3E%3C/radialGradient%3E%3C/defs%3E%3Crect x='2' y='2' width='60' height='60' rx='15' fill='%23070b14' stroke='%2310b981' stroke-width='2'/%3E%3Cpath d='M32 9C20.5 9 13.5 17.5 13.5 28c0 6 2.6 10 6.5 12.4V48h24v-7.6c3.9-2.4 6.5-6.4 6.5-12.4C50.5 17.5 43.5 9 32 9Z' fill='url(%23m)'/%3E%3Cpath d='M15.5 22.5 29 27M48.5 22.5 35 27' stroke='%231e293b' stroke-width='2.6' stroke-linecap='round'/%3E%3Cellipse cx='23.5' cy='31' rx='6' ry='5.2' fill='%230b1220'/%3E%3Cellipse cx='40.5' cy='31' rx='6' ry='5.2' fill='%230b1220'/%3E%3Ccircle cx='40.5' cy='31' r='11' fill='url(%23g)'/%3E%3Ccircle cx='40.5' cy='31' r='4' fill='url(%23e)'/%3E%3Cpath d='M32 35.5 29 41.5h6Z' fill='%230b1220'/%3E%3Crect x='21' y='43' width='22' height='6.5' rx='1.5' fill='%23cbd5e1'/%3E%3Cpath d='M26.5 43v6.5M32 43v6.5M37.5 43v6.5' stroke='%23475569' stroke-width='1.2'/%3E%3C/svg%3E">
@@ -131,15 +160,33 @@
             <div class="sidebar-info relative flex lg:flex-col items-center gap-4 sm:gap-5">
                 
                 <!-- AVATAR: la imagen sale desde el borde inferior; ojo robótico rojo que se prende y se apaga -->
-                <figure class="avatar-box group relative w-24 h-24 sm:w-28 sm:h-28 lg:w-44 lg:h-48 rounded-2xl border border-emerald-500/40 shadow-[0_0_25px_rgba(16,185,129,0.25)] overflow-hidden shrink-0 bg-[#060b16]">
+                <figure data-fx="apple snake" class="avatar-box group relative w-24 h-24 sm:w-28 sm:h-28 lg:w-44 lg:h-48 rounded-2xl border border-emerald-500/40 shadow-[0_0_25px_rgba(16,185,129,0.25)] overflow-hidden shrink-0 bg-[#060b16]">
                     <canvas id="avatar-byte-canvas" class="absolute inset-0 w-full h-full opacity-85 pointer-events-none z-0"></canvas>
                     <div class="avatar-radar-ring absolute inset-1 rounded-xl border border-dashed border-emerald-400/30 pointer-events-none z-10"></div>
                     <div class="avatar-aura absolute inset-0 z-10 pointer-events-none"></div>
                     <div class="avatar-photo z-20">
                         <img src="https://i.postimg.cc/Ss8CBwXz/02623477ccafb861cbf47e2364e2889a-removebg-preview.png" alt="Sebastián Kevin Valero Gómez">
-                        <!-- Ojo robótico: sigue a la imagen aunque cambie de tamaño -->
-                        <span class="avatar-red-eye" aria-hidden="true"></span>
-                    </div>
+                        <!-- Manzana de la laptop que se enciende en rojo -->
+                        <span class="avatar-apple" aria-hidden="true">
+                            <svg viewBox="2.6 0 19 24" xmlns="http://www.w3.org/2000/svg"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg>
+                        </span>
+                        <!-- Serpiente que sale de la laptop (coordenadas: 1 unidad = 1% de la altura de la imagen) -->
+                        <svg class="avatar-snake" viewBox="-50 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                            <defs>
+                                <linearGradient id="snkBody" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#047857"/><stop offset=".6" stop-color="#10b981"/><stop offset="1" stop-color="#6ee7b7"/></linearGradient>
+                            </defs>
+                            <g class="snake-body">
+                                <path d="M13 57 C22 56 31 50 26 43 C21 36 19 32 25 28 C28 26 30 24 31 22" fill="none" stroke="#022c22" stroke-width="4.2" stroke-linecap="round"/>
+                                <path d="M13 57 C22 56 31 50 26 43 C21 36 19 32 25 28 C28 26 30 24 31 22" fill="none" stroke="url(#snkBody)" stroke-width="3.2" stroke-linecap="round"/>
+                                <path d="M13 57 C22 56 31 50 26 43 C21 36 19 32 25 28 C28 26 30 24 31 22" fill="none" stroke="#052e16" stroke-opacity=".55" stroke-width="3.2" stroke-linecap="butt" stroke-dasharray="1.1 2.3"/>
+                                <g transform="translate(31 22) rotate(-50)">
+                                    <g class="snake-tongue"><path d="M3.4 0 H7 M7 0 L8.6 -1.1 M7 0 L8.6 1.1" stroke="#ff2a2a" stroke-width=".55" stroke-linecap="round" fill="none"/></g>
+                                    <ellipse cx="0.6" cy="0" rx="3.7" ry="2.5" fill="url(#snkBody)" stroke="#022c22" stroke-width=".7"/>
+                                    <circle cx="1.4" cy="-1.1" r=".75" fill="#ff2a2a"/><circle cx="1.4" cy="1.1" r=".75" fill="#ff2a2a"/>
+                                </g>
+                            </g>
+                        </svg>
+</div>
                     <div class="laser-scanner absolute inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-emerald-400 to-transparent shadow-[0_0_12px_#10b981] z-30 pointer-events-none"></div>
                     <span class="absolute top-2 right-2 z-30 flex h-3.5 w-3.5" title="Colegiado y Habilitado - Telemetría Online">
                         <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
