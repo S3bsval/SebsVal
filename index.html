@@ -21,39 +21,25 @@
         <div class="absolute bottom-[-12%] right-[-10%] w-[550px] h-[550px] bg-violet-600/15 rounded-full blur-[160px]"></div>
     </div>
 
-    <!-- BARRA SUPERIOR: ocupa su propio espacio (sticky), nunca se superpone al contenido -->
-    <header class="topbar sticky top-0 z-50 border-b border-emerald-500/15 bg-[#050811]/80 backdrop-blur-xl">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-6">
-            <button type="button" class="flex items-center gap-2.5 shrink-0" data-target="about" aria-label="Inicio">
-                <span class="w-8 h-8 rounded-lg bg-gradient-to-br from-emerald-400 to-violet-500 text-slate-950 font-mono font-bold text-xs flex items-center justify-center shadow-[0_0_16px_rgba(16,185,129,0.4)]">SV</span>
-                <span class="hidden sm:flex flex-col leading-tight text-left">
-                    <span class="text-sm font-semibold text-white">Sebastián Valero</span>
-                    <span class="text-[10px] font-mono text-emerald-400/80">CIP 401618</span>
-                </span>
-            </button>
-
-            <nav class="navbar hidden lg:block" aria-label="Navegación principal">
-                <ul class="navbar-list flex items-center gap-1">
-                    <li><button type="button" class="navbar-link active" data-target="about">Perfil</button></li>
-                    <li><button type="button" class="navbar-link" data-target="resume">Experiencia &amp; CV</button></li>
-                    <li><button type="button" class="navbar-link" data-target="skills">Stack &amp; Certificaciones</button></li>
-                    <li><button type="button" class="navbar-link" data-target="portfolio">Proyectos</button></li>
-                    <li><button type="button" class="navbar-link" data-target="contact">Contacto</button></li>
-                </ul>
-            </nav>
-
-            <span class="lg:hidden inline-flex items-center gap-1.5 text-[10px] font-mono text-emerald-400/90">
-                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>SYS.ONLINE
-            </span>
-        </div>
+    <!-- NAVBAR FLOTANTE GLASS SUPERIOR (Absolutamente libre y arriba) -->
+    <header class="max-w-7xl mx-auto px-4 sm:px-6 pt-6 pb-2 relative z-50 flex justify-end">
+        <nav class="navbar bg-[#0b1120]/75 backdrop-blur-2xl border border-emerald-500/30 rounded-2xl p-1.5 shadow-[0_8px_32px_0_rgba(0,0,0,0.37)] hidden lg:flex">
+            <ul class="navbar-list flex items-center gap-2 px-3 py-1">
+                <li><button type="button" class="navbar-link active text-xs font-medium text-slate-300 hover:text-emerald-400 transition-colors px-3 py-1.5 rounded-xl" data-target="about">Perfil</button></li>
+                <li><button type="button" class="navbar-link text-xs font-medium text-slate-300 hover:text-emerald-400 transition-colors px-3 py-1.5 rounded-xl" data-target="resume">Experiencia & CV</button></li>
+                <li><button type="button" class="navbar-link text-xs font-medium text-slate-300 hover:text-emerald-400 transition-colors px-3 py-1.5 rounded-xl" data-target="skills">Stack & Certificaciones</button></li>
+                <li><button type="button" class="navbar-link text-xs font-medium text-slate-300 hover:text-emerald-400 transition-colors px-3 py-1.5 rounded-xl" data-target="portfolio">Proyectos</button></li>
+                <li><button type="button" class="navbar-link text-xs font-medium text-slate-300 hover:text-emerald-400 transition-colors px-3 py-1.5 rounded-xl" data-target="contact">Contacto</button></li>
+            </ul>
+        </nav>
     </header>
 
-    <main class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 pt-6 lg:pt-8 pb-24 lg:pb-16 lg:flex lg:gap-8 lg:items-start">
+    <main class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 pb-16 mb-16 lg:flex lg:gap-8 lg:items-start">
         
         <!-- ==========================================
              ASIDE / SIDEBAR
         =========================================== -->
-        <aside class="sidebar bg-[#0b1120]/80 backdrop-blur-2xl border border-emerald-500/20 shadow-[0_0_50px_-15px_rgba(16,185,129,0.2)] rounded-3xl p-5 sm:p-6 lg:sticky lg:top-24 lg:w-80 xl:w-[345px] shrink-0 transition-all duration-500 mb-6 lg:mb-0" data-sidebar>
+        <aside class="sidebar bg-[#0b1120]/80 backdrop-blur-2xl border border-emerald-500/20 shadow-[0_0_50px_-15px_rgba(16,185,129,0.2)] rounded-3xl p-5 sm:p-6 lg:sticky lg:top-8 lg:w-80 xl:w-[345px] shrink-0 transition-all duration-500 mb-6 lg:mb-0" data-sidebar>
             
             <div class="sidebar-info relative flex lg:flex-col items-center gap-4 sm:gap-5">
                 
@@ -63,9 +49,30 @@
                     <div class="avatar-radar-ring absolute inset-1 rounded-xl border border-dashed border-emerald-400/30 pointer-events-none z-10"></div>
                     <div class="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-emerald-500/20 to-transparent z-10 pointer-events-none"></div>
                     <!-- PERSONAJE 3D ESTILIZADO (SVG animado): saluda, Apple Watch y ojo cyborg rojo -->
-                    <svg class="avatar-svg z-20" viewBox="0 0 200 220" preserveAspectRatio="xMidYMax meet" role="img" aria-label="Avatar de Sebastián saludando, con Apple Watch y ojo cyborg rojo">
+                    <svg class="avatar-svg absolute inset-0 w-full h-full z-20" style="position:absolute;inset:0;width:100%;height:100%;overflow:visible;filter:drop-shadow(0 8px 16px rgba(0,0,0,.5))" viewBox="0 0 200 220" preserveAspectRatio="xMidYMax meet" role="img" aria-label="Avatar de Sebastián saludando, con Apple Watch y ojo cyborg rojo">
                         <defs>
-                            <radialGradient id="gSkin" cx=".35" cy=".3" r=".85"><stop offset="0" stop-color="#ffe2c4"/><stop offset=".55" stop-color="#f1b88e"/><stop offset="1" stop-color="#c58760"/></radialGradient>
+                            <style>
+                            .av-float{animation:avFloat 4s ease-in-out infinite;transform-origin:100px 220px}
+                            .av-arm{transform-origin:159px 182px;animation:avWave 1.6s ease-in-out infinite}
+                            .av-hand{transform-origin:159px 104px;animation:avHand .8s ease-in-out infinite}
+                            .av-eye{transform-origin:117px 100px;animation:avEye 1.8s ease-in-out infinite}
+                            .av-eyeglow{animation:avGlow 1.8s ease-in-out infinite}
+                            .av-eyering{transform-origin:117px 100px;animation:avSpin 6s linear infinite}
+                            .av-scan{animation:avScan 2.4s ease-in-out infinite}
+                            .av-blink{transform-origin:85px 100px;animation:avBlink 5s infinite}
+                            .av-watch{animation:avGlow 1.2s ease-in-out infinite}
+                            .av-float *,.av-float{transform-box:view-box}
+                            @keyframes avFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-2.5px)}}
+                            @keyframes avWave{0%,100%{transform:rotate(-4deg)}50%{transform:rotate(10deg)}}
+                            @keyframes avHand{0%,100%{transform:rotate(-9deg)}50%{transform:rotate(9deg)}}
+                            @keyframes avEye{0%,100%{transform:scale(1)}50%{transform:scale(1.18)}}
+                            @keyframes avGlow{0%,100%{opacity:.35}50%{opacity:.95}}
+                            @keyframes avSpin{to{transform:rotate(360deg)}}
+                            @keyframes avScan{0%,100%{transform:translateY(-5px);opacity:.2}50%{transform:translateY(5px);opacity:.9}}
+                            @keyframes avBlink{0%,94%,100%{transform:scaleY(1)}97%{transform:scaleY(.1)}}
+                            @media (prefers-reduced-motion:reduce){.av-float,.av-arm,.av-hand,.av-eye,.av-eyeglow,.av-eyering,.av-scan,.av-blink,.av-watch{animation:none}}
+                        </style>
+                        <radialGradient id="gSkin" cx=".35" cy=".3" r=".85"><stop offset="0" stop-color="#ffe2c4"/><stop offset=".55" stop-color="#f1b88e"/><stop offset="1" stop-color="#c58760"/></radialGradient>
                             <linearGradient id="gHair" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5a3f2e"/><stop offset="1" stop-color="#1c120c"/></linearGradient>
                             <linearGradient id="gHood" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#273449"/><stop offset="1" stop-color="#0b1220"/></linearGradient>
                             <radialGradient id="gEye" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#fff"/><stop offset=".22" stop-color="#ff8a8a"/><stop offset=".55" stop-color="#ff1f1f"/><stop offset="1" stop-color="#6b0000"/></radialGradient>
@@ -756,14 +763,14 @@
         </div>
     </main>
 
-    <!-- Navbar móvil inferior (fuera de contenedores con backdrop-filter para que quede fija) -->
-    <nav class="navbar fixed bottom-0 left-0 w-full bg-[#070b14]/95 backdrop-blur-xl border-t border-emerald-500/20 lg:hidden z-50 shadow-2xl pb-[env(safe-area-inset-bottom)]" aria-label="Navegación móvil">
-        <ul class="navbar-list flex justify-around items-center py-2 px-2">
-            <li><button type="button" class="navbar-link active" data-target="about">Perfil</button></li>
-            <li><button type="button" class="navbar-link" data-target="resume">CV</button></li>
-            <li><button type="button" class="navbar-link" data-target="skills">Stack</button></li>
-            <li><button type="button" class="navbar-link" data-target="portfolio">Proyectos</button></li>
-            <li><button type="button" class="navbar-link" data-target="contact">Contacto</button></li>
+    <!-- Navbar móvil inferior -->
+    <nav class="navbar fixed bottom-0 left-0 w-full bg-[#070b14]/95 backdrop-blur-xl border-t border-emerald-500/20 lg:hidden z-50 shadow-2xl">
+        <ul class="navbar-list flex justify-around items-center py-3 px-2">
+            <li><button type="button" class="navbar-link active text-xs font-medium text-slate-300 hover:text-emerald-400 transition-colors px-2 py-1" data-target="about">Perfil</button></li>
+            <li><button type="button" class="navbar-link text-xs font-medium text-slate-300 hover:text-emerald-400 transition-colors px-2 py-1" data-target="resume">CV</button></li>
+            <li><button type="button" class="navbar-link text-xs font-medium text-slate-300 hover:text-emerald-400 transition-colors px-2 py-1" data-target="skills">Stack</button></li>
+            <li><button type="button" class="navbar-link text-xs font-medium text-slate-300 hover:text-emerald-400 transition-colors px-2 py-1" data-target="portfolio">Proyectos</button></li>
+            <li><button type="button" class="navbar-link text-xs font-medium text-slate-300 hover:text-emerald-400 transition-colors px-2 py-1" data-target="contact">Contacto</button></li>
         </ul>
     </nav>
 
