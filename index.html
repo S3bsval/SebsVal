@@ -82,7 +82,7 @@
     100% { opacity: 0; }
 }
 
-/* ---------- Serpiente roja que recorre la tapa de la laptop ---------- */
+/* ---------- Serpiente digital (bytes) que recorre la tapa de la laptop ---------- */
 .avatar-snake {
     position: absolute;
     top: 0;
@@ -92,7 +92,7 @@
     transform: translateX(-50%);
     overflow: visible;
     pointer-events: none;
-    filter: drop-shadow(0 0 0.35em rgba(255, 40, 40, 0.85));
+    filter: drop-shadow(0 0 0.45em rgba(16, 185, 129, 0.95));
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -146,23 +146,27 @@
                         <span class="avatar-apple" aria-hidden="true">
                             <svg viewBox="2.6 0 19 24" xmlns="http://www.w3.org/2000/svg"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg>
                         </span>
-                        <!-- Serpiente roja que se arrastra SOLO por la tapa gris de la laptop (1 unidad = 1% de la altura de la imagen) -->
+                        <!-- Serpiente digital estilo bytes que se arrastra SOLO por la tapa gris de la laptop (1 unidad = 1% de la altura de la imagen) -->
                         <svg class="avatar-snake" viewBox="-50 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                             <defs>
                                 <clipPath id="lidClip"><rect x="-15" y="54.6" width="30" height="15.6" rx="1.4"/></clipPath>
+                                <linearGradient id="byteGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#34d399"/>
+                                    <stop offset="50%" stop-color="#10b981"/>
+                                    <stop offset="100%" stop-color="#059669"/>
+                                </linearGradient>
                             </defs>
                             <g clip-path="url(#lidClip)">
-                                <path class="snk-outline" d="" fill="none" stroke="#4a0000" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path class="snk-body" d="" fill="none" stroke="#ff2b2b" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path class="snk-scales" d="" fill="none" stroke="#7a0000" stroke-opacity=".65" stroke-width="1.5" stroke-dasharray=".45 .95"/>
+                                <path class="snk-outline" d="" fill="none" stroke="#022c22" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path class="snk-body" d="" fill="none" stroke="url(#byteGrad)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="0.8 1.4"/>
                                 <g class="snk-head">
-                                    <path class="snk-tongue" d="M1.9 0H3.3M3.3 0L4.1-.55M3.3 0L4.1 .55" stroke="#fff" stroke-width=".28" stroke-linecap="round" fill="none"/>
-                                    <ellipse cx=".4" cy="0" rx="1.7" ry="1.25" fill="#ff4d4d" stroke="#4a0000" stroke-width=".35"/>
-                                    <circle cx=".9" cy="-.6" r=".26" fill="#ffe9a8"/><circle cx=".9" cy=".6" r=".26" fill="#ffe9a8"/>
+                                    <polygon points="1.8,0 0.5,-1 0,-0.5 0,0.5 0.5,1" fill="#34d399" stroke="#047857" stroke-width="0.3"/>
+                                    <circle cx="0.8" cy="-0.4" r="0.22" fill="#ffffff"/>
+                                    <circle cx="0.8" cy="0.4" r="0.22" fill="#ffffff"/>
                                 </g>
                             </g>
                         </svg>
-</div>
+                    </div>
                     <div class="laser-scanner absolute inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-emerald-400 to-transparent shadow-[0_0_12px_#10b981] z-30 pointer-events-none"></div>
                     <span class="absolute top-2 right-2 z-30 flex h-3.5 w-3.5" title="Colegiado y Habilitado - Telemetría Online">
                         <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
@@ -599,7 +603,7 @@
 
                         <div class="cyber-card bg-slate-900/50 border border-slate-800 p-5 rounded-2xl flex flex-col justify-between">
                             <div>
-                                <span class="text-xs font-mono text-amber-400 bg-amber-950/60 px-2.5 py-0.5 rounded-md border border-amber-500/30">2024 · V&G Golden Service</span>
+                                <span class="text-xs font-mono text-amber-400 bg-amber-950/60 px-2.5 py-0.5 rounded-md border border-emerald-500/30">2024 · V&G Golden Service</span>
                                 <h4 class="text-base font-semibold text-white mt-3">Diagnóstico Electrónico Automotriz con Escáner 12V y 24V</h4>
                                 <p class="text-xs text-slate-400 font-light mt-2 leading-relaxed">
                                     Diagnóstico electrónico automotriz avanzado en flotas livianas y pesadas, análisis de códigos de falla (DTC) e interpretación de tramas de datos en tiempo real de módulos ECU.
@@ -796,56 +800,82 @@
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <script>
-    /* Serpiente roja: se arrastra por la tapa de la laptop (ida y vuelta) */
+    /* Serpiente digital estilo bytes con diferentes movimientos y patrones interactivos */
     (function () {
         var svg = document.querySelector(".avatar-snake");
         if (!svg || getComputedStyle(svg).display === "none") return;
 
         var q = function (c) { return svg.querySelector(c); };
-        var outline = q(".snk-outline"), body = q(".snk-body"), scales = q(".snk-scales"),
-            head = q(".snk-head"), tongue = q(".snk-tongue");
+        var outline = q(".snk-outline"), body = q(".snk-body"), head = q(".snk-head");
 
-        /* AJUSTES: largo, ondulación, altura sobre la tapa, velocidad */
-        var LEN = 11,        /* largo de la serpiente */
-            AMP = 1.5,       /* altura de las ondas */
-            WAVE = 9,        /* distancia entre ondas */
-            Y0 = 58.6,       /* altura (en % de la imagen) por donde camina */
-            SPEED = 10,      /* velocidad */
-            HALF = 15,       /* medio ancho de la tapa */
-            REST = 1.4;      /* segundos de pausa entre pasadas */
+        var LEN = 11, HALF = 15;
 
-        var N = 26, K = 2 * Math.PI / WAVE;
-        var DIST = 2 * HALF + LEN + 4, MOVE = DIST / SPEED, CYCLE = MOVE + REST;
-        var y = function (x) { return Y0 + AMP * Math.sin(K * x); };
-
-        function draw(xh, dir, t) {
-            var d = "";
-            for (var i = 0; i <= N; i++) {
-                var x = xh - dir * LEN * i / N;
-                d += (i ? "L" : "M") + x.toFixed(2) + " " + y(x).toFixed(2);
-            }
-            outline.setAttribute("d", d); body.setAttribute("d", d); scales.setAttribute("d", d);
-            var ang = Math.atan2(dir * AMP * K * Math.cos(K * xh), dir) * 180 / Math.PI;
-            head.setAttribute("transform", "translate(" + xh.toFixed(2) + " " + y(xh).toFixed(2) + ") rotate(" + ang.toFixed(1) + ")");
-            tongue.style.opacity = Math.sin(t * 14) > 0.2 ? 1 : 0;
-        }
-
-        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) { draw(0, 1, 0); return; }
+        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) { return; }
 
         var t0 = performance.now(), raf;
         function frame(now) {
-            var t = (now - t0) / 1000, c = Math.floor(t / CYCLE), local = t - c * CYCLE;
-            var dir = c % 2 === 0 ? 1 : -1;
-            if (local > MOVE) { outline.setAttribute("d", ""); body.setAttribute("d", ""); scales.setAttribute("d", ""); head.setAttribute("transform", "translate(999 999)"); }
+            var t = (now - t0) / 1000;
+            
+            // Selección cíclica de diferentes movimientos (Patrón Ondeado, Patrón Espiralado/Zigzag, Patrón Cuántico en Z)
+            var modeCycle = Math.floor(t / 14) % 3; 
+            var subT = t % 14;
+            
+            var d = "", xh = 0, yh = 58.6, N = 24;
+            var dir = Math.floor(t / 7) % 2 === 0 ? 1 : -1;
+
+            if (modeCycle === 0) {
+                // Movimiento 1: Ondeo armónico fluido (recorrido horizontal de ida y vuelta)
+                var speed = 9;
+                var local = subT % 10;
+                if (local > 8) { outline.setAttribute("d", ""); body.setAttribute("d", ""); head.setAttribute("transform", "translate(999 999)"); raf = requestAnimationFrame(frame); return; }
+                var p = -HALF - 2 + local * speed;
+                xh = dir === 1 ? p : -p;
+                yh = 58.6 + 1.8 * Math.sin(xh * 0.6);
+
+                for (var i = 0; i <= N; i++) {
+                    var x = xh - dir * LEN * i / N;
+                    var y = 58.6 + 1.8 * Math.sin(x * 0.6);
+                    d += (i ? "L" : "M") + x.toFixed(2) + " " + y.toFixed(2);
+                }
+            } 
+            else if (modeCycle === 1) {
+                // Movimiento 2: Patrón en zigzag digital (efecto pulso binario / escalonado)
+                var speed2 = 8;
+                var local2 = subT % 10;
+                if (local2 > 8) { outline.setAttribute("d", ""); body.setAttribute("d", ""); head.setAttribute("transform", "translate(999 999)"); raf = requestAnimationFrame(frame); return; }
+                var p2 = -HALF - 2 + local2 * speed2;
+                xh = dir === 1 ? p2 : -p2;
+                yh = 58.6 + 2.2 * Math.cos(xh * 0.8);
+
+                for (var i = 0; i <= N; i++) {
+                    var x = xh - dir * LEN * i / N;
+                    var y = 58.6 + 2.2 * Math.cos(x * 0.8) * (i % 2 === 0 ? 1 : 0.6);
+                    d += (i ? "L" : "M") + x.toFixed(2) + " " + y.toFixed(2);
+                }
+            } 
             else {
-                var p = -HALF - 2 + local * SPEED;            /* posición recorrida de izquierda a derecha */
-                draw(dir === 1 ? p : -p, dir, t);
+                // Movimiento 3: Danza orbital / patrullaje en la esquina superior de la tapa
+                var angle = subT * 2.5;
+                xh = Math.sin(angle) * 10;
+                yh = 58.6 + Math.cos(angle * 2) * 2.5;
+
+                for (var i = 0; i <= N; i++) {
+                    var aOffset = angle - (i * 0.15);
+                    var x = Math.sin(aOffset) * 10;
+                    var y = 58.6 + Math.cos(aOffset * 2) * 2.5;
+                    d += (i ? "L" : "M") + x.toFixed(2) + " " + y.toFixed(2);
+                }
             }
+
+            outline.setAttribute("d", d);
+            body.setAttribute("d", d);
+            head.setAttribute("transform", "translate(" + xh.toFixed(2) + " " + yh.toFixed(2) + ")");
+
             raf = requestAnimationFrame(frame);
         }
         raf = requestAnimationFrame(frame);
         document.addEventListener("visibilitychange", function () {
-            if (document.hidden) cancelAnimationFrame(raf); else { t0 = performance.now() - (t0 ? 0 : 0); raf = requestAnimationFrame(frame); }
+            if (document.hidden) cancelAnimationFrame(raf); else { t0 = performance.now(); raf = requestAnimationFrame(frame); }
         });
     })();
     </script>
