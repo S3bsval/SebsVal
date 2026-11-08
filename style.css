@@ -80,19 +80,8 @@ body {
 
 .navbar-link.active {
     color: #34d399 !important; /* emerald-400 */
-    position: relative;
-}
-
-.navbar-link.active::after {
-    content: '';
-    position: absolute;
-    bottom: -4px;
-    left: 15%;
-    width: 70%;
-    height: 2px;
-    background: linear-gradient(90deg, #10b981, #8b5cf6);
-    border-radius: 99px;
-    box-shadow: 0 0 8px #10b981;
+    background: rgba(16, 185, 129, 0.12);
+    border: 1px solid rgba(16, 185, 129, 0.3);
 }
 
 /* ==========================================
