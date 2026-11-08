@@ -10,19 +10,26 @@ body {
     font-family: 'Poppins', sans-serif;
 }
 
-/* Animaciones y estados para la navegación del portafolio original */
-article { 
-    display: none; 
+/* Lógica de pestañas: Oculta por defecto todas las secciones */
+article {
+    display: none;
 }
 
-article.active { 
+/* Muestra únicamente la sección que tenga la clase active con animación suave */
+article.active {
     display: block;
     animation: fadeIn 0.4s ease backwards;
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+    from { 
+        opacity: 0; 
+        transform: translateY(10px); 
+    }
+    to { 
+        opacity: 1; 
+        transform: translateY(0); 
+    }
 }
 
 /* Scrollbar personalizado estilo glass */
@@ -35,10 +42,10 @@ article.active {
 }
 
 ::-webkit-scrollbar-thumb {
-    background: rgba(56, 189, 248, 0.3);
+    background: rgba(6, 182, 212, 0.3);
     border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: rgba(56, 189, 248, 0.5);
+    background: rgba(6, 182, 212, 0.5);
 }
