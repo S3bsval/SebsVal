@@ -82,17 +82,17 @@
     100% { opacity: 0; }
 }
 
-/* ---------- Serpiente digital (bytes) que recorre la tapa de la laptop ---------- */
+/* ---------- Serpiente digital (bytes) grande y brillante que recorre la tapa de la laptop ---------- */
 .avatar-snake {
     position: absolute;
     top: 0;
     left: 50%;
-    width: 100em;   /* = altura de la imagen: 1 unidad del dibujo = 1% de la altura */
+    width: 140em;   /* Tamaño ampliado para que sea mucho más imponente y visible */
     height: 100%;
     transform: translateX(-50%);
     overflow: visible;
     pointer-events: none;
-    filter: drop-shadow(0 0 0.45em rgba(16, 185, 129, 0.95));
+    filter: drop-shadow(0 0 0.8em rgba(52, 211, 153, 1)) drop-shadow(0 0 1.5em rgba(16, 185, 129, 0.8));
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -146,23 +146,31 @@
                         <span class="avatar-apple" aria-hidden="true">
                             <svg viewBox="2.6 0 19 24" xmlns="http://www.w3.org/2000/svg"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg>
                         </span>
-                        <!-- Serpiente digital estilo bytes que se arrastra SOLO por la tapa gris de la laptop (1 unidad = 1% de la altura de la imagen) -->
+                        <!-- Serpiente digital gruesa estilo bytes con alta visibilidad y efecto de destello -->
                         <svg class="avatar-snake" viewBox="-50 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                             <defs>
                                 <clipPath id="lidClip"><rect x="-15" y="54.6" width="30" height="15.6" rx="1.4"/></clipPath>
-                                <linearGradient id="byteGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                                    <stop offset="0%" stop-color="#34d399"/>
-                                    <stop offset="50%" stop-color="#10b981"/>
-                                    <stop offset="100%" stop-color="#059669"/>
+                                <linearGradient id="byteNeonGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#6ee7b7"/>
+                                    <stop offset="40%" stop-color="#34d399"/>
+                                    <stop offset="80%" stop-color="#10b981"/>
+                                    <stop offset="100%" stop-color="#047857"/>
                                 </linearGradient>
+                                <filter id="glowEffect" x="-50%" y="-50%" width="200%" height="200%">
+                                    <feGaussianBlur stdDeviation="1.2" result="coloredBlur"/>
+                                    <feMerge>
+                                        <feMergeNode in="coloredBlur"/>
+                                        <feMergeNode in="SourceGraphic"/>
+                                    </feMerge>
+                                </filter>
                             </defs>
                             <g clip-path="url(#lidClip)">
-                                <path class="snk-outline" d="" fill="none" stroke="#022c22" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path class="snk-body" d="" fill="none" stroke="url(#byteGrad)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="0.8 1.4"/>
-                                <g class="snk-head">
-                                    <polygon points="1.8,0 0.5,-1 0,-0.5 0,0.5 0.5,1" fill="#34d399" stroke="#047857" stroke-width="0.3"/>
-                                    <circle cx="0.8" cy="-0.4" r="0.22" fill="#ffffff"/>
-                                    <circle cx="0.8" cy="0.4" r="0.22" fill="#ffffff"/>
+                                <path class="snk-outline" d="" fill="none" stroke="#022c22" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path class="snk-body" d="" fill="none" stroke="url(#byteNeonGrad)" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="1.2 1.8" filter="url(#glowEffect)"/>
+                                <g class="snk-head" filter="url(#glowEffect)">
+                                    <polygon points="2.4,0 0.6,-1.3 0,-0.7 0,0.7 0.6,1.3" fill="#6ee7b7" stroke="#022c22" stroke-width="0.35"/>
+                                    <circle cx="1.0" cy="-0.5" r="0.32" fill="#ffffff"/>
+                                    <circle cx="1.0" cy="0.5" r="0.32" fill="#ffffff"/>
                                 </g>
                             </g>
                         </svg>
@@ -800,7 +808,7 @@
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <script>
-    /* Serpiente digital estilo bytes con diferentes movimientos y patrones interactivos */
+    /* Serpiente digital estilo bytes ampliada, hiper visible, con múltiples patrones de movimiento dinámico y "explosión" de pulsos */
     (function () {
         var svg = document.querySelector(".avatar-snake");
         if (!svg || getComputedStyle(svg).display === "none") return;
@@ -808,7 +816,7 @@
         var q = function (c) { return svg.querySelector(c); };
         var outline = q(".snk-outline"), body = q(".snk-body"), head = q(".snk-head");
 
-        var LEN = 11, HALF = 15;
+        var LEN = 14, HALF = 18;
 
         if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) { return; }
 
@@ -816,53 +824,73 @@
         function frame(now) {
             var t = (now - t0) / 1000;
             
-            // Selección cíclica de diferentes movimientos (Patrón Ondeado, Patrón Espiralado/Zigzag, Patrón Cuántico en Z)
-            var modeCycle = Math.floor(t / 14) % 3; 
-            var subT = t % 14;
+            // Ciclo de diferentes movimientos dinámicos y dinámicas de "explosión"
+            var modeCycle = Math.floor(t / 12) % 4; 
+            var subT = t % 12;
             
-            var d = "", xh = 0, yh = 58.6, N = 24;
-            var dir = Math.floor(t / 7) % 2 === 0 ? 1 : -1;
+            var d = "", xh = 0, yh = 58.6, N = 26;
+            var dir = Math.floor(t / 6) % 2 === 0 ? 1 : -1;
 
             if (modeCycle === 0) {
-                // Movimiento 1: Ondeo armónico fluido (recorrido horizontal de ida y vuelta)
-                var speed = 9;
-                var local = subT % 10;
-                if (local > 8) { outline.setAttribute("d", ""); body.setAttribute("d", ""); head.setAttribute("transform", "translate(999 999)"); raf = requestAnimationFrame(frame); return; }
+                // Movimiento 1: Ondeo fluido hiper-visible de alta amplitud
+                var speed = 10;
+                var local = subT % 8;
+                if (local > 7) { outline.setAttribute("d", ""); body.setAttribute("d", ""); head.setAttribute("transform", "translate(999 999)"); raf = requestAnimationFrame(frame); return; }
                 var p = -HALF - 2 + local * speed;
                 xh = dir === 1 ? p : -p;
-                yh = 58.6 + 1.8 * Math.sin(xh * 0.6);
+                yh = 58.6 + 2.5 * Math.sin(xh * 0.5);
 
                 for (var i = 0; i <= N; i++) {
                     var x = xh - dir * LEN * i / N;
-                    var y = 58.6 + 1.8 * Math.sin(x * 0.6);
+                    var y = 58.6 + 2.5 * Math.sin(x * 0.5);
                     d += (i ? "L" : "M") + x.toFixed(2) + " " + y.toFixed(2);
                 }
             } 
             else if (modeCycle === 1) {
-                // Movimiento 2: Patrón en zigzag digital (efecto pulso binario / escalonado)
-                var speed2 = 8;
-                var local2 = subT % 10;
-                if (local2 > 8) { outline.setAttribute("d", ""); body.setAttribute("d", ""); head.setAttribute("transform", "translate(999 999)"); raf = requestAnimationFrame(frame); return; }
+                // Movimiento 2: Zizgag digital eléctrico con pulsos escalonados
+                var speed2 = 9;
+                var local2 = subT % 8;
+                if (local2 > 7) { outline.setAttribute("d", ""); body.setAttribute("d", ""); head.setAttribute("transform", "translate(999 999)"); raf = requestAnimationFrame(frame); return; }
                 var p2 = -HALF - 2 + local2 * speed2;
                 xh = dir === 1 ? p2 : -p2;
-                yh = 58.6 + 2.2 * Math.cos(xh * 0.8);
+                yh = 58.6 + 3.0 * Math.cos(xh * 0.7);
 
                 for (var i = 0; i <= N; i++) {
                     var x = xh - dir * LEN * i / N;
-                    var y = 58.6 + 2.2 * Math.cos(x * 0.8) * (i % 2 === 0 ? 1 : 0.6);
+                    var y = 58.6 + 3.0 * Math.cos(x * 0.7) * (i % 2 === 0 ? 1 : 0.5);
+                    d += (i ? "L" : "M") + x.toFixed(2) + " " + y.toFixed(2);
+                }
+            } 
+            else if (modeCycle === 2) {
+                // Movimiento 3: Danza orbital expansiva sobre la laptop
+                var angle = subT * 3;
+                xh = Math.sin(angle) * 12;
+                yh = 58.6 + Math.cos(angle * 2) * 3.5;
+
+                for (var i = 0; i <= N; i++) {
+                    var aOffset = angle - (i * 0.12);
+                    var x = Math.sin(aOffset) * 12;
+                    var y = 58.6 + Math.cos(aOffset * 2) * 3.5;
                     d += (i ? "L" : "M") + x.toFixed(2) + " " + y.toFixed(2);
                 }
             } 
             else {
-                // Movimiento 3: Danza orbital / patrullaje en la esquina superior de la tapa
-                var angle = subT * 2.5;
-                xh = Math.sin(angle) * 10;
-                yh = 58.6 + Math.cos(angle * 2) * 2.5;
+                // Movimiento 4: ¡Efecto Explosión de Bits! (La serpiente se expande en destellos y ondas de choque digitales)
+                var burstProgress = subT / 4; // dura 4 segundos
+                if (burstProgress > 1) { 
+                    outline.setAttribute("d", ""); body.setAttribute("d", ""); head.setAttribute("transform", "translate(999 999)"); 
+                    raf = requestAnimationFrame(frame); 
+                    return; 
+                }
+                
+                xh = 0; 
+                yh = 58.6;
+                var radiusFactor = burstProgress * 15; // Onda expansiva hacia afuera
 
                 for (var i = 0; i <= N; i++) {
-                    var aOffset = angle - (i * 0.15);
-                    var x = Math.sin(aOffset) * 10;
-                    var y = 58.6 + Math.cos(aOffset * 2) * 2.5;
+                    var theta = (i / N) * Math.PI * 2;
+                    var x = Math.cos(theta) * radiusFactor;
+                    var y = 58.6 + Math.sin(theta) * (radiusFactor * 0.4);
                     d += (i ? "L" : "M") + x.toFixed(2) + " " + y.toFixed(2);
                 }
             }
