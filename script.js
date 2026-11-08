@@ -110,23 +110,30 @@ for(let i = 0; i < formInputs.length; i++) {
     })
 }
 
-// Enabling Page Navigation 
-
+// Enabling Page Navigation (Versión Corregida y Robusta)
 const navigationLinks = document.querySelectorAll('[data-nav-link]');
 const pages = document.querySelectorAll('[data-page]');
 
-for(let i = 0; i < navigationLinks.length; i++) {
+for (let i = 0; i < navigationLinks.length; i++) {
     navigationLinks[i].addEventListener('click', function() {
-        
-        for(let i = 0; i < pages.length; i++) {
-            if(this.innerHTML.toLowerCase() == pages[i].dataset.page) {
-                pages[i].classList.add('active');
+        // Obtiene el texto del botón limpio de espacios y en minúsculas
+        const targetPage = this.textContent.trim().toLowerCase();
+
+        for (let j = 0; j < pages.length; j++) {
+            // Compara de forma segura el botón con el data-page correspondiente
+            if (targetPage === pages[j].dataset.page.toLowerCase()) {
+                pages[j].classList.add('active');
                 navigationLinks[i].classList.add('active');
                 window.scrollTo(0, 0);
             } else {
-                pages[i].classList.remove('active');
-                navigationLinks[i]. classList.remove('active');
+                pages[j].classList.remove('active');
             }
         }
+
+        // Remueve la clase active de los demás botones y la pone en el actual
+        for (let k = 0; k < navigationLinks.length; k++) {
+            navigationLinks[k].classList.remove('active');
+        }
+        this.classList.add('active');
     });
 }
