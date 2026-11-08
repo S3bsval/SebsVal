@@ -155,33 +155,76 @@ body {
 }
 
 /* ==========================================
-   OJO ROJO QUE SE PRENDE Y SE APAGA
-   Posición en % de la imagen: --eye-x (horizontal), --eye-y (vertical), --eye-size (diámetro)
+   AVATAR: imagen saliendo desde abajo + ojo robótico rojo
+   Todo se mide con unidades del marco (cqh), así escala igual en móvil y escritorio.
+
+   AJUSTES RÁPIDOS (en .avatar-box):
+   --photo-drop : más negativo = la imagen sale desde más abajo
+   --photo-size : tamaño de la figura respecto al marco
+   --eye-x      : ojo a la derecha (+) o izquierda (−) del centro
+   --eye-y      : altura del ojo desde arriba del marco
+   --eye-size   : diámetro del ojo
 ========================================== */
-.avatar-photo {
-    --eye-x: 57%;
-    --eye-y: 50.9%;
-    --eye-size: 4.8%;
+.avatar-box {
+    container-type: size;
+    --photo-drop: -42%;
+    --photo-size: 140%;
+    --eye-x: 8.3cqh;
+    --eye-y: 70.5cqh;
+    --eye-size: 5.6cqh;
 }
 
+.avatar-aura {
+    background:
+        radial-gradient(ellipse 70% 55% at 50% 100%, rgba(16, 185, 129, 0.35), transparent 70%),
+        radial-gradient(ellipse 50% 40% at 50% 45%, rgba(139, 92, 246, 0.18), transparent 70%);
+}
+
+.avatar-photo {
+    position: absolute;
+    left: 50%;
+    bottom: var(--photo-drop);
+    height: var(--photo-size);
+    transform: translateX(-50%);
+}
+
+.avatar-photo img {
+    display: block;
+    height: 100%;
+    width: auto;
+    max-width: none;
+    filter: drop-shadow(0 0 10px rgba(16, 185, 129, 0.45)) drop-shadow(0 10px 14px rgba(0, 0, 0, 0.55));
+}
+
+/* Ojo de robot: lente roja con anillo y brillo */
 .avatar-red-eye {
     position: absolute;
-    left: var(--eye-x);
+    left: calc(50% + var(--eye-x));
     top: var(--eye-y);
     width: var(--eye-size);
     aspect-ratio: 1;
     transform: translate(-50%, -50%);
     border-radius: 50%;
     pointer-events: none;
-    background: radial-gradient(circle, #fff 0%, #ff8a8a 22%, #ff1a1a 55%, #8a0000 100%);
-    box-shadow: 0 0 6px 2px rgba(255, 30, 30, 0.95), 0 0 14px 5px rgba(255, 0, 0, 0.55);
-    animation: redEyeBlink 2.2s ease-in-out infinite;
+    background: radial-gradient(circle, #fff 0%, #ff9a9a 18%, #ff1414 52%, #7a0000 100%);
+    box-shadow:
+        0 0 0 1px rgba(60, 0, 0, 0.8),
+        0 0 8px 3px rgba(255, 20, 20, 0.95),
+        0 0 20px 8px rgba(255, 0, 0, 0.5);
+    opacity: 0;
+    animation: robotEye 3.2s steps(1, end) infinite;
 }
 
-@keyframes redEyeBlink {
-    0%, 40%   { opacity: 1; }
-    50%, 90%  { opacity: 0; }
-    100%      { opacity: 1; }
+/* Secuencia mecánica: se enciende con parpadeos, queda fijo y se apaga de golpe */
+@keyframes robotEye {
+    0%   { opacity: 0; }
+    10%  { opacity: 1; }
+    13%  { opacity: 0; }
+    16%  { opacity: 1; }
+    19%  { opacity: 0.25; }
+    22%  { opacity: 1; }
+    62%  { opacity: 0; }
+    100% { opacity: 0; }
 }
 
 @media (prefers-reduced-motion: reduce) {
