@@ -23,7 +23,6 @@ document.addEventListener("DOMContentLoaded", function () {
         window.addEventListener("resize", initCanvas);
 
         const drawBytes = () => {
-            // Estela oscura semitransparente para el efecto de caída
             ctx.fillStyle = "rgba(6, 11, 22, 0.22)";
             ctx.fillRect(0, 0, canvas.width, canvas.height);
 
@@ -31,7 +30,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
             for (let i = 0; i < drops.length; i++) {
                 const text = chars[Math.floor(Math.random() * chars.length)];
-                // Alterna entre verde telemetría (#10b981) y violeta (#a78bfa)
                 ctx.fillStyle = i % 3 === 0 ? "#a78bfa" : "#10b981";
                 ctx.fillText(text, i * fontSize, drops[i] * fontSize);
 

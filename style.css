@@ -4,8 +4,16 @@
     box-sizing: border-box;
 }
 
+html {
+    overflow-x: clip;
+    touch-action: pan-x pan-y pinch-zoom;
+    -webkit-text-size-adjust: 100%;
+}
+
 body {
     font-family: 'Poppins', sans-serif;
+    overflow-x: clip;
+    width: 100%;
 }
 
 .font-mono {
@@ -29,12 +37,12 @@ body {
 
 @keyframes scanVertical {
     0%, 100% {
-        top: 4%;
-        opacity: 0.25;
+        top: 2%;
+        opacity: 0.2;
     }
     50% {
-        top: 94%;
-        opacity: 0.95;
+        top: 96%;
+        opacity: 0.9;
     }
 }
 
@@ -52,7 +60,6 @@ body {
     }
 }
 
-/* Hover con resplandor Cyber en las tarjetas */
 .cyber-card:hover {
     border-color: rgba(16, 185, 129, 0.45);
     box-shadow: 0 10px 30px -12px rgba(16, 185, 129, 0.22);
@@ -101,7 +108,7 @@ body {
 }
 
 /* ==========================================
-   SIDEBAR RESPONSIVO (Móvil/Tablet vs Desktop)
+   SIDEBAR RESPONSIVO
 ========================================== */
 @media (max-width: 1023px) {
     .sidebar-info-more {
@@ -140,7 +147,7 @@ body {
     }
 }
 
-/* Scrollbar personalizado estilo Cyber-Emerald */
+/* Scrollbar personalizado */
 ::-webkit-scrollbar {
     width: 6px;
 }

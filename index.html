@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=5.0, user-scalable=yes">
     <title>Sebastián Kevin Valero Gómez | Ingeniero Mecatrónico CIP 401618</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -12,38 +12,40 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
-<body class="bg-[#050811] text-slate-100 font-['Poppins'] min-h-screen relative overflow-x-hidden selection:bg-emerald-500 selection:text-slate-950">
+<body class="bg-[#050811] text-slate-100 font-['Poppins'] min-h-screen relative selection:bg-emerald-500 selection:text-slate-950">
 
-    <!-- Retícula técnica de fondo + Orbes Cyber-Emerald & Violet -->
-    <div class="cyber-grid fixed inset-0 pointer-events-none z-0"></div>
-    <div class="fixed top-[-12%] left-[-10%] w-[550px] h-[550px] bg-emerald-500/15 rounded-full blur-[160px] pointer-events-none z-0"></div>
-    <div class="fixed bottom-[-12%] right-[-10%] w-[550px] h-[550px] bg-violet-600/15 rounded-full blur-[160px] pointer-events-none z-0"></div>
+    <!-- Luces ambientales de fondo -->
+    <div class="fixed inset-0 overflow-hidden pointer-events-none z-0">
+        <div class="cyber-grid absolute inset-0"></div>
+        <div class="absolute top-[-12%] left-[-10%] w-[550px] h-[550px] bg-emerald-500/15 rounded-full blur-[160px]"></div>
+        <div class="absolute bottom-[-12%] right-[-10%] w-[550px] h-[550px] bg-violet-600/15 rounded-full blur-[160px]"></div>
+    </div>
 
     <main class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 py-6 md:py-10 mb-24 lg:mb-12 lg:flex lg:gap-8 lg:items-start">
         
         <!-- ==========================================
-             ASIDE / SIDEBAR (Con Efecto Bytes en Avatar + Botón CV)
+             ASIDE / SIDEBAR
         =========================================== -->
-        <aside class="sidebar bg-[#0b1120]/85 backdrop-blur-2xl border border-emerald-500/20 shadow-[0_0_50px_-15px_rgba(16,185,129,0.2)] rounded-3xl p-5 sm:p-6 lg:sticky lg:top-8 lg:w-80 xl:w-[345px] shrink-0 transition-all duration-500 mb-6 lg:mb-0" data-sidebar>
+        <aside class="sidebar bg-[#0b1120]/80 backdrop-blur-2xl border border-emerald-500/20 shadow-[0_0_50px_-15px_rgba(16,185,129,0.2)] rounded-3xl p-5 sm:p-6 lg:sticky lg:top-8 lg:w-80 xl:w-[345px] shrink-0 transition-all duration-500 mb-6 lg:mb-0" data-sidebar>
             
             <div class="sidebar-info relative flex lg:flex-col items-center gap-4 sm:gap-5">
                 
-                <!-- AVATAR CON BYTES CORRIENDO Y ESCÁNER LÁSER -->
-                <figure class="avatar-box relative w-20 h-20 sm:w-24 sm:h-24 lg:w-36 lg:h-36 rounded-2xl border border-emerald-500/40 shadow-[0_0_25px_rgba(16,185,129,0.25)] overflow-hidden shrink-0 bg-[#060b16] group">
+                <!-- AVATAR CON BYTES Y PEGADO ABAJO -->
+                <figure class="avatar-box relative w-24 h-24 sm:w-28 sm:h-28 lg:w-40 lg:h-44 rounded-2xl border border-emerald-500/40 shadow-[0_0_25px_rgba(16,185,129,0.25)] overflow-hidden shrink-0 bg-[#060b16] flex items-end justify-center group">
                     <!-- Canvas de lluvia de bytes / hex -->
-                    <canvas id="avatar-byte-canvas" class="absolute inset-0 w-full h-full opacity-80 pointer-events-none z-0"></canvas>
+                    <canvas id="avatar-byte-canvas" class="absolute inset-0 w-full h-full opacity-85 pointer-events-none z-0"></canvas>
                     
                     <!-- Anillo radar sutil -->
                     <div class="avatar-radar-ring absolute inset-1 rounded-xl border border-dashed border-emerald-400/30 pointer-events-none z-10"></div>
 
-                    <!-- Imagen de perfil -->
-                    <img src="https://i.postimg.cc/Ss8CBwXz/02623477ccafb861cbf47e2364e2889a-removebg-preview.png" alt="Sebastián Kevin Valero Gómez" class="relative z-20 w-full h-full object-cover rounded-xl transition-transform duration-500 group-hover:scale-105">
+                    <!-- Imagen de perfil ajustada al fondo (pegada abajo) -->
+                    <img src="https://i.postimg.cc/Ss8CBwXz/02623477ccafb861cbf47e2364e2889a-removebg-preview.png" alt="Sebastián Kevin Valero Gómez" class="relative z-20 w-full h-[110%] object-cover object-bottom transition-transform duration-500 group-hover:scale-105">
                     
                     <!-- Línea láser de escaneo -->
                     <div class="laser-scanner absolute inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-emerald-400 to-transparent shadow-[0_0_12px_#10b981] z-30 pointer-events-none"></div>
 
                     <!-- Badge de telemetría activa -->
-                    <span class="absolute bottom-1.5 right-1.5 z-30 flex h-3.5 w-3.5" title="Colegiado y Habilitado - Telemetría Online">
+                    <span class="absolute bottom-2 right-2 z-30 flex h-3.5 w-3.5" title="Colegiado y Habilitado - Telemetría Online">
                         <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                         <span class="relative inline-flex rounded-full h-3.5 w-3.5 bg-emerald-500 border-2 border-slate-950"></span>
                     </span>
@@ -69,7 +71,7 @@
                 </button>
             </div>
 
-            <!-- Botón de Descarga de CV (Siempre visible) -->
+            <!-- Botón de Descarga de CV -->
             <div class="mt-5">
                 <a href="./CV Sebastian Valero Gomez 2k26.pdf" download="CV_Sebastian_Valero_Gomez_2026.pdf" class="w-full py-2.5 px-4 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-slate-950 font-semibold text-xs sm:text-sm flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(16,185,129,0.3)] hover:shadow-[0_0_28px_rgba(16,185,129,0.5)] transition-all">
                     <ion-icon name="download-outline" class="text-lg"></ion-icon>
@@ -77,11 +79,10 @@
                 </a>
             </div>
 
-            <!-- Información adicional desplegable en móvil / fija en desktop -->
+            <!-- Información adicional -->
             <div class="sidebar-info-more">
                 <div class="w-full h-[1px] bg-slate-800/90 my-5"></div>
 
-                <!-- Mini KPIs rápidos -->
                 <div class="grid grid-cols-3 gap-2 mb-5 text-center">
                     <div class="bg-slate-900/70 border border-slate-800 rounded-xl p-2">
                         <p class="text-xs sm:text-sm font-bold text-emerald-400 font-mono">+6 Años</p>
@@ -162,11 +163,11 @@
         <!-- ==========================================
              MAIN CONTENT CONTAINER
         =========================================== -->
-        <div class="main-content flex-1 min-w-0 bg-[#0b1120]/85 backdrop-blur-2xl border border-emerald-500/20 shadow-[0_0_50px_-15px_rgba(139,92,246,0.15)] rounded-3xl p-5 sm:p-8 md:p-10 relative lg:pt-16">
+        <div class="main-content flex-1 min-w-0 bg-[#0b1120]/80 backdrop-blur-2xl border border-emerald-500/20 shadow-[0_0_50px_-15px_rgba(139,92,246,0.15)] rounded-3xl p-5 sm:p-8 md:p-10 relative lg:pt-20">
             
-            <!-- NAVBAR (Dock inferior en móvil / Pestaña superior en Desktop) -->
-            <nav class="navbar fixed bottom-0 left-0 w-full bg-[#070b14]/95 backdrop-blur-xl border-t border-emerald-500/20 lg:absolute lg:top-0 lg:right-0 lg:left-auto lg:bottom-auto lg:w-auto lg:border-t-0 lg:border-b lg:border-l lg:rounded-bl-3xl lg:rounded-tr-3xl lg:px-6 lg:py-2.5 z-50 shadow-2xl">
-                <ul class="navbar-list flex justify-around items-center lg:gap-5 py-2.5 px-2">
+            <!-- NAVBAR SUPERIOR GLASSMOPRHISM (Más arriba y libre de choques) -->
+            <nav class="navbar fixed bottom-0 left-0 w-full bg-[#070b14]/90 backdrop-blur-xl border-t border-emerald-500/20 lg:absolute lg:top-4 lg:right-6 lg:left-auto lg:bottom-auto lg:w-auto lg:border lg:border-emerald-500/30 lg:rounded-2xl lg:px-4 lg:py-2 z-50 shadow-2xl">
+                <ul class="navbar-list flex justify-around items-center lg:gap-4 py-2.5 px-2">
                     <li><button type="button" class="navbar-link active text-xs sm:text-sm font-medium text-slate-400 hover:text-emerald-400 transition-colors px-2 py-1" data-target="about">Perfil</button></li>
                     <li><button type="button" class="navbar-link text-xs sm:text-sm font-medium text-slate-400 hover:text-emerald-400 transition-colors px-2 py-1" data-target="resume">Experiencia & CV</button></li>
                     <li><button type="button" class="navbar-link text-xs sm:text-sm font-medium text-slate-400 hover:text-emerald-400 transition-colors px-2 py-1" data-target="skills">Stack & Certificaciones</button></li>
@@ -179,7 +180,7 @@
                  1. SECCIÓN: PERFIL PROFESIONAL (ABOUT)
             =========================================== -->
             <article class="page-section active space-y-8" id="page-about" data-page="about">
-                <header>
+                <header class="pt-2 lg:pt-0">
                     <!-- Barra superior estilo terminal de telemetría -->
                     <div class="inline-flex flex-wrap items-center gap-2 text-[11px] font-mono text-emerald-400 bg-emerald-950/50 border border-emerald-500/30 px-3 py-1 rounded-full mb-3">
                         <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
@@ -274,11 +275,10 @@
                  2. SECCIÓN: EXPERIENCIA & EDUCACIÓN (RESUME)
             =========================================== -->
             <article class="page-section space-y-10" id="page-resume" data-page="resume">
-                <header>
+                <header class="pt-2 lg:pt-0">
                     <h2 class="text-2xl sm:text-3xl font-bold text-white relative pb-3 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-16 after:h-1 after:bg-gradient-to-r after:from-emerald-400 after:to-violet-500 after:rounded-full">Experiencia Profesional & Formación</h2>
                 </header>
 
-                <!-- Experiencia Profesional -->
                 <section class="space-y-6">
                     <div class="flex items-center gap-3">
                         <div class="bg-slate-900 border border-emerald-500/30 w-10 h-10 rounded-xl flex items-center justify-center text-emerald-400 text-lg">
@@ -288,8 +288,6 @@
                     </div>
 
                     <ol class="border-l-2 border-slate-800 ml-5 pl-6 space-y-9">
-                        
-                        <!-- 1. AUTOSAFE / HUNTER -->
                         <li class="relative">
                             <span class="absolute -left-[31px] top-1.5 w-3.5 h-3.5 bg-emerald-400 rounded-full border-4 border-slate-950 shadow-[0_0_12px_#10b981]"></span>
                             <div class="flex flex-wrap items-center justify-between gap-2 mb-1">
@@ -314,7 +312,6 @@
                             </ul>
                         </li>
 
-                        <!-- 2. AJE MÉXICO -->
                         <li class="relative">
                             <span class="absolute -left-[31px] top-1.5 w-3.5 h-3.5 bg-violet-500 rounded-full border-4 border-slate-950 shadow-[0_0_10px_#8b5cf6]"></span>
                             <div class="flex flex-wrap items-center justify-between gap-2 mb-1">
@@ -331,7 +328,6 @@
                             </ul>
                         </li>
 
-                        <!-- 3. GRUPO FERRAN'D -->
                         <li class="relative">
                             <span class="absolute -left-[31px] top-1.5 w-3.5 h-3.5 bg-slate-500 rounded-full border-4 border-slate-950"></span>
                             <div class="flex flex-wrap items-center justify-between gap-2 mb-1">
@@ -348,7 +344,6 @@
                             </ul>
                         </li>
 
-                        <!-- 4. CLÍNICA DENTAL SANTA APOLONIA -->
                         <li class="relative">
                             <span class="absolute -left-[31px] top-1.5 w-3.5 h-3.5 bg-slate-600 rounded-full border-4 border-slate-950"></span>
                             <div class="flex flex-wrap items-center justify-between gap-2 mb-1">
@@ -364,11 +359,9 @@
                                 <li>Instalación de infraestructura tecnológica: estaciones de trabajo, cámaras de videovigilancia y sensores de aforo.</li>
                             </ul>
                         </li>
-
                     </ol>
                 </section>
 
-                <!-- Formación Académica -->
                 <section class="space-y-6">
                     <div class="flex items-center gap-3">
                         <div class="bg-slate-900 border border-emerald-500/30 w-10 h-10 rounded-xl flex items-center justify-center text-emerald-400 text-lg">
@@ -402,16 +395,14 @@
             </article>
 
             <!-- ==========================================
-                 3. SECCIÓN: STACK TECNOLÓGICO & CERTIFICACIONES (SKILLS)
+                 3. SECCIÓN: STACK & CERTIFICACIONES (SKILLS)
             =========================================== -->
             <article class="page-section space-y-8" id="page-skills" data-page="skills">
-                <header>
+                <header class="pt-2 lg:pt-0">
                     <h2 class="text-2xl sm:text-3xl font-bold text-white relative pb-3 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-16 after:h-1 after:bg-gradient-to-r after:from-emerald-400 after:to-violet-500 after:rounded-full">Herramientas, Tecnologías & Certificaciones</h2>
                 </header>
 
-                <!-- Herramientas y Tecnologías por Categoría -->
                 <section class="grid grid-cols-1 md:grid-cols-2 gap-5">
-                    
                     <div class="cyber-card bg-slate-900/50 border border-slate-800 p-5 rounded-2xl space-y-3">
                         <div class="flex items-center gap-2.5 text-emerald-400">
                             <ion-icon name="terminal-outline" class="text-xl"></ion-icon>
@@ -472,10 +463,8 @@
                             <span class="text-xs font-mono bg-slate-950 border border-slate-700 px-3 py-1.5 rounded-lg text-slate-300">MS Office Avanzado</span>
                         </div>
                     </div>
-
                 </section>
 
-                <!-- Formación Complementaria y Certificaciones -->
                 <section class="space-y-4">
                     <div class="flex items-center gap-3">
                         <div class="bg-slate-900 border border-emerald-500/30 w-10 h-10 rounded-xl flex items-center justify-center text-emerald-400 text-lg">
@@ -519,14 +508,13 @@
             </article>
 
             <!-- ==========================================
-                 4. SECCIÓN: PROYECTOS Y ACTIVIDADES TÉCNICAS (PORTFOLIO)
+                 4. SECCIÓN: PROYECTOS (PORTFOLIO)
             =========================================== -->
             <article class="page-section space-y-6" id="page-portfolio" data-page="portfolio">
-                <header>
+                <header class="pt-2 lg:pt-0">
                     <h2 class="text-2xl sm:text-3xl font-bold text-white relative pb-3 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-16 after:h-1 after:bg-gradient-to-r after:from-emerald-400 after:to-violet-500 after:rounded-full">Proyectos & Desarrollos Técnicos</h2>
                 </header>
 
-                <!-- Filtros -->
                 <div class="flex flex-wrap gap-2">
                     <button type="button" class="filter-btn active text-xs sm:text-sm px-3.5 py-1.5 rounded-xl bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 font-medium transition-all" data-filter="all">Todos</button>
                     <button type="button" class="filter-btn text-xs sm:text-sm px-3.5 py-1.5 rounded-xl bg-slate-900/80 text-slate-400 border border-slate-800 hover:text-white transition-all" data-filter="id">I+D & Mecatrónica</button>
@@ -534,9 +522,7 @@
                     <button type="button" class="filter-btn text-xs sm:text-sm px-3.5 py-1.5 rounded-xl bg-slate-900/80 text-slate-400 border border-slate-800 hover:text-white transition-all" data-filter="software">Software & Investigación</button>
                 </div>
 
-                <!-- Grid de Proyectos -->
                 <ul class="grid grid-cols-1 md:grid-cols-2 gap-5">
-                    
                     <li class="project-item active cyber-card bg-slate-900/50 border border-slate-800 p-5 rounded-2xl flex flex-col justify-between transition-all" data-category="id">
                         <div>
                             <div class="flex items-center justify-between mb-3">
@@ -632,7 +618,6 @@
                             <span>Brazos Robóticos</span> • <span>Bases de Datos</span> • <span>Sistemas GPS</span>
                         </div>
                     </li>
-
                 </ul>
             </article>
 
@@ -640,7 +625,7 @@
                  5. SECCIÓN: CONTACTO (CONTACT)
             =========================================== -->
             <article class="page-section space-y-6" id="page-contact" data-page="contact">
-                <header>
+                <header class="pt-2 lg:pt-0">
                     <h2 class="text-2xl sm:text-3xl font-bold text-white relative pb-3 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-16 after:h-1 after:bg-gradient-to-r after:from-emerald-400 after:to-violet-500 after:rounded-full">Contacto Directo</h2>
                 </header>
 
