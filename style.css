@@ -13,6 +13,53 @@ body {
 }
 
 /* ==========================================
+   RETÍCULA CYBER DE FONDO & EFECTOS DE AVATAR
+========================================== */
+.cyber-grid {
+    background-image: 
+        linear-gradient(to right, rgba(16, 185, 129, 0.04) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(139, 92, 246, 0.04) 1px, transparent 1px);
+    background-size: 36px 36px;
+}
+
+/* Línea láser que escanea tu foto de perfil */
+.laser-scanner {
+    animation: scanVertical 3.4s ease-in-out infinite;
+}
+
+@keyframes scanVertical {
+    0%, 100% {
+        top: 4%;
+        opacity: 0.25;
+    }
+    50% {
+        top: 94%;
+        opacity: 0.95;
+    }
+}
+
+/* Anillo de radar giratorio dentro del avatar */
+.avatar-radar-ring {
+    animation: spinRadar 18s linear infinite;
+}
+
+@keyframes spinRadar {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Hover con resplandor Cyber en las tarjetas */
+.cyber-card:hover {
+    border-color: rgba(16, 185, 129, 0.45);
+    box-shadow: 0 10px 30px -12px rgba(16, 185, 129, 0.22);
+    transform: translateY(-2px);
+}
+
+/* ==========================================
    CONTROL DE PESTAÑAS (BLINDADO CON !important)
 ========================================== */
 .page-section {
@@ -25,7 +72,7 @@ body {
 }
 
 .navbar-link.active {
-    color: #22d3ee !important;
+    color: #34d399 !important; /* emerald-400 */
     position: relative;
 }
 
@@ -36,8 +83,9 @@ body {
     left: 15%;
     width: 70%;
     height: 2px;
-    background: #22d3ee;
+    background: linear-gradient(90deg, #10b981, #8b5cf6);
     border-radius: 99px;
+    box-shadow: 0 0 8px #10b981;
 }
 
 /* ==========================================
@@ -92,20 +140,20 @@ body {
     }
 }
 
-/* Scrollbar personalizado */
+/* Scrollbar personalizado estilo Cyber-Emerald */
 ::-webkit-scrollbar {
     width: 6px;
 }
 
 ::-webkit-scrollbar-track {
-    background: rgba(15, 23, 42, 0.7);
+    background: rgba(5, 8, 17, 0.85);
 }
 
 ::-webkit-scrollbar-thumb {
-    background: rgba(34, 211, 238, 0.3);
+    background: rgba(16, 185, 129, 0.35);
     border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: rgba(34, 211, 238, 0.55);
+    background: rgba(16, 185, 129, 0.65);
 }

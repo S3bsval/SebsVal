@@ -1,7 +1,53 @@
 'use strict';
 
 document.addEventListener("DOMContentLoaded", function () {
-    // 1. Mostrar/Ocultar ficha del Sidebar en Móvil y Tablet
+    // =========================================================
+    // 0. EFECTO DE BYTES / HEX CORRIENDO EN LA IMAGEN DE PERFIL
+    // =========================================================
+    const canvas = document.getElementById("avatar-byte-canvas");
+    if (canvas) {
+        const ctx = canvas.getContext("2d");
+        const chars = ["0", "1", "01", "10", "FF", "A5", "RF", "78", "C4", "0x"];
+        const fontSize = 9;
+        let columns = 0;
+        let drops = [];
+
+        const initCanvas = () => {
+            canvas.width = canvas.offsetWidth || 144;
+            canvas.height = canvas.offsetHeight || 144;
+            columns = Math.floor(canvas.width / fontSize);
+            drops = Array(columns).fill(1);
+        };
+
+        initCanvas();
+        window.addEventListener("resize", initCanvas);
+
+        const drawBytes = () => {
+            // Estela oscura semitransparente para el efecto de caída
+            ctx.fillStyle = "rgba(6, 11, 22, 0.22)";
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            ctx.font = `600 ${fontSize}px 'JetBrains Mono', monospace`;
+
+            for (let i = 0; i < drops.length; i++) {
+                const text = chars[Math.floor(Math.random() * chars.length)];
+                // Alterna entre verde telemetría (#10b981) y violeta (#a78bfa)
+                ctx.fillStyle = i % 3 === 0 ? "#a78bfa" : "#10b981";
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+                if (drops[i] * fontSize > canvas.height && Math.random() > 0.92) {
+                    drops[i] = 0;
+                }
+                drops[i]++;
+            }
+        };
+
+        setInterval(drawBytes, 70);
+    }
+
+    // =========================================================
+    // 1. MOSTRAR/OCULTAR FICHA DEL SIDEBAR EN MÓVIL Y TABLET
+    // =========================================================
     const sidebar = document.querySelector("[data-sidebar]");
     const sidebarBtn = document.querySelector("[data-sidebar-btn]");
     const sidebarBtnText = document.querySelector("[data-sidebar-btn-text]");
@@ -17,7 +63,9 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // 2. Navegación entre pestañas (Perfil, Experiencia & CV, Stack & Certificaciones, Proyectos, Contacto)
+    // =========================================================
+    // 2. NAVEGACIÓN ENTRE PESTAÑAS
+    // =========================================================
     const navButtons = document.querySelectorAll("[data-target]");
     const pages = document.querySelectorAll("[data-page]");
 
@@ -25,7 +73,6 @@ document.addEventListener("DOMContentLoaded", function () {
         btn.addEventListener("click", function () {
             const targetPage = this.getAttribute("data-target");
 
-            // Activar solo la sección elegida
             pages.forEach((page) => {
                 if (page.getAttribute("data-page") === targetPage) {
                     page.classList.add("active");
@@ -34,7 +81,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
             });
 
-            // Resaltar el botón activo en la barra de navegación
             navButtons.forEach((b) => b.classList.remove("active"));
             this.classList.add("active");
 
@@ -42,7 +88,9 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-    // 3. Filtrado de Proyectos por categoría
+    // =========================================================
+    // 3. FILTRADO DE PROYECTOS POR CATEGORÍA
+    // =========================================================
     const filterBtns = document.querySelectorAll("[data-filter]");
     const projectItems = document.querySelectorAll(".project-item");
 
@@ -50,15 +98,13 @@ document.addEventListener("DOMContentLoaded", function () {
         btn.addEventListener("click", function () {
             const selectedFilter = this.getAttribute("data-filter");
 
-            // Actualizar estilos de los botones de filtro
             filterBtns.forEach((b) => {
-                b.classList.remove("active", "bg-cyan-500/20", "text-cyan-400", "border-cyan-500/40");
-                b.classList.add("bg-slate-800/60", "text-slate-400", "border-slate-700/60");
+                b.classList.remove("active", "bg-emerald-500/20", "text-emerald-400", "border-emerald-500/40");
+                b.classList.add("bg-slate-900/80", "text-slate-400", "border-slate-800");
             });
-            this.classList.add("active", "bg-cyan-500/20", "text-cyan-400", "border-cyan-500/40");
-            this.classList.remove("bg-slate-800/60", "text-slate-400", "border-slate-700/60");
+            this.classList.add("active", "bg-emerald-500/20", "text-emerald-400", "border-emerald-500/40");
+            this.classList.remove("bg-slate-900/80", "text-slate-400", "border-slate-800");
 
-            // Mostrar u ocultar tarjetas de proyectos
             projectItems.forEach((item) => {
                 const itemCategory = item.getAttribute("data-category");
                 if (selectedFilter === "all" || itemCategory === selectedFilter) {
@@ -70,7 +116,9 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-    // 4. Validación del formulario de contacto
+    // =========================================================
+    // 4. VALIDACIÓN DEL FORMULARIO DE CONTACTO
+    // =========================================================
     const form = document.querySelector("[data-form]");
     const formInputs = document.querySelectorAll("[data-form-input]");
     const formBtn = document.querySelector("[data-form-btn]");

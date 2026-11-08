@@ -10,86 +10,116 @@
     <link rel="stylesheet" href="./style.css">
     <link rel="shortcut icon" href="https://i.postimg.cc/9fqYVvxh/logo.png" type="image/x-icon">
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
-<body class="bg-slate-950 text-slate-100 font-['Poppins'] min-h-screen relative overflow-x-hidden selection:bg-cyan-500 selection:text-slate-950">
+<body class="bg-[#050811] text-slate-100 font-['Poppins'] min-h-screen relative overflow-x-hidden selection:bg-emerald-500 selection:text-slate-950">
 
-    <!-- Luces ambientales de fondo (Glassmorphism) -->
-    <div class="fixed top-[-10%] left-[-10%] w-[550px] h-[550px] bg-cyan-500/15 rounded-full blur-[150px] pointer-events-none z-0"></div>
-    <div class="fixed bottom-[-10%] right-[-10%] w-[550px] h-[550px] bg-blue-600/15 rounded-full blur-[150px] pointer-events-none z-0"></div>
+    <!-- Retícula técnica de fondo + Orbes Cyber-Emerald & Violet -->
+    <div class="cyber-grid fixed inset-0 pointer-events-none z-0"></div>
+    <div class="fixed top-[-12%] left-[-10%] w-[550px] h-[550px] bg-emerald-500/15 rounded-full blur-[160px] pointer-events-none z-0"></div>
+    <div class="fixed bottom-[-12%] right-[-10%] w-[550px] h-[550px] bg-violet-600/15 rounded-full blur-[160px] pointer-events-none z-0"></div>
 
     <main class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 py-6 md:py-10 mb-24 lg:mb-12 lg:flex lg:gap-8 lg:items-start">
         
         <!-- ==========================================
-             ASIDE / SIDEBAR (100% Responsivo)
+             ASIDE / SIDEBAR (Con Efecto Bytes en Avatar + Botón CV)
         =========================================== -->
-        <aside class="sidebar bg-slate-900/80 backdrop-blur-2xl border border-slate-800/90 shadow-2xl rounded-3xl p-5 sm:p-6 lg:sticky lg:top-8 lg:w-80 xl:w-[340px] shrink-0 transition-all duration-500 mb-6 lg:mb-0" data-sidebar>
+        <aside class="sidebar bg-[#0b1120]/85 backdrop-blur-2xl border border-emerald-500/20 shadow-[0_0_50px_-15px_rgba(16,185,129,0.2)] rounded-3xl p-5 sm:p-6 lg:sticky lg:top-8 lg:w-80 xl:w-[345px] shrink-0 transition-all duration-500 mb-6 lg:mb-0" data-sidebar>
             
             <div class="sidebar-info relative flex lg:flex-col items-center gap-4 sm:gap-5">
-                <figure class="avatar-box relative bg-gradient-to-br from-cyan-500/20 to-blue-600/20 p-2 rounded-2xl border border-slate-700/60 shadow-inner shrink-0">
-                    <img src="https://i.postimg.cc/Ss8CBwXz/02623477ccafb861cbf47e2364e2889a-removebg-preview.png" alt="Sebastián Kevin Valero Gómez" class="w-16 h-16 sm:w-20 sm:h-20 lg:w-28 lg:h-28 object-cover rounded-xl">
-                    <span class="absolute -bottom-1 -right-1 w-4 h-4 bg-emerald-400 border-2 border-slate-900 rounded-full" title="Colegiado y Habilitado"></span>
+                
+                <!-- AVATAR CON BYTES CORRIENDO Y ESCÁNER LÁSER -->
+                <figure class="avatar-box relative w-20 h-20 sm:w-24 sm:h-24 lg:w-36 lg:h-36 rounded-2xl border border-emerald-500/40 shadow-[0_0_25px_rgba(16,185,129,0.25)] overflow-hidden shrink-0 bg-[#060b16] group">
+                    <!-- Canvas de lluvia de bytes / hex -->
+                    <canvas id="avatar-byte-canvas" class="absolute inset-0 w-full h-full opacity-80 pointer-events-none z-0"></canvas>
+                    
+                    <!-- Anillo radar sutil -->
+                    <div class="avatar-radar-ring absolute inset-1 rounded-xl border border-dashed border-emerald-400/30 pointer-events-none z-10"></div>
+
+                    <!-- Imagen de perfil -->
+                    <img src="https://i.postimg.cc/Ss8CBwXz/02623477ccafb861cbf47e2364e2889a-removebg-preview.png" alt="Sebastián Kevin Valero Gómez" class="relative z-20 w-full h-full object-cover rounded-xl transition-transform duration-500 group-hover:scale-105">
+                    
+                    <!-- Línea láser de escaneo -->
+                    <div class="laser-scanner absolute inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-emerald-400 to-transparent shadow-[0_0_12px_#10b981] z-30 pointer-events-none"></div>
+
+                    <!-- Badge de telemetría activa -->
+                    <span class="absolute bottom-1.5 right-1.5 z-30 flex h-3.5 w-3.5" title="Colegiado y Habilitado - Telemetría Online">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-3.5 w-3.5 bg-emerald-500 border-2 border-slate-950"></span>
+                    </span>
                 </figure>
 
                 <div class="info-content lg:text-center pr-12 lg:pr-0">
+                    <div class="inline-flex items-center gap-1.5 text-[10px] font-mono text-emerald-400/90 mb-1">
+                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                        <span>SYS.ONLINE // 0x401618</span>
+                    </div>
                     <h1 class="name text-base sm:text-lg xl:text-xl font-bold text-white tracking-tight mb-1">Sebastián Kevin Valero Gómez</h1>
-                    <p class="text-xs text-slate-300 font-medium mb-2">Ingeniero Mecatrónico</p>
+                    <p class="text-xs text-slate-300 font-medium mb-2.5">Ingeniero Mecatrónico</p>
                     <div class="flex flex-wrap lg:justify-center gap-1.5">
-                        <span class="text-[11px] font-mono font-medium text-emerald-400 bg-emerald-950/70 border border-emerald-800/60 px-2.5 py-0.5 rounded-full">CIP 401618 Habilitado</span>
-                        <span class="text-[11px] font-medium text-cyan-400 bg-cyan-950/70 border border-cyan-800/60 px-2.5 py-0.5 rounded-full">I+D+i & RF Supervisor</span>
+                        <span class="text-[11px] font-mono font-medium text-emerald-300 bg-emerald-950/80 border border-emerald-500/40 px-2.5 py-0.5 rounded-full">CIP 401618 Habilitado</span>
+                        <span class="text-[11px] font-medium text-violet-300 bg-violet-950/80 border border-violet-500/40 px-2.5 py-0.5 rounded-full">I+D+i & RF Supervisor</span>
                     </div>
                 </div>
 
                 <!-- Botón desplegable en móvil y tablet -->
-                <button type="button" class="info-more-btn lg:hidden absolute top-0 right-0 rounded-xl text-cyan-400 bg-slate-800/90 border border-slate-700 px-3 py-2 shadow-lg backdrop-blur-md transition-all hover:bg-cyan-500 hover:text-slate-950 flex items-center gap-1.5 text-xs font-medium" data-sidebar-btn>
+                <button type="button" class="info-more-btn lg:hidden absolute top-0 right-0 rounded-xl text-emerald-400 bg-slate-900/90 border border-emerald-500/30 px-3 py-2 shadow-lg backdrop-blur-md transition-all hover:bg-emerald-500 hover:text-slate-950 flex items-center gap-1.5 text-xs font-medium" data-sidebar-btn>
                     <span class="hidden sm:inline" data-sidebar-btn-text>Ficha</span>
                     <ion-icon name="chevron-down" class="text-base transition-transform duration-300" data-sidebar-icon></ion-icon>
                 </button>
             </div>
 
+            <!-- Botón de Descarga de CV (Siempre visible) -->
+            <div class="mt-5">
+                <a href="./CV Sebastian Valero Gomez 2k26.pdf" download="CV_Sebastian_Valero_Gomez_2026.pdf" class="w-full py-2.5 px-4 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-slate-950 font-semibold text-xs sm:text-sm flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(16,185,129,0.3)] hover:shadow-[0_0_28px_rgba(16,185,129,0.5)] transition-all">
+                    <ion-icon name="download-outline" class="text-lg"></ion-icon>
+                    <span>Descargar CV (PDF)</span>
+                </a>
+            </div>
+
             <!-- Información adicional desplegable en móvil / fija en desktop -->
             <div class="sidebar-info-more">
-                <div class="w-full h-[1px] bg-slate-800 my-5"></div>
+                <div class="w-full h-[1px] bg-slate-800/90 my-5"></div>
 
                 <!-- Mini KPIs rápidos -->
                 <div class="grid grid-cols-3 gap-2 mb-5 text-center">
-                    <div class="bg-slate-800/50 border border-slate-700/50 rounded-xl p-2">
-                        <p class="text-xs sm:text-sm font-bold text-cyan-400">+6 Años</p>
+                    <div class="bg-slate-900/70 border border-slate-800 rounded-xl p-2">
+                        <p class="text-xs sm:text-sm font-bold text-emerald-400 font-mono">+6 Años</p>
                         <p class="text-[10px] text-slate-400">Experiencia</p>
                     </div>
-                    <div class="bg-slate-800/50 border border-slate-700/50 rounded-xl p-2">
-                        <p class="text-xs sm:text-sm font-bold text-cyan-400">I+D / RF</p>
+                    <div class="bg-slate-900/70 border border-slate-800 rounded-xl p-2">
+                        <p class="text-xs sm:text-sm font-bold text-violet-400 font-mono">I+D / RF</p>
                         <p class="text-[10px] text-slate-400">HUNTER Perú</p>
                     </div>
-                    <div class="bg-slate-800/50 border border-slate-700/50 rounded-xl p-2">
-                        <p class="text-xs sm:text-sm font-bold text-cyan-400">78 Torres</p>
+                    <div class="bg-slate-900/70 border border-slate-800 rounded-xl p-2">
+                        <p class="text-xs sm:text-sm font-bold text-amber-400 font-mono">78 Torres</p>
                         <p class="text-[10px] text-slate-400">Red Nacional</p>
                     </div>
                 </div>
 
                 <ul class="contacts-list grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-3.5">
                     <li class="contact-item flex items-center gap-3">
-                        <div class="icon-box bg-slate-800/90 border border-slate-700/80 w-9 h-9 rounded-xl flex items-center justify-center text-cyan-400 shadow-md shrink-0">
+                        <div class="icon-box bg-slate-900 border border-emerald-500/30 w-9 h-9 rounded-xl flex items-center justify-center text-emerald-400 shadow-md shrink-0">
                             <ion-icon name="mail-outline"></ion-icon>
                         </div>
                         <div class="contact-info overflow-hidden">
                             <p class="text-[10px] uppercase tracking-wider text-slate-400 font-semibold">Correo Electrónico</p>
-                            <a href="mailto:sebastianvalerogomez@hotmail.com" class="text-xs text-slate-200 hover:text-cyan-400 transition-colors block truncate">sebastianvalerogomez@hotmail.com</a>
+                            <a href="mailto:sebastianvalerogomez@hotmail.com" class="text-xs text-slate-200 hover:text-emerald-400 transition-colors block truncate">sebastianvalerogomez@hotmail.com</a>
                         </div>
                     </li>
 
                     <li class="contact-item flex items-center gap-3">
-                        <div class="icon-box bg-slate-800/90 border border-slate-700/80 w-9 h-9 rounded-xl flex items-center justify-center text-cyan-400 shadow-md shrink-0">
+                        <div class="icon-box bg-slate-900 border border-emerald-500/30 w-9 h-9 rounded-xl flex items-center justify-center text-emerald-400 shadow-md shrink-0">
                             <ion-icon name="phone-portrait-outline"></ion-icon>
                         </div>
                         <div class="contact-info">
                             <p class="text-[10px] uppercase tracking-wider text-slate-400 font-semibold">Teléfono / WhatsApp</p>
-                            <a href="tel:+51985855171" class="text-xs text-slate-200 hover:text-cyan-400 transition-colors">+51 985 855 171</a>
+                            <a href="tel:+51985855171" class="text-xs text-slate-200 hover:text-emerald-400 transition-colors font-mono">+51 985 855 171</a>
                         </div>
                     </li>
 
                     <li class="contact-item flex items-center gap-3">
-                        <div class="icon-box bg-slate-800/90 border border-slate-700/80 w-9 h-9 rounded-xl flex items-center justify-center text-cyan-400 shadow-md shrink-0">
+                        <div class="icon-box bg-slate-900 border border-violet-500/30 w-9 h-9 rounded-xl flex items-center justify-center text-violet-400 shadow-md shrink-0">
                             <ion-icon name="ribbon-outline"></ion-icon>
                         </div>
                         <div class="contact-info">
@@ -99,17 +129,17 @@
                     </li>
 
                     <li class="contact-item flex items-center gap-3">
-                        <div class="icon-box bg-slate-800/90 border border-slate-700/80 w-9 h-9 rounded-xl flex items-center justify-center text-cyan-400 shadow-md shrink-0">
+                        <div class="icon-box bg-slate-900 border border-violet-500/30 w-9 h-9 rounded-xl flex items-center justify-center text-violet-400 shadow-md shrink-0">
                             <ion-icon name="language-outline"></ion-icon>
                         </div>
                         <div class="contact-info">
                             <p class="text-[10px] uppercase tracking-wider text-slate-400 font-semibold">Idiomas & Conducción</p>
-                            <p class="text-xs text-slate-200">Inglés Técnico (Intermedio) · Lic. Vigente (+8 años)</p>
+                            <p class="text-xs text-slate-200">Inglés Técnico (Intermedio) · Lic. A-I (+8 años)</p>
                         </div>
                     </li>
 
                     <li class="contact-item flex items-center gap-3">
-                        <div class="icon-box bg-slate-800/90 border border-slate-700/80 w-9 h-9 rounded-xl flex items-center justify-center text-cyan-400 shadow-md shrink-0">
+                        <div class="icon-box bg-slate-900 border border-emerald-500/30 w-9 h-9 rounded-xl flex items-center justify-center text-emerald-400 shadow-md shrink-0">
                             <ion-icon name="location-outline"></ion-icon>
                         </div>
                         <div class="contact-info">
@@ -119,12 +149,12 @@
                     </li>
                 </ul>
 
-                <div class="w-full h-[1px] bg-slate-800 my-5"></div>
+                <div class="w-full h-[1px] bg-slate-800/90 my-5"></div>
 
                 <ul class="social-list flex justify-center gap-3">
-                    <li><a href="https://www.linkedin.com" target="_blank" title="LinkedIn" class="text-slate-400 hover:text-cyan-400 hover:border-cyan-500/50 text-lg transition-all p-2.5 bg-slate-800/60 rounded-xl border border-slate-700/60 flex items-center justify-center"><ion-icon name="logo-linkedin"></ion-icon></a></li>
-                    <li><a href="mailto:sebastianvalerogomez@hotmail.com" title="Enviar Correo" class="text-slate-400 hover:text-cyan-400 hover:border-cyan-500/50 text-lg transition-all p-2.5 bg-slate-800/60 rounded-xl border border-slate-700/60 flex items-center justify-center"><ion-icon name="mail-outline"></ion-icon></a></li>
-                    <li><a href="https://wa.me/51985855171" target="_blank" title="WhatsApp" class="text-slate-400 hover:text-cyan-400 hover:border-cyan-500/50 text-lg transition-all p-2.5 bg-slate-800/60 rounded-xl border border-slate-700/60 flex items-center justify-center"><ion-icon name="logo-whatsapp"></ion-icon></a></li>
+                    <li><a href="https://www.linkedin.com" target="_blank" title="LinkedIn" class="text-slate-400 hover:text-emerald-400 hover:border-emerald-500/50 text-lg transition-all p-2.5 bg-slate-900/80 rounded-xl border border-slate-800 flex items-center justify-center"><ion-icon name="logo-linkedin"></ion-icon></a></li>
+                    <li><a href="mailto:sebastianvalerogomez@hotmail.com" title="Enviar Correo" class="text-slate-400 hover:text-emerald-400 hover:border-emerald-500/50 text-lg transition-all p-2.5 bg-slate-900/80 rounded-xl border border-slate-800 flex items-center justify-center"><ion-icon name="mail-outline"></ion-icon></a></li>
+                    <li><a href="https://wa.me/51985855171" target="_blank" title="WhatsApp" class="text-slate-400 hover:text-emerald-400 hover:border-emerald-500/50 text-lg transition-all p-2.5 bg-slate-900/80 rounded-xl border border-slate-800 flex items-center justify-center"><ion-icon name="logo-whatsapp"></ion-icon></a></li>
                 </ul>
             </div>
         </aside>
@@ -132,16 +162,16 @@
         <!-- ==========================================
              MAIN CONTENT CONTAINER
         =========================================== -->
-        <div class="main-content flex-1 min-w-0 bg-slate-900/80 backdrop-blur-2xl border border-slate-800/90 shadow-2xl rounded-3xl p-5 sm:p-8 md:p-10 relative lg:pt-16">
+        <div class="main-content flex-1 min-w-0 bg-[#0b1120]/85 backdrop-blur-2xl border border-emerald-500/20 shadow-[0_0_50px_-15px_rgba(139,92,246,0.15)] rounded-3xl p-5 sm:p-8 md:p-10 relative lg:pt-16">
             
             <!-- NAVBAR (Dock inferior en móvil / Pestaña superior en Desktop) -->
-            <nav class="navbar fixed bottom-0 left-0 w-full bg-slate-900/95 backdrop-blur-xl border-t border-slate-800 lg:absolute lg:top-0 lg:right-0 lg:left-auto lg:bottom-auto lg:w-auto lg:border-t-0 lg:border-b lg:border-l lg:rounded-bl-3xl lg:rounded-tr-3xl lg:px-6 lg:py-2.5 z-50 shadow-2xl">
+            <nav class="navbar fixed bottom-0 left-0 w-full bg-[#070b14]/95 backdrop-blur-xl border-t border-emerald-500/20 lg:absolute lg:top-0 lg:right-0 lg:left-auto lg:bottom-auto lg:w-auto lg:border-t-0 lg:border-b lg:border-l lg:rounded-bl-3xl lg:rounded-tr-3xl lg:px-6 lg:py-2.5 z-50 shadow-2xl">
                 <ul class="navbar-list flex justify-around items-center lg:gap-5 py-2.5 px-2">
-                    <li><button type="button" class="navbar-link active text-xs sm:text-sm font-medium text-slate-400 hover:text-cyan-400 transition-colors px-2 py-1" data-target="about">Perfil</button></li>
-                    <li><button type="button" class="navbar-link text-xs sm:text-sm font-medium text-slate-400 hover:text-cyan-400 transition-colors px-2 py-1" data-target="resume">Experiencia & CV</button></li>
-                    <li><button type="button" class="navbar-link text-xs sm:text-sm font-medium text-slate-400 hover:text-cyan-400 transition-colors px-2 py-1" data-target="skills">Stack & Certificaciones</button></li>
-                    <li><button type="button" class="navbar-link text-xs sm:text-sm font-medium text-slate-400 hover:text-cyan-400 transition-colors px-2 py-1" data-target="portfolio">Proyectos</button></li>
-                    <li><button type="button" class="navbar-link text-xs sm:text-sm font-medium text-slate-400 hover:text-cyan-400 transition-colors px-2 py-1" data-target="contact">Contacto</button></li>
+                    <li><button type="button" class="navbar-link active text-xs sm:text-sm font-medium text-slate-400 hover:text-emerald-400 transition-colors px-2 py-1" data-target="about">Perfil</button></li>
+                    <li><button type="button" class="navbar-link text-xs sm:text-sm font-medium text-slate-400 hover:text-emerald-400 transition-colors px-2 py-1" data-target="resume">Experiencia & CV</button></li>
+                    <li><button type="button" class="navbar-link text-xs sm:text-sm font-medium text-slate-400 hover:text-emerald-400 transition-colors px-2 py-1" data-target="skills">Stack & Certificaciones</button></li>
+                    <li><button type="button" class="navbar-link text-xs sm:text-sm font-medium text-slate-400 hover:text-emerald-400 transition-colors px-2 py-1" data-target="portfolio">Proyectos</button></li>
+                    <li><button type="button" class="navbar-link text-xs sm:text-sm font-medium text-slate-400 hover:text-emerald-400 transition-colors px-2 py-1" data-target="contact">Contacto</button></li>
                 </ul>
             </nav>
 
@@ -150,10 +180,12 @@
             =========================================== -->
             <article class="page-section active space-y-8" id="page-about" data-page="about">
                 <header>
-                    <div class="inline-flex items-center gap-2 text-xs font-mono text-cyan-400 bg-cyan-950/60 border border-cyan-800/50 px-3 py-1 rounded-full mb-3">
-                        <span>I+D+i</span> • <span>Automatización Industrial</span> • <span>Sistemas Embebidos</span> • <span>Electrónica Aplicada</span>
+                    <!-- Barra superior estilo terminal de telemetría -->
+                    <div class="inline-flex flex-wrap items-center gap-2 text-[11px] font-mono text-emerald-400 bg-emerald-950/50 border border-emerald-500/30 px-3 py-1 rounded-full mb-3">
+                        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                        <span>[I+D+i]</span> • <span>[AUTOMATIZACIÓN INDUSTRIAL]</span> • <span>[SISTEMAS EMBEBIDOS]</span> • <span>[RF & TELEMETRÍA]</span>
                     </div>
-                    <h2 class="text-2xl sm:text-3xl font-bold text-white relative pb-3 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-14 after:h-1 after:bg-gradient-to-r after:from-cyan-400 after:to-blue-500 after:rounded-full">Perfil Profesional</h2>
+                    <h2 class="text-2xl sm:text-3xl font-bold text-white relative pb-3 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-16 after:h-1 after:bg-gradient-to-r after:from-emerald-400 after:to-violet-500 after:rounded-full">Perfil Profesional</h2>
                 </header>
 
                 <section class="text-slate-300 font-light leading-relaxed space-y-4 text-sm sm:text-base">
@@ -161,60 +193,60 @@
                         <strong class="text-white font-medium">Ingeniero Mecatrónico colegiado y habilitado (CIP 401618)</strong>, con más de 6 años de experiencia liderando el diseño, desarrollo e implementación de soluciones tecnológicas para los sectores <strong class="text-white font-medium">minero, automotriz, industrial, transporte y de telecomunicaciones</strong>, participando en proyectos de alcance nacional e internacional orientados a la innovación, la eficiencia operativa y la transformación tecnológica.
                     </p>
                     <p>
-                        Especializado en <strong class="text-cyan-400 font-medium">Investigación y Desarrollo (I+D), Internet de las Cosas (IoT), telemetría inteligente, infraestructura de radiofrecuencia (RF), automatización industrial, sistemas embebidos y electrónica aplicada</strong>. Gestiono proyectos de extremo a extremo: desde la conceptualización, diseño de PCB/impresión 3D y validación técnica hasta la puesta en operación mediante protocolos <span class="font-mono text-xs bg-slate-800 px-1.5 py-0.5 rounded text-cyan-300">CAN Bus</span>, <span class="font-mono text-xs bg-slate-800 px-1.5 py-0.5 rounded text-cyan-300">RS-232/RS-485</span>, <span class="font-mono text-xs bg-slate-800 px-1.5 py-0.5 rounded text-cyan-300">MQTT</span>, <span class="font-mono text-xs bg-slate-800 px-1.5 py-0.5 rounded text-cyan-300">TCP/IP</span>, <span class="font-mono text-xs bg-slate-800 px-1.5 py-0.5 rounded text-cyan-300">UDP</span> y comunicaciones por radiofrecuencia y satélite.
+                        Especializado en <strong class="text-emerald-400 font-medium">Investigación y Desarrollo (I+D), Internet de las Cosas (IoT), telemetría inteligente, infraestructura de radiofrecuencia (RF), automatización industrial, sistemas embebidos y electrónica aplicada</strong>. Gestiono proyectos desde la conceptualización, diseño electrónico/impresión 3D y validación técnica hasta la puesta en operación mediante protocolos <span class="font-mono text-xs bg-slate-900 border border-emerald-500/30 px-1.5 py-0.5 rounded text-emerald-300">CAN Bus</span>, <span class="font-mono text-xs bg-slate-900 border border-emerald-500/30 px-1.5 py-0.5 rounded text-emerald-300">RS-232/RS-485</span>, <span class="font-mono text-xs bg-slate-900 border border-emerald-500/30 px-1.5 py-0.5 rounded text-emerald-300">MQTT</span>, <span class="font-mono text-xs bg-slate-900 border border-emerald-500/30 px-1.5 py-0.5 rounded text-emerald-300">TCP/IP</span>, <span class="font-mono text-xs bg-slate-900 border border-emerald-500/30 px-1.5 py-0.5 rounded text-emerald-300">UDP</span> y enlaces de radiofrecuencia y satélite.
                     </p>
                     <p>
-                        Cuento con sólida experiencia liderando procesos de <strong class="text-white font-medium">homologación y certificación de nuevas tecnologías bajo normativa del MTC / VUCE</strong>, supervisión nacional de redes de radiofrecuencia, evaluación técnico-económica de proyectos y soporte especializado junto a fabricantes globales como <strong class="text-white font-medium">Volvo, Scania, Toyota, Hyundai, Hino, Fuso e Isuzu</strong>.
+                        Amplia experiencia liderando procesos de <strong class="text-white font-medium">homologación e incorporación de nuevas tecnologías bajo normativa del MTC / VUCE</strong>, supervisión nacional de 78 estaciones de radiofrecuencia, evaluación técnico-económica de proyectos y soporte especializado colaborando con fabricantes como <strong class="text-white font-medium">Volvo, Scania, Toyota, Hyundai, Hino, Fuso e Isuzu</strong>.
                     </p>
                 </section>
 
-                <!-- 10 Áreas de Especialización del CV -->
+                <!-- Áreas de Especialización -->
                 <section class="space-y-4">
                     <h3 class="text-lg sm:text-xl font-semibold text-white">Áreas de Especialización</h3>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div class="bg-slate-800/40 border border-slate-700/60 p-4 sm:p-5 rounded-2xl flex gap-3.5 items-start hover:border-cyan-500/50 transition-all">
-                            <div class="bg-cyan-500/10 text-cyan-400 p-2.5 rounded-xl border border-cyan-500/20 text-xl shrink-0"><ion-icon name="bulb-outline"></ion-icon></div>
+                        <div class="cyber-card bg-slate-900/50 border border-slate-800 p-4 sm:p-5 rounded-2xl flex gap-3.5 items-start transition-all">
+                            <div class="bg-emerald-500/10 text-emerald-400 p-2.5 rounded-xl border border-emerald-500/30 text-xl shrink-0"><ion-icon name="bulb-outline"></ion-icon></div>
                             <div>
                                 <h4 class="text-sm sm:text-base font-semibold text-white">Investigación, Desarrollo e Innovación (I+D+i)</h4>
                                 <p class="text-slate-400 text-xs font-light mt-1">Diseño de prototipos funcionales, simuladores de comunicación, impresión 3D y validación de nuevos productos electrónicos.</p>
                             </div>
                         </div>
 
-                        <div class="bg-slate-800/40 border border-slate-700/60 p-4 sm:p-5 rounded-2xl flex gap-3.5 items-start hover:border-cyan-500/50 transition-all">
-                            <div class="bg-cyan-500/10 text-cyan-400 p-2.5 rounded-xl border border-cyan-500/20 text-xl shrink-0"><ion-icon name="radio-outline"></ion-icon></div>
+                        <div class="cyber-card bg-slate-900/50 border border-slate-800 p-4 sm:p-5 rounded-2xl flex gap-3.5 items-start transition-all">
+                            <div class="bg-violet-500/10 text-violet-400 p-2.5 rounded-xl border border-violet-500/30 text-xl shrink-0"><ion-icon name="radio-outline"></ion-icon></div>
                             <div>
                                 <h4 class="text-sm sm:text-base font-semibold text-white">IoT, Telemetría Inteligente & Redes RF</h4>
                                 <p class="text-slate-400 text-xs font-light mt-1">Monitoreo en tiempo real con GPS, GPRS/GSM y despliegue nacional de estaciones de radiofrecuencia (LOJACK, DETEKTOR, RTK, VLU, SLD).</p>
                             </div>
                         </div>
 
-                        <div class="bg-slate-800/40 border border-slate-700/60 p-4 sm:p-5 rounded-2xl flex gap-3.5 items-start hover:border-cyan-500/50 transition-all">
-                            <div class="bg-cyan-500/10 text-cyan-400 p-2.5 rounded-xl border border-cyan-500/20 text-xl shrink-0"><ion-icon name="car-sport-outline"></ion-icon></div>
+                        <div class="cyber-card bg-slate-900/50 border border-slate-800 p-4 sm:p-5 rounded-2xl flex gap-3.5 items-start transition-all">
+                            <div class="bg-emerald-500/10 text-emerald-400 p-2.5 rounded-xl border border-emerald-500/30 text-xl shrink-0"><ion-icon name="car-sport-outline"></ion-icon></div>
                             <div>
                                 <h4 class="text-sm sm:text-base font-semibold text-white">Electrónica Vehicular, CAN Bus & ADAS</h4>
                                 <p class="text-slate-400 text-xs font-light mt-1">Integración con ECUs (12V/24V, híbridos y eléctricos), cámaras inteligentes ADAS, DashCams y sistemas de bloqueo electrónico.</p>
                             </div>
                         </div>
 
-                        <div class="bg-slate-800/40 border border-slate-700/60 p-4 sm:p-5 rounded-2xl flex gap-3.5 items-start hover:border-cyan-500/50 transition-all">
-                            <div class="bg-cyan-500/10 text-cyan-400 p-2.5 rounded-xl border border-cyan-500/20 text-xl shrink-0"><ion-icon name="shield-checkmark-outline"></ion-icon></div>
+                        <div class="cyber-card bg-slate-900/50 border border-slate-800 p-4 sm:p-5 rounded-2xl flex gap-3.5 items-start transition-all">
+                            <div class="bg-violet-500/10 text-violet-400 p-2.5 rounded-xl border border-violet-500/30 text-xl shrink-0"><ion-icon name="shield-checkmark-outline"></ion-icon></div>
                             <div>
                                 <h4 class="text-sm sm:text-base font-semibold text-white">Homologación & Certificación MTC / VUCE</h4>
                                 <p class="text-slate-400 text-xs font-light mt-1">Liderazgo normativo y técnico ante el Ministerio de Transportes y Comunicaciones para dispositivos RF, radares y terminales satelitales.</p>
                             </div>
                         </div>
 
-                        <div class="bg-slate-800/40 border border-slate-700/60 p-4 sm:p-5 rounded-2xl flex gap-3.5 items-start hover:border-cyan-500/50 transition-all">
-                            <div class="bg-cyan-500/10 text-cyan-400 p-2.5 rounded-xl border border-cyan-500/20 text-xl shrink-0"><ion-icon name="hardware-chip-outline"></ion-icon></div>
+                        <div class="cyber-card bg-slate-900/50 border border-slate-800 p-4 sm:p-5 rounded-2xl flex gap-3.5 items-start transition-all">
+                            <div class="bg-emerald-500/10 text-emerald-400 p-2.5 rounded-xl border border-emerald-500/30 text-xl shrink-0"><ion-icon name="hardware-chip-outline"></ion-icon></div>
                             <div>
                                 <h4 class="text-sm sm:text-base font-semibold text-white">Comunicaciones Industriales & Hardware-Software</h4>
                                 <p class="text-slate-400 text-xs font-light mt-1">Interoperabilidad bajo CAN Bus, RS-232, RS-485, MQTT, HTTP, TCP/IP y UDP con grupos electrógenos, sensores y plataformas IoT.</p>
                             </div>
                         </div>
 
-                        <div class="bg-slate-800/40 border border-slate-700/60 p-4 sm:p-5 rounded-2xl flex gap-3.5 items-start hover:border-cyan-500/50 transition-all">
-                            <div class="bg-cyan-500/10 text-cyan-400 p-2.5 rounded-xl border border-cyan-500/20 text-xl shrink-0"><ion-icon name="trending-up-outline"></ion-icon></div>
+                        <div class="cyber-card bg-slate-900/50 border border-slate-800 p-4 sm:p-5 rounded-2xl flex gap-3.5 items-start transition-all">
+                            <div class="bg-violet-500/10 text-violet-400 p-2.5 rounded-xl border border-violet-500/30 text-xl shrink-0"><ion-icon name="trending-up-outline"></ion-icon></div>
                             <div>
                                 <h4 class="text-sm sm:text-base font-semibold text-white">Evaluación Técnico-Económica & Gestión de Proyectos</h4>
                                 <p class="text-slate-400 text-xs font-light mt-1">Análisis costo-beneficio, optimización de recursos, liderazgo de equipos multidisciplinarios y capacitación técnica especializada.</p>
@@ -227,13 +259,13 @@
                 <section class="space-y-3">
                     <h3 class="text-lg sm:text-xl font-semibold text-white">Competencias Profesionales</h3>
                     <div class="flex flex-wrap gap-2">
-                        <span class="text-xs bg-slate-800/80 border border-slate-700 text-slate-200 px-3 py-1.5 rounded-xl">Liderazgo y ejecución de procesos tecnológicos</span>
-                        <span class="text-xs bg-slate-800/80 border border-slate-700 text-slate-200 px-3 py-1.5 rounded-xl">Orientación a la innovación e I+D</span>
-                        <span class="text-xs bg-slate-800/80 border border-slate-700 text-slate-200 px-3 py-1.5 rounded-xl">Resolución de problemas complejos</span>
-                        <span class="text-xs bg-slate-800/80 border border-slate-700 text-slate-200 px-3 py-1.5 rounded-xl">Trabajo en equipos multidisciplinarios</span>
-                        <span class="text-xs bg-slate-800/80 border border-slate-700 text-slate-200 px-3 py-1.5 rounded-xl">Comunicación técnica y capacitación de personal</span>
-                        <span class="text-xs bg-slate-800/80 border border-slate-700 text-slate-200 px-3 py-1.5 rounded-xl">Aprendizaje rápido y adaptación tecnológica</span>
-                        <span class="text-xs bg-slate-800/80 border border-slate-700 text-slate-200 px-3 py-1.5 rounded-xl">Orientación a resultados y mejora continua</span>
+                        <span class="text-xs bg-slate-900/90 border border-emerald-500/30 text-emerald-300 px-3 py-1.5 rounded-xl">Liderazgo y ejecución de procesos tecnológicos</span>
+                        <span class="text-xs bg-slate-900/90 border border-violet-500/30 text-violet-300 px-3 py-1.5 rounded-xl">Orientación a la innovación e I+D</span>
+                        <span class="text-xs bg-slate-900/90 border border-emerald-500/30 text-emerald-300 px-3 py-1.5 rounded-xl">Resolución de problemas complejos</span>
+                        <span class="text-xs bg-slate-900/90 border border-violet-500/30 text-violet-300 px-3 py-1.5 rounded-xl">Trabajo en equipos multidisciplinarios</span>
+                        <span class="text-xs bg-slate-900/90 border border-emerald-500/30 text-emerald-300 px-3 py-1.5 rounded-xl">Comunicación técnica y capacitación de personal</span>
+                        <span class="text-xs bg-slate-900/90 border border-violet-500/30 text-violet-300 px-3 py-1.5 rounded-xl">Aprendizaje rápido y adaptación tecnológica</span>
+                        <span class="text-xs bg-slate-900/90 border border-emerald-500/30 text-emerald-300 px-3 py-1.5 rounded-xl">Orientación a resultados y mejora continua</span>
                     </div>
                 </section>
             </article>
@@ -243,13 +275,13 @@
             =========================================== -->
             <article class="page-section space-y-10" id="page-resume" data-page="resume">
                 <header>
-                    <h2 class="text-2xl sm:text-3xl font-bold text-white relative pb-3 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-14 after:h-1 after:bg-gradient-to-r after:from-cyan-400 after:to-blue-500 after:rounded-full">Experiencia Profesional & Formación</h2>
+                    <h2 class="text-2xl sm:text-3xl font-bold text-white relative pb-3 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-16 after:h-1 after:bg-gradient-to-r after:from-emerald-400 after:to-violet-500 after:rounded-full">Experiencia Profesional & Formación</h2>
                 </header>
 
                 <!-- Experiencia Profesional -->
                 <section class="space-y-6">
                     <div class="flex items-center gap-3">
-                        <div class="bg-slate-800 border border-slate-700 w-10 h-10 rounded-xl flex items-center justify-center text-cyan-400 text-lg">
+                        <div class="bg-slate-900 border border-emerald-500/30 w-10 h-10 rounded-xl flex items-center justify-center text-emerald-400 text-lg">
                             <ion-icon name="briefcase-outline"></ion-icon>
                         </div>
                         <h3 class="text-xl font-semibold text-white">Experiencia Profesional</h3>
@@ -259,18 +291,18 @@
                         
                         <!-- 1. AUTOSAFE / HUNTER -->
                         <li class="relative">
-                            <span class="absolute -left-[31px] top-1.5 w-3.5 h-3.5 bg-cyan-400 rounded-full border-4 border-slate-900 shadow-[0_0_12px_#22d3ee]"></span>
+                            <span class="absolute -left-[31px] top-1.5 w-3.5 h-3.5 bg-emerald-400 rounded-full border-4 border-slate-950 shadow-[0_0_12px_#10b981]"></span>
                             <div class="flex flex-wrap items-center justify-between gap-2 mb-1">
                                 <div>
                                     <h4 class="text-base sm:text-lg font-bold text-white">Ingeniero de Investigación y Desarrollo Tecnológico (I+D) & Supervisor RF</h4>
-                                    <p class="text-xs sm:text-sm font-medium text-cyan-400">AUTOSAFE S.A.C. — HUNTER PERÚ</p>
+                                    <p class="text-xs sm:text-sm font-medium text-emerald-400">AUTOSAFE S.A.C. — HUNTER PERÚ</p>
                                 </div>
-                                <span class="text-xs text-cyan-300 bg-cyan-950/70 border border-cyan-800/60 px-3 py-1 rounded-full font-mono">Febrero 2022 — Actualidad</span>
+                                <span class="text-xs text-emerald-300 bg-emerald-950/70 border border-emerald-500/40 px-3 py-1 rounded-full font-mono">Febrero 2022 — Actualidad</span>
                             </div>
                             <p class="text-slate-300 text-xs sm:text-sm font-light leading-relaxed mt-2 mb-3">
-                                Responsable de la investigación, evaluación, diseño, desarrollo e implementación de soluciones tecnológicas para los sectores minero, automotriz, industrial, transporte y telecomunicaciones, así como la supervisión de la infraestructura nacional de radiofrecuencia.
+                                Responsable de la investigación, evaluación, diseño, desarrollo e implementación de soluciones tecnológicas para los sectores minero, automotriz, industrial, transporte y telecomunicaciones, así como la supervisión operativa de la infraestructura nacional de radiofrecuencia.
                             </p>
-                            <ul class="list-disc list-inside text-slate-300 text-xs sm:text-sm font-light space-y-1.5 marker:text-cyan-400">
+                            <ul class="list-disc list-inside text-slate-300 text-xs sm:text-sm font-light space-y-1.5 marker:text-emerald-400">
                                 <li>Liderar el desarrollo de soluciones de seguridad electrónica, rastreo inteligente, telemetría e IoT adaptadas a requerimientos operativos críticos.</li>
                                 <li>Diseñar e integrar hardware y software para plataformas de monitoreo mediante <strong class="text-white font-normal">GPS, CAN Bus, GPRS/GSM y Radiofrecuencia</strong> (78 torres fijas a nivel nacional).</li>
                                 <li>Investigar e incorporar nuevas tecnologías mediante análisis técnico-económico, evaluación costo-beneficio y pruebas funcionales.</li>
@@ -284,15 +316,15 @@
 
                         <!-- 2. AJE MÉXICO -->
                         <li class="relative">
-                            <span class="absolute -left-[31px] top-1.5 w-3.5 h-3.5 bg-blue-500 rounded-full border-4 border-slate-900"></span>
+                            <span class="absolute -left-[31px] top-1.5 w-3.5 h-3.5 bg-violet-500 rounded-full border-4 border-slate-950 shadow-[0_0_10px_#8b5cf6]"></span>
                             <div class="flex flex-wrap items-center justify-between gap-2 mb-1">
                                 <div>
                                     <h4 class="text-base sm:text-lg font-bold text-white">Practicante Preprofesional de Ingeniería Mecatrónica</h4>
-                                    <p class="text-xs sm:text-sm font-medium text-blue-400">AJE MÉXICO — BIG COLA (Puebla, México)</p>
+                                    <p class="text-xs sm:text-sm font-medium text-violet-400">AJE MÉXICO — BIG COLA (Puebla, México)</p>
                                 </div>
-                                <span class="text-xs text-slate-300 bg-slate-800 border border-slate-700 px-3 py-1 rounded-full font-mono">Setiembre 2019 — Diciembre 2019</span>
+                                <span class="text-xs text-slate-300 bg-slate-900 border border-slate-700 px-3 py-1 rounded-full font-mono">Setiembre 2019 — Diciembre 2019</span>
                             </div>
-                            <ul class="list-disc list-inside text-slate-300 text-xs sm:text-sm font-light space-y-1.5 mt-2 marker:text-blue-400">
+                            <ul class="list-disc list-inside text-slate-300 text-xs sm:text-sm font-light space-y-1.5 mt-2 marker:text-violet-400">
                                 <li>Supervisión y optimización de procesos de producción, aseguramiento de calidad y mantenimiento industrial.</li>
                                 <li>Análisis de variables operativas y desempeño de equipos para reducir tiempos de inactividad mediante mantenimiento predictivo.</li>
                                 <li><strong class="text-white font-normal">Logro destacado:</strong> Implementación y validación técnica de un sistema de lubricación industrial basado en <strong class="text-white font-normal">nanotecnología</strong>, reduciendo el desgaste mecánico y extendiendo la vida útil de componentes críticos.</li>
@@ -301,13 +333,13 @@
 
                         <!-- 3. GRUPO FERRAN'D -->
                         <li class="relative">
-                            <span class="absolute -left-[31px] top-1.5 w-3.5 h-3.5 bg-slate-500 rounded-full border-4 border-slate-900"></span>
+                            <span class="absolute -left-[31px] top-1.5 w-3.5 h-3.5 bg-slate-500 rounded-full border-4 border-slate-950"></span>
                             <div class="flex flex-wrap items-center justify-between gap-2 mb-1">
                                 <div>
                                     <h4 class="text-base sm:text-lg font-bold text-white">Practicante de Ingeniería Mecatrónica</h4>
                                     <p class="text-xs sm:text-sm font-medium text-slate-400">GRUPO FERRAN'D S.A.C.</p>
                                 </div>
-                                <span class="text-xs text-slate-300 bg-slate-800 border border-slate-700 px-3 py-1 rounded-full font-mono">Octubre 2018 — Agosto 2019</span>
+                                <span class="text-xs text-slate-300 bg-slate-900 border border-slate-700 px-3 py-1 rounded-full font-mono">Octubre 2018 — Agosto 2019</span>
                             </div>
                             <ul class="list-disc list-inside text-slate-300 text-xs sm:text-sm font-light space-y-1.5 mt-2 marker:text-slate-400">
                                 <li>Mantenimiento preventivo y correctivo de equipos industriales (rodamientos, sistemas de lubricación, cableado eléctrico y ensamblaje).</li>
@@ -318,13 +350,13 @@
 
                         <!-- 4. CLÍNICA DENTAL SANTA APOLONIA -->
                         <li class="relative">
-                            <span class="absolute -left-[31px] top-1.5 w-3.5 h-3.5 bg-slate-600 rounded-full border-4 border-slate-900"></span>
+                            <span class="absolute -left-[31px] top-1.5 w-3.5 h-3.5 bg-slate-600 rounded-full border-4 border-slate-950"></span>
                             <div class="flex flex-wrap items-center justify-between gap-2 mb-1">
                                 <div>
                                     <h4 class="text-base sm:text-lg font-bold text-white">Ingeniero de Mantenimiento de Equipos de Odontología (Part Time)</h4>
                                     <p class="text-xs sm:text-sm font-medium text-slate-400">CLÍNICA DENTAL SANTA APOLONIA</p>
                                 </div>
-                                <span class="text-xs text-slate-300 bg-slate-800 border border-slate-700 px-3 py-1 rounded-full font-mono">Enero 2017 — Agosto 2018</span>
+                                <span class="text-xs text-slate-300 bg-slate-900 border border-slate-700 px-3 py-1 rounded-full font-mono">Enero 2017 — Agosto 2018</span>
                             </div>
                             <ul class="list-disc list-inside text-slate-300 text-xs sm:text-sm font-light space-y-1.5 mt-2 marker:text-slate-500">
                                 <li>Mantenimiento preventivo y correctivo de unidades odontológicas, sistemas neumáticos, líneas de presión y válvulas.</li>
@@ -339,15 +371,15 @@
                 <!-- Formación Académica -->
                 <section class="space-y-6">
                     <div class="flex items-center gap-3">
-                        <div class="bg-slate-800 border border-slate-700 w-10 h-10 rounded-xl flex items-center justify-center text-cyan-400 text-lg">
+                        <div class="bg-slate-900 border border-emerald-500/30 w-10 h-10 rounded-xl flex items-center justify-center text-emerald-400 text-lg">
                             <ion-icon name="school-outline"></ion-icon>
                         </div>
                         <h3 class="text-xl font-semibold text-white">Formación Académica</h3>
                     </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-                        <div class="bg-slate-800/40 border border-slate-700/60 p-5 rounded-2xl space-y-2">
-                            <span class="text-xs font-mono text-cyan-400">Marzo 2015 — Diciembre 2020</span>
+                        <div class="cyber-card bg-slate-900/50 border border-slate-800 p-5 rounded-2xl space-y-2">
+                            <span class="text-xs font-mono text-emerald-400">Marzo 2015 — Diciembre 2020</span>
                             <h4 class="text-base font-bold text-white">Universidad Continental (UC)</h4>
                             <p class="text-xs sm:text-sm text-slate-200 font-medium">Ingeniería Mecatrónica — CIP 401618</p>
                             <ul class="text-xs text-slate-400 space-y-1 pt-1">
@@ -357,8 +389,8 @@
                             </ul>
                         </div>
 
-                        <div class="bg-slate-800/40 border border-slate-700/60 p-5 rounded-2xl space-y-2">
-                            <span class="text-xs font-mono text-blue-400">Junio 2019 — Diciembre 2019</span>
+                        <div class="cyber-card bg-slate-900/50 border border-slate-800 p-5 rounded-2xl space-y-2">
+                            <span class="text-xs font-mono text-violet-400">Junio 2019 — Diciembre 2019</span>
                             <h4 class="text-base font-bold text-white">Universidad Tecnológica de Huejotzingo (México)</h4>
                             <p class="text-xs sm:text-sm text-slate-200 font-medium">Pasantía Universitaria Internacional</p>
                             <p class="text-xs text-slate-400 leading-relaxed pt-1">
@@ -374,70 +406,70 @@
             =========================================== -->
             <article class="page-section space-y-8" id="page-skills" data-page="skills">
                 <header>
-                    <h2 class="text-2xl sm:text-3xl font-bold text-white relative pb-3 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-14 after:h-1 after:bg-gradient-to-r after:from-cyan-400 after:to-blue-500 after:rounded-full">Herramientas, Tecnologías & Certificaciones</h2>
+                    <h2 class="text-2xl sm:text-3xl font-bold text-white relative pb-3 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-16 after:h-1 after:bg-gradient-to-r after:from-emerald-400 after:to-violet-500 after:rounded-full">Herramientas, Tecnologías & Certificaciones</h2>
                 </header>
 
                 <!-- Herramientas y Tecnologías por Categoría -->
                 <section class="grid grid-cols-1 md:grid-cols-2 gap-5">
                     
-                    <div class="bg-slate-800/40 border border-slate-700/60 p-5 rounded-2xl space-y-3">
-                        <div class="flex items-center gap-2.5 text-cyan-400">
+                    <div class="cyber-card bg-slate-900/50 border border-slate-800 p-5 rounded-2xl space-y-3">
+                        <div class="flex items-center gap-2.5 text-emerald-400">
                             <ion-icon name="terminal-outline" class="text-xl"></ion-icon>
                             <h3 class="text-base font-semibold text-white">Programación, Microcontroladores & Automatización</h3>
                         </div>
                         <div class="flex flex-wrap gap-2">
-                            <span class="text-xs font-mono bg-slate-900 border border-slate-700 px-3 py-1.5 rounded-lg text-cyan-300">Python</span>
-                            <span class="text-xs font-mono bg-slate-900 border border-slate-700 px-3 py-1.5 rounded-lg text-cyan-300">C / C++</span>
-                            <span class="text-xs font-mono bg-slate-900 border border-slate-700 px-3 py-1.5 rounded-lg text-cyan-300">ESP32</span>
-                            <span class="text-xs font-mono bg-slate-900 border border-slate-700 px-3 py-1.5 rounded-lg text-cyan-300">STM32</span>
-                            <span class="text-xs font-mono bg-slate-900 border border-slate-700 px-3 py-1.5 rounded-lg text-cyan-300">PLC</span>
-                            <span class="text-xs font-mono bg-slate-900 border border-slate-700 px-3 py-1.5 rounded-lg text-cyan-300">JavaScript / HTML / CSS</span>
-                            <span class="text-xs font-mono bg-slate-900 border border-slate-700 px-3 py-1.5 rounded-lg text-cyan-300">Back-End & SQL</span>
+                            <span class="text-xs font-mono bg-slate-950 border border-emerald-500/30 px-3 py-1.5 rounded-lg text-emerald-300">Python</span>
+                            <span class="text-xs font-mono bg-slate-950 border border-emerald-500/30 px-3 py-1.5 rounded-lg text-emerald-300">C / C++</span>
+                            <span class="text-xs font-mono bg-slate-950 border border-emerald-500/30 px-3 py-1.5 rounded-lg text-emerald-300">ESP32</span>
+                            <span class="text-xs font-mono bg-slate-950 border border-emerald-500/30 px-3 py-1.5 rounded-lg text-emerald-300">STM32</span>
+                            <span class="text-xs font-mono bg-slate-950 border border-emerald-500/30 px-3 py-1.5 rounded-lg text-emerald-300">PLC</span>
+                            <span class="text-xs font-mono bg-slate-950 border border-emerald-500/30 px-3 py-1.5 rounded-lg text-emerald-300">JavaScript / HTML / CSS</span>
+                            <span class="text-xs font-mono bg-slate-950 border border-emerald-500/30 px-3 py-1.5 rounded-lg text-emerald-300">Back-End & SQL</span>
                         </div>
                     </div>
 
-                    <div class="bg-slate-800/40 border border-slate-700/60 p-5 rounded-2xl space-y-3">
-                        <div class="flex items-center gap-2.5 text-cyan-400">
+                    <div class="cyber-card bg-slate-900/50 border border-slate-800 p-5 rounded-2xl space-y-3">
+                        <div class="flex items-center gap-2.5 text-violet-400">
                             <ion-icon name="git-network-outline" class="text-xl"></ion-icon>
                             <h3 class="text-base font-semibold text-white">Protocolos Industriales, Telemetría & RF</h3>
                         </div>
                         <div class="flex flex-wrap gap-2">
-                            <span class="text-xs font-mono bg-slate-900 border border-slate-700 px-3 py-1.5 rounded-lg text-blue-300">CAN Bus (J1939 / OBD-II)</span>
-                            <span class="text-xs font-mono bg-slate-900 border border-slate-700 px-3 py-1.5 rounded-lg text-blue-300">RS-232 / RS-485</span>
-                            <span class="text-xs font-mono bg-slate-900 border border-slate-700 px-3 py-1.5 rounded-lg text-blue-300">MQTT / HTTP</span>
-                            <span class="text-xs font-mono bg-slate-900 border border-slate-700 px-3 py-1.5 rounded-lg text-blue-300">TCP/IP & UDP</span>
-                            <span class="text-xs font-mono bg-slate-900 border border-slate-700 px-3 py-1.5 rounded-lg text-blue-300">VHF / UHF / Satelital</span>
-                            <span class="text-xs font-mono bg-slate-900 border border-slate-700 px-3 py-1.5 rounded-lg text-blue-300">ADAS / DashCam / GPS</span>
+                            <span class="text-xs font-mono bg-slate-950 border border-violet-500/30 px-3 py-1.5 rounded-lg text-violet-300">CAN Bus (J1939 / OBD-II)</span>
+                            <span class="text-xs font-mono bg-slate-950 border border-violet-500/30 px-3 py-1.5 rounded-lg text-violet-300">RS-232 / RS-485</span>
+                            <span class="text-xs font-mono bg-slate-950 border border-violet-500/30 px-3 py-1.5 rounded-lg text-violet-300">MQTT / HTTP</span>
+                            <span class="text-xs font-mono bg-slate-950 border border-violet-500/30 px-3 py-1.5 rounded-lg text-violet-300">TCP/IP & UDP</span>
+                            <span class="text-xs font-mono bg-slate-950 border border-violet-500/30 px-3 py-1.5 rounded-lg text-violet-300">VHF / UHF / Satelital</span>
+                            <span class="text-xs font-mono bg-slate-950 border border-violet-500/30 px-3 py-1.5 rounded-lg text-violet-300">ADAS / DashCam / GPS</span>
                         </div>
                     </div>
 
-                    <div class="bg-slate-800/40 border border-slate-700/60 p-5 rounded-2xl space-y-3">
-                        <div class="flex items-center gap-2.5 text-cyan-400">
+                    <div class="cyber-card bg-slate-900/50 border border-slate-800 p-5 rounded-2xl space-y-3">
+                        <div class="flex items-center gap-2.5 text-emerald-400">
                             <ion-icon name="cube-outline" class="text-xl"></ion-icon>
                             <h3 class="text-base font-semibold text-white">Diseño Electrónico (EDA) & Mecánico (CAD 3D)</h3>
                         </div>
                         <div class="flex flex-wrap gap-2">
-                            <span class="text-xs font-mono bg-slate-900 border border-slate-700 px-3 py-1.5 rounded-lg text-emerald-300">Altium Designer</span>
-                            <span class="text-xs font-mono bg-slate-900 border border-slate-700 px-3 py-1.5 rounded-lg text-emerald-300">EasyEDA / KiCad</span>
-                            <span class="text-xs font-mono bg-slate-900 border border-slate-700 px-3 py-1.5 rounded-lg text-emerald-300">SolidWorks</span>
-                            <span class="text-xs font-mono bg-slate-900 border border-slate-700 px-3 py-1.5 rounded-lg text-emerald-300">Autodesk Inventor</span>
-                            <span class="text-xs font-mono bg-slate-900 border border-slate-700 px-3 py-1.5 rounded-lg text-emerald-300">CATIA</span>
-                            <span class="text-xs font-mono bg-slate-900 border border-slate-700 px-3 py-1.5 rounded-lg text-emerald-300">AutoCAD</span>
-                            <span class="text-xs font-mono bg-slate-900 border border-slate-700 px-3 py-1.5 rounded-lg text-emerald-300">Impresión 3D</span>
+                            <span class="text-xs font-mono bg-slate-950 border border-amber-500/30 px-3 py-1.5 rounded-lg text-amber-300">Altium Designer</span>
+                            <span class="text-xs font-mono bg-slate-950 border border-amber-500/30 px-3 py-1.5 rounded-lg text-amber-300">EasyEDA / KiCad</span>
+                            <span class="text-xs font-mono bg-slate-950 border border-amber-500/30 px-3 py-1.5 rounded-lg text-amber-300">SolidWorks</span>
+                            <span class="text-xs font-mono bg-slate-950 border border-amber-500/30 px-3 py-1.5 rounded-lg text-amber-300">Autodesk Inventor</span>
+                            <span class="text-xs font-mono bg-slate-950 border border-amber-500/30 px-3 py-1.5 rounded-lg text-amber-300">CATIA</span>
+                            <span class="text-xs font-mono bg-slate-950 border border-amber-500/30 px-3 py-1.5 rounded-lg text-amber-300">AutoCAD</span>
+                            <span class="text-xs font-mono bg-slate-950 border border-amber-500/30 px-3 py-1.5 rounded-lg text-amber-300">Impresión 3D</span>
                         </div>
                     </div>
 
-                    <div class="bg-slate-800/40 border border-slate-700/60 p-5 rounded-2xl space-y-3">
-                        <div class="flex items-center gap-2.5 text-cyan-400">
+                    <div class="cyber-card bg-slate-900/50 border border-slate-800 p-5 rounded-2xl space-y-3">
+                        <div class="flex items-center gap-2.5 text-violet-400">
                             <ion-icon name="layers-outline" class="text-xl"></ion-icon>
                             <h3 class="text-base font-semibold text-white">Diseño Gráfico, Cartografía & Gestión</h3>
                         </div>
                         <div class="flex flex-wrap gap-2">
-                            <span class="text-xs font-mono bg-slate-900 border border-slate-700 px-3 py-1.5 rounded-lg text-slate-300">Leaflet / OpenStreetMap</span>
-                            <span class="text-xs font-mono bg-slate-900 border border-slate-700 px-3 py-1.5 rounded-lg text-slate-300">Adobe Photoshop</span>
-                            <span class="text-xs font-mono bg-slate-900 border border-slate-700 px-3 py-1.5 rounded-lg text-slate-300">Adobe Illustrator</span>
-                            <span class="text-xs font-mono bg-slate-900 border border-slate-700 px-3 py-1.5 rounded-lg text-slate-300">CorelDRAW</span>
-                            <span class="text-xs font-mono bg-slate-900 border border-slate-700 px-3 py-1.5 rounded-lg text-slate-300">MS Office Avanzado</span>
+                            <span class="text-xs font-mono bg-slate-950 border border-slate-700 px-3 py-1.5 rounded-lg text-slate-300">Leaflet / OpenStreetMap</span>
+                            <span class="text-xs font-mono bg-slate-950 border border-slate-700 px-3 py-1.5 rounded-lg text-slate-300">Adobe Photoshop</span>
+                            <span class="text-xs font-mono bg-slate-950 border border-slate-700 px-3 py-1.5 rounded-lg text-slate-300">Adobe Illustrator</span>
+                            <span class="text-xs font-mono bg-slate-950 border border-slate-700 px-3 py-1.5 rounded-lg text-slate-300">CorelDRAW</span>
+                            <span class="text-xs font-mono bg-slate-950 border border-slate-700 px-3 py-1.5 rounded-lg text-slate-300">MS Office Avanzado</span>
                         </div>
                     </div>
 
@@ -446,16 +478,16 @@
                 <!-- Formación Complementaria y Certificaciones -->
                 <section class="space-y-4">
                     <div class="flex items-center gap-3">
-                        <div class="bg-slate-800 border border-slate-700 w-10 h-10 rounded-xl flex items-center justify-center text-cyan-400 text-lg">
+                        <div class="bg-slate-900 border border-emerald-500/30 w-10 h-10 rounded-xl flex items-center justify-center text-emerald-400 text-lg">
                             <ion-icon name="medal-outline"></ion-icon>
                         </div>
                         <h3 class="text-xl font-semibold text-white">Formación Complementaria y Certificaciones</h3>
                     </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                        <div class="bg-slate-800/40 border border-slate-700/60 p-5 rounded-2xl flex flex-col justify-between">
+                        <div class="cyber-card bg-slate-900/50 border border-slate-800 p-5 rounded-2xl flex flex-col justify-between">
                             <div>
-                                <span class="text-xs font-mono text-cyan-400 bg-cyan-950/60 px-2.5 py-0.5 rounded-md border border-cyan-800/50">2025 · ISIL</span>
+                                <span class="text-xs font-mono text-emerald-400 bg-emerald-950/60 px-2.5 py-0.5 rounded-md border border-emerald-500/30">2025 · ISIL</span>
                                 <h4 class="text-base font-semibold text-white mt-3">Curso de Programación Back-End</h4>
                                 <p class="text-xs text-slate-400 font-light mt-2 leading-relaxed">
                                     Programación back-end, lógica de programación, estructuras de datos, arquitectura de bases de datos e integración de software en proyectos tecnológicos.
@@ -463,9 +495,9 @@
                             </div>
                         </div>
 
-                        <div class="bg-slate-800/40 border border-slate-700/60 p-5 rounded-2xl flex flex-col justify-between">
+                        <div class="cyber-card bg-slate-900/50 border border-slate-800 p-5 rounded-2xl flex flex-col justify-between">
                             <div>
-                                <span class="text-xs font-mono text-emerald-400 bg-emerald-950/60 px-2.5 py-0.5 rounded-md border border-emerald-800/50">2024 · V&G Golden Service</span>
+                                <span class="text-xs font-mono text-violet-400 bg-violet-950/60 px-2.5 py-0.5 rounded-md border border-violet-500/30">2024 · V&G Golden Service</span>
                                 <h4 class="text-base font-semibold text-white mt-3">Diagnóstico Electrónico en Vehículos Híbridos y Eléctricos</h4>
                                 <p class="text-xs text-slate-400 font-light mt-2 leading-relaxed">
                                     Diagnóstico de sistemas electrónicos vehiculares, análisis de arquitectura eléctrica/electrónica de alta tensión y tecnologías aplicadas a la movilidad eléctrica.
@@ -473,9 +505,9 @@
                             </div>
                         </div>
 
-                        <div class="bg-slate-800/40 border border-slate-700/60 p-5 rounded-2xl flex flex-col justify-between">
+                        <div class="cyber-card bg-slate-900/50 border border-slate-800 p-5 rounded-2xl flex flex-col justify-between">
                             <div>
-                                <span class="text-xs font-mono text-blue-400 bg-blue-950/60 px-2.5 py-0.5 rounded-md border border-blue-800/50">2024 · V&G Golden Service</span>
+                                <span class="text-xs font-mono text-amber-400 bg-amber-950/60 px-2.5 py-0.5 rounded-md border border-amber-500/30">2024 · V&G Golden Service</span>
                                 <h4 class="text-base font-semibold text-white mt-3">Diagnóstico Electrónico Automotriz con Escáner 12V y 24V</h4>
                                 <p class="text-xs text-slate-400 font-light mt-2 leading-relaxed">
                                     Diagnóstico electrónico automotriz avanzado en flotas livianas y pesadas, análisis de códigos de falla (DTC) e interpretación de tramas de datos en tiempo real de módulos ECU.
@@ -491,112 +523,112 @@
             =========================================== -->
             <article class="page-section space-y-6" id="page-portfolio" data-page="portfolio">
                 <header>
-                    <h2 class="text-2xl sm:text-3xl font-bold text-white relative pb-3 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-14 after:h-1 after:bg-gradient-to-r after:from-cyan-400 after:to-blue-500 after:rounded-full">Proyectos & Desarrollos Técnicos</h2>
+                    <h2 class="text-2xl sm:text-3xl font-bold text-white relative pb-3 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-16 after:h-1 after:bg-gradient-to-r after:from-emerald-400 after:to-violet-500 after:rounded-full">Proyectos & Desarrollos Técnicos</h2>
                 </header>
 
                 <!-- Filtros -->
                 <div class="flex flex-wrap gap-2">
-                    <button type="button" class="filter-btn active text-xs sm:text-sm px-3.5 py-1.5 rounded-xl bg-cyan-500/20 text-cyan-400 border border-cyan-500/40 font-medium transition-all" data-filter="all">Todos</button>
-                    <button type="button" class="filter-btn text-xs sm:text-sm px-3.5 py-1.5 rounded-xl bg-slate-800/60 text-slate-400 border border-slate-700/60 hover:text-white transition-all" data-filter="id">I+D & Mecatrónica</button>
-                    <button type="button" class="filter-btn text-xs sm:text-sm px-3.5 py-1.5 rounded-xl bg-slate-800/60 text-slate-400 border border-slate-700/60 hover:text-white transition-all" data-filter="rf">RF, Telemetría & GIS</button>
-                    <button type="button" class="filter-btn text-xs sm:text-sm px-3.5 py-1.5 rounded-xl bg-slate-800/60 text-slate-400 border border-slate-700/60 hover:text-white transition-all" data-filter="software">Software & Investigación</button>
+                    <button type="button" class="filter-btn active text-xs sm:text-sm px-3.5 py-1.5 rounded-xl bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 font-medium transition-all" data-filter="all">Todos</button>
+                    <button type="button" class="filter-btn text-xs sm:text-sm px-3.5 py-1.5 rounded-xl bg-slate-900/80 text-slate-400 border border-slate-800 hover:text-white transition-all" data-filter="id">I+D & Mecatrónica</button>
+                    <button type="button" class="filter-btn text-xs sm:text-sm px-3.5 py-1.5 rounded-xl bg-slate-900/80 text-slate-400 border border-slate-800 hover:text-white transition-all" data-filter="rf">RF, Telemetría & GIS</button>
+                    <button type="button" class="filter-btn text-xs sm:text-sm px-3.5 py-1.5 rounded-xl bg-slate-900/80 text-slate-400 border border-slate-800 hover:text-white transition-all" data-filter="software">Software & Investigación</button>
                 </div>
 
                 <!-- Grid de Proyectos -->
                 <ul class="grid grid-cols-1 md:grid-cols-2 gap-5">
                     
-                    <li class="project-item active bg-slate-800/40 border border-slate-700/60 p-5 rounded-2xl flex flex-col justify-between hover:border-cyan-500/50 transition-all" data-category="id">
+                    <li class="project-item active cyber-card bg-slate-900/50 border border-slate-800 p-5 rounded-2xl flex flex-col justify-between transition-all" data-category="id">
                         <div>
                             <div class="flex items-center justify-between mb-3">
-                                <span class="text-[11px] font-mono uppercase tracking-wider px-2.5 py-1 rounded-md bg-cyan-950 text-cyan-400 border border-cyan-800/60">Simulación & I+D</span>
-                                <ion-icon name="car-sport-outline" class="text-xl text-cyan-400"></ion-icon>
+                                <span class="text-[11px] font-mono uppercase tracking-wider px-2.5 py-1 rounded-md bg-emerald-950 text-emerald-400 border border-emerald-500/30">Simulación & I+D</span>
+                                <ion-icon name="car-sport-outline" class="text-xl text-emerald-400"></ion-icon>
                             </div>
                             <h3 class="text-base font-semibold text-white">Diseño y Desarrollo de Simulador de Conducción</h3>
                             <p class="text-xs sm:text-sm text-slate-400 font-light mt-2 leading-relaxed">
                                 Diseño mecatrónico, programación e implementación de un simulador de conducción basado en escenarios virtuales personalizados, orientado a la capacitación, telemetría y evaluación técnica de conductores.
                             </p>
                         </div>
-                        <div class="flex flex-wrap gap-1.5 mt-4 pt-3 border-t border-slate-800 text-[11px] text-slate-300 font-mono">
+                        <div class="flex flex-wrap gap-1.5 mt-4 pt-3 border-t border-slate-800/80 text-[11px] text-emerald-300/90 font-mono">
                             <span>Hardware-Software</span> • <span>Escenarios Virtuales</span> • <span>Evaluación Vial</span>
                         </div>
                     </li>
 
-                    <li class="project-item active bg-slate-800/40 border border-slate-700/60 p-5 rounded-2xl flex flex-col justify-between hover:border-cyan-500/50 transition-all" data-category="id">
+                    <li class="project-item active cyber-card bg-slate-900/50 border border-slate-800 p-5 rounded-2xl flex flex-col justify-between transition-all" data-category="id">
                         <div>
                             <div class="flex items-center justify-between mb-3">
-                                <span class="text-[11px] font-mono uppercase tracking-wider px-2.5 py-1 rounded-md bg-emerald-950 text-emerald-400 border border-emerald-800/60">Robótica Internacional (México)</span>
-                                <ion-icon name="hardware-chip-outline" class="text-xl text-emerald-400"></ion-icon>
+                                <span class="text-[11px] font-mono uppercase tracking-wider px-2.5 py-1 rounded-md bg-violet-950 text-violet-400 border border-violet-500/30">Robótica Internacional (México)</span>
+                                <ion-icon name="hardware-chip-outline" class="text-xl text-violet-400"></ion-icon>
                             </div>
                             <h3 class="text-base font-semibold text-white">Proyecto Mini Darwin — ART-MIND Technology (Puebla, México)</h3>
                             <p class="text-xs sm:text-sm text-slate-400 font-light mt-2 leading-relaxed">
                                 Desarrollo y exploración de superficies mediante sensado avanzado, programación de microcontroladores e integración de sistemas mecatrónicos autónomos.
                             </p>
                         </div>
-                        <div class="flex flex-wrap gap-1.5 mt-4 pt-3 border-t border-slate-800 text-[11px] text-slate-300 font-mono">
+                        <div class="flex flex-wrap gap-1.5 mt-4 pt-3 border-t border-slate-800/80 text-[11px] text-violet-300/90 font-mono">
                             <span>Sensado de Superficies</span> • <span>Sistemas Embebidos</span> • <span>Puebla, México</span>
                         </div>
                     </li>
 
-                    <li class="project-item active bg-slate-800/40 border border-slate-700/60 p-5 rounded-2xl flex flex-col justify-between hover:border-cyan-500/50 transition-all" data-category="rf">
+                    <li class="project-item active cyber-card bg-slate-900/50 border border-slate-800 p-5 rounded-2xl flex flex-col justify-between transition-all" data-category="rf">
                         <div>
                             <div class="flex items-center justify-between mb-3">
-                                <span class="text-[11px] font-mono uppercase tracking-wider px-2.5 py-1 rounded-md bg-cyan-950 text-cyan-400 border border-cyan-800/60">Infraestructura RF Nacional</span>
-                                <ion-icon name="radio-outline" class="text-xl text-cyan-400"></ion-icon>
+                                <span class="text-[11px] font-mono uppercase tracking-wider px-2.5 py-1 rounded-md bg-emerald-950 text-emerald-400 border border-emerald-500/30">Infraestructura RF Nacional</span>
+                                <ion-icon name="radio-outline" class="text-xl text-emerald-400"></ion-icon>
                             </div>
                             <h3 class="text-base font-semibold text-white">MDZ SKYNET & Analizador de MiltonPro (Red de 78 Torres RF)</h3>
                             <p class="text-xs sm:text-sm text-slate-400 font-light mt-2 leading-relaxed">
                                 Plataforma interactiva con mapas Leaflet/OpenStreetMap y motor en Python para auditar tasas de ping, nivel RSSI, alertas de inhibidores (jammers), anillos de cobertura y métricas MTBF/MTTR a nivel nacional.
                             </p>
                         </div>
-                        <div class="flex flex-wrap gap-1.5 mt-4 pt-3 border-t border-slate-800 text-[11px] text-slate-300 font-mono">
+                        <div class="flex flex-wrap gap-1.5 mt-4 pt-3 border-t border-slate-800/80 text-[11px] text-emerald-300/90 font-mono">
                             <span>Python</span> • <span>Leaflet GIS</span> • <span>Telemetría RF</span>
                         </div>
                     </li>
 
-                    <li class="project-item active bg-slate-800/40 border border-slate-700/60 p-5 rounded-2xl flex flex-col justify-between hover:border-cyan-500/50 transition-all" data-category="rf">
+                    <li class="project-item active cyber-card bg-slate-900/50 border border-slate-800 p-5 rounded-2xl flex flex-col justify-between transition-all" data-category="rf">
                         <div>
                             <div class="flex items-center justify-between mb-3">
-                                <span class="text-[11px] font-mono uppercase tracking-wider px-2.5 py-1 rounded-md bg-blue-950 text-blue-400 border border-blue-800/60">Seguridad Minera & Vehicular</span>
-                                <ion-icon name="speedometer-outline" class="text-xl text-blue-400"></ion-icon>
+                                <span class="text-[11px] font-mono uppercase tracking-wider px-2.5 py-1 rounded-md bg-violet-950 text-violet-400 border border-violet-500/30">Seguridad Minera & Vehicular</span>
+                                <ion-icon name="speedometer-outline" class="text-xl text-violet-400"></ion-icon>
                             </div>
                             <h3 class="text-base font-semibold text-white">Telemetría CAN Bus, ADAS & Control de Velocidad en Socavones</h3>
                             <p class="text-xs sm:text-sm text-slate-400 font-light mt-2 leading-relaxed">
                                 Integración de hardware y software para monitoreo de flotas pesadas (Volvo, Scania, Hino, Isuzu), cámaras ADAS/DashCam, grupos electrógenos y control automatizado de velocidad en minería subterránea.
                             </p>
                         </div>
-                        <div class="flex flex-wrap gap-1.5 mt-4 pt-3 border-t border-slate-800 text-[11px] text-slate-300 font-mono">
+                        <div class="flex flex-wrap gap-1.5 mt-4 pt-3 border-t border-slate-800/80 text-[11px] text-violet-300/90 font-mono">
                             <span>CAN Bus</span> • <span>ADAS / DashCam</span> • <span>MQTT / TCP/IP</span>
                         </div>
                     </li>
 
-                    <li class="project-item active bg-slate-800/40 border border-slate-700/60 p-5 rounded-2xl flex flex-col justify-between hover:border-cyan-500/50 transition-all" data-category="software">
+                    <li class="project-item active cyber-card bg-slate-900/50 border border-slate-800 p-5 rounded-2xl flex flex-col justify-between transition-all" data-category="software">
                         <div>
                             <div class="flex items-center justify-between mb-3">
-                                <span class="text-[11px] font-mono uppercase tracking-wider px-2.5 py-1 rounded-md bg-purple-950 text-purple-400 border border-purple-800/60">Investigación Digital</span>
-                                <ion-icon name="shield-half-outline" class="text-xl text-purple-400"></ion-icon>
+                                <span class="text-[11px] font-mono uppercase tracking-wider px-2.5 py-1 rounded-md bg-amber-950 text-amber-400 border border-amber-500/30">Investigación Digital</span>
+                                <ion-icon name="shield-half-outline" class="text-xl text-amber-400"></ion-icon>
                             </div>
                             <h3 class="text-base font-semibold text-white">Colaboración Técnica Forense — SEINCRI Huancayo</h3>
                             <p class="text-xs sm:text-sm text-slate-400 font-light mt-2 leading-relaxed">
                                 Apoyo técnico especializado en la recopilación, estructuración y análisis de datos para la resolución de un caso de cibercrimen, aplicando programación y técnicas de investigación digital.
                             </p>
                         </div>
-                        <div class="flex flex-wrap gap-1.5 mt-4 pt-3 border-t border-slate-800 text-[11px] text-slate-300 font-mono">
+                        <div class="flex flex-wrap gap-1.5 mt-4 pt-3 border-t border-slate-800/80 text-[11px] text-amber-300/90 font-mono">
                             <span>Análisis de Datos</span> • <span>Programación</span> • <span>Investigación Digital</span>
                         </div>
                     </li>
 
-                    <li class="project-item active bg-slate-800/40 border border-slate-700/60 p-5 rounded-2xl flex flex-col justify-between hover:border-cyan-500/50 transition-all" data-category="software">
+                    <li class="project-item active cyber-card bg-slate-900/50 border border-slate-800 p-5 rounded-2xl flex flex-col justify-between transition-all" data-category="software">
                         <div>
                             <div class="flex items-center justify-between mb-3">
-                                <span class="text-[11px] font-mono uppercase tracking-wider px-2.5 py-1 rounded-md bg-amber-950 text-amber-400 border border-amber-800/60">Difusión & Capacitación</span>
-                                <ion-icon name="people-outline" class="text-xl text-amber-400"></ion-icon>
+                                <span class="text-[11px] font-mono uppercase tracking-wider px-2.5 py-1 rounded-md bg-emerald-950 text-emerald-400 border border-emerald-500/30">Difusión & Capacitación</span>
+                                <ion-icon name="people-outline" class="text-xl text-emerald-400"></ion-icon>
                             </div>
                             <h3 class="text-base font-semibold text-white">Capacitación Técnica en Robótica, Sensores y Geolocalización GPS</h3>
                             <p class="text-xs sm:text-sm text-slate-400 font-light mt-2 leading-relaxed">
                                 Desarrollo e impartición de ponencias técnicas, estandarización de checklists operativos y talleres prácticos sobre programación de brazos robóticos, sensores industriales, bases de datos y sistemas GPS.
                             </p>
                         </div>
-                        <div class="flex flex-wrap gap-1.5 mt-4 pt-3 border-t border-slate-800 text-[11px] text-slate-300 font-mono">
+                        <div class="flex flex-wrap gap-1.5 mt-4 pt-3 border-t border-slate-800/80 text-[11px] text-emerald-300/90 font-mono">
                             <span>Brazos Robóticos</span> • <span>Bases de Datos</span> • <span>Sistemas GPS</span>
                         </div>
                     </li>
@@ -609,28 +641,28 @@
             =========================================== -->
             <article class="page-section space-y-6" id="page-contact" data-page="contact">
                 <header>
-                    <h2 class="text-2xl sm:text-3xl font-bold text-white relative pb-3 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-14 after:h-1 after:bg-gradient-to-r after:from-cyan-400 after:to-blue-500 after:rounded-full">Contacto Directo</h2>
+                    <h2 class="text-2xl sm:text-3xl font-bold text-white relative pb-3 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-16 after:h-1 after:bg-gradient-to-r after:from-emerald-400 after:to-violet-500 after:rounded-full">Contacto Directo</h2>
                 </header>
 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <a href="mailto:sebastianvalerogomez@hotmail.com" class="bg-slate-800/40 border border-slate-700/60 p-4 rounded-2xl flex items-center gap-3.5 hover:border-cyan-500/50 transition-all">
-                        <div class="bg-cyan-500/10 text-cyan-400 p-3 rounded-xl text-xl"><ion-icon name="mail-outline"></ion-icon></div>
+                    <a href="mailto:sebastianvalerogomez@hotmail.com" class="cyber-card bg-slate-900/50 border border-slate-800 p-4 rounded-2xl flex items-center gap-3.5 transition-all">
+                        <div class="bg-emerald-500/10 text-emerald-400 p-3 rounded-xl text-xl"><ion-icon name="mail-outline"></ion-icon></div>
                         <div class="overflow-hidden">
                             <p class="text-xs text-slate-400">Correo Directo</p>
                             <p class="text-xs sm:text-sm font-medium text-white truncate">sebastianvalerogomez@hotmail.com</p>
                         </div>
                     </a>
 
-                    <a href="https://wa.me/51985855171" target="_blank" class="bg-slate-800/40 border border-slate-700/60 p-4 rounded-2xl flex items-center gap-3.5 hover:border-cyan-500/50 transition-all">
+                    <a href="https://wa.me/51985855171" target="_blank" class="cyber-card bg-slate-900/50 border border-slate-800 p-4 rounded-2xl flex items-center gap-3.5 transition-all">
                         <div class="bg-emerald-500/10 text-emerald-400 p-3 rounded-xl text-xl"><ion-icon name="logo-whatsapp"></ion-icon></div>
                         <div>
                             <p class="text-xs text-slate-400">WhatsApp / Celular</p>
-                            <p class="text-xs sm:text-sm font-medium text-white">+51 985 855 171</p>
+                            <p class="text-xs sm:text-sm font-medium text-white font-mono">+51 985 855 171</p>
                         </div>
                     </a>
 
-                    <div class="bg-slate-800/40 border border-slate-700/60 p-4 rounded-2xl flex items-center gap-3.5">
-                        <div class="bg-blue-500/10 text-blue-400 p-3 rounded-xl text-xl"><ion-icon name="shield-checkmark-outline"></ion-icon></div>
+                    <div class="cyber-card bg-slate-900/50 border border-slate-800 p-4 rounded-2xl flex items-center gap-3.5">
+                        <div class="bg-violet-500/10 text-violet-400 p-3 rounded-xl text-xl"><ion-icon name="shield-checkmark-outline"></ion-icon></div>
                         <div>
                             <p class="text-xs text-slate-400">Colegio de Ingenieros del Perú</p>
                             <p class="text-xs sm:text-sm font-medium text-white">CIP 401618 (Habilitado)</p>
@@ -638,18 +670,18 @@
                     </div>
                 </div>
 
-                <section class="bg-slate-800/40 border border-slate-700/60 p-5 sm:p-6 rounded-2xl shadow-xl">
+                <section class="bg-slate-900/50 border border-slate-800 p-5 sm:p-6 rounded-2xl shadow-xl">
                     <h3 class="text-base sm:text-lg font-semibold text-white mb-2">Envíame un mensaje</h3>
                     <p class="text-xs sm:text-sm text-slate-400 font-light mb-5">Disponible para dirección de proyectos de I+D+i, consultoría en IoT/Telemetría, homologaciones MTC y automatización industrial.</p>
 
                     <form action="mailto:sebastianvalerogomez@hotmail.com" method="post" enctype="text/plain" class="space-y-4" data-form>
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                            <input type="text" name="fullname" class="w-full bg-slate-900/80 border border-slate-700/80 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-cyan-400 transition-colors" placeholder="Nombre o Empresa" required data-form-input>
-                            <input type="email" name="email" class="w-full bg-slate-900/80 border border-slate-700/80 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-cyan-400 transition-colors" placeholder="Correo electrónico" required data-form-input>
+                            <input type="text" name="fullname" class="w-full bg-slate-950/90 border border-slate-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-emerald-400 transition-colors" placeholder="Nombre o Empresa" required data-form-input>
+                            <input type="email" name="email" class="w-full bg-slate-950/90 border border-slate-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-emerald-400 transition-colors" placeholder="Correo electrónico" required data-form-input>
                         </div>
-                        <textarea name="message" class="w-full bg-slate-900/80 border border-slate-700/80 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-cyan-400 transition-colors h-32 resize-none" placeholder="Detalles del proyecto, requerimiento técnico o propuesta..." required data-form-input></textarea>
+                        <textarea name="message" class="w-full bg-slate-950/90 border border-slate-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-emerald-400 transition-colors h-32 resize-none" placeholder="Detalles del proyecto, requerimiento técnico o propuesta..." required data-form-input></textarea>
                         
-                        <button class="w-full sm:w-auto bg-gradient-to-r from-cyan-500 to-blue-600 text-slate-950 font-semibold px-6 py-3 rounded-xl flex items-center justify-center gap-2 shadow-lg hover:opacity-90 transition-opacity disabled:opacity-40 disabled:cursor-not-allowed ml-auto" type="submit" disabled data-form-btn>
+                        <button class="w-full sm:w-auto bg-gradient-to-r from-emerald-500 to-violet-600 text-slate-950 font-semibold px-6 py-3 rounded-xl flex items-center justify-center gap-2 shadow-lg hover:opacity-90 transition-opacity disabled:opacity-40 disabled:cursor-not-allowed ml-auto" type="submit" disabled data-form-btn>
                             <ion-icon name="paper-plane"></ion-icon>
                             <span>Enviar Mensaje</span>
                         </button>
